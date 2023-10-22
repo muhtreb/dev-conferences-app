@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% set hasSpeakers = talk.speakers|length > 0 %}
+
+{% block body %}
+    <a href="{{ path('edition_show', { slug: talk.edition.slug }) }}">&larr; {{ talk.edition.name }}</a>
+
+    <div class="flex items-center justify-center w-full mt-4 mb-8">
+        <h1 class="font-bold text-2xl text-center">{{ talk.name }}</h1>
+    </div>
+
+    <div class="flex {{ hasSpeakers ? "flex-col md:flex-row " : "" }}">
+        <div class="relative flex-1">
+            <div class="w-full absolute" id="player" data-plyr-provider="youtube"
+                 data-plyr-embed-id="{{ talk.youtubeId }}"></div>
+        </div>
+    </div>
+
+    {% if hasSpeakers or talk.description %}
+        <div
+                class="flex mt-4 {{ hasSpeakers ? "flex-col md:flex-row " : "" }}"
+        >
+            <p class="p-4 flex-1 bg-gray-800 rounded leading-7 text-sm">
+                    <span class="text-sm">
+                        {{ talk.date|date('j F Y') }}
+                    </span>
+                <br/>
+                <br/>
+                {% if talk.description %}
+                    <span class="break-words">{{ talk.description }}</span>
+                {% endif %}
+            </p>
+            {% if hasSpeakers %}
+                <div
+                        class="w-full md:w-64 shrink-0 mt-4 ml-0 md:mt-0 md:ml-4"
+                >
+                    {% for speaker in talk.speakers %}
+                        <div class="mb-4 w-full">
+                            <twig:SpeakerCard speaker="{{ speaker }}"
+                                              url="{{ path('speaker_show', { slug: speaker.slug }) }}"/>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

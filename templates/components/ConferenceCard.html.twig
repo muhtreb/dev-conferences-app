@@ -1,0 +1,16 @@
+<div class="w-full flex flex-col justify-between p-4 bg-gray-700 rounded-md cursor-pointer relative">
+    <div class="flex items-center justify-center mb-4 ">
+        {% if conference.thumbnailImageUrl %}
+            <div class="relative w-24 h-24 bg-gray-800 border-2 overflow-hidden">
+                <img src="{{ conference.thumbnailImageUrl }}" alt="{{ conference.name }}"/>
+            </div>
+        {% else %}
+        <div class="flex items-center justify-center w-24 h-24 bg-gray-800 border-2 overflow-hidden">
+            <i class="fa-solid fa-earth-americas fa-2xl"></i>
+        </div>
+        {% endif %}
+    </div>
+    <h2 class="font-bold text-center text-xl">
+        <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">{{ conference.name }}</a>
+    </h2>
+</div>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="font-bold text-2xl mb-4 text-center">Speakers</h1>
+
+    <twig:SearchForm placeholder="Rechercher un conférencier"/>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {% for speaker in speakers %}
+            <li class="flex">
+                <twig:SpeakerCard speaker="{{ speaker }}" url="{{ path('speaker_show', { 'slug': speaker.slug }) }}"/>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <twig:MetaPagination meta="{{ meta }}" />
+{% endblock %}

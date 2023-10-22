@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('conference_show', { slug: edition.conference.slug }) }}">&larr; {{ edition.conference.name }}</a>
+
+    <div class="flex flex-col items-center">
+        <div class="flex items-center mt-4 mb-2">
+            <h1 class="font-bold text-2xl text-center">{{ edition.name }}</h1>
+        </div>
+
+        {% if edition.conference.thumbnailImageUrl %}
+            <div class="relative w-48 h-48 border-2 mb-4">
+                <img
+                        src="{{ edition.conference.thumbnailImageUrl }}"
+                        alt="{{ edition.conference.name }}"
+                        class="w-full h-full object-cover"
+                />
+            </div>
+        {% endif %}
+
+        <span class="text-md px-4 py-2 bg-gray-800 rounded text-center mb-8">
+            {{ edition|editionDate }}
+        </span>
+
+        {% if edition.talks|length > 0 %}
+            <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {% for talk in edition.talks %}
+                    <li class="flex w-full">
+                        <twig:TalkCard talk="{{ talk }}" url="{{ path('talk_show', { 'slug': talk.slug }) }}"/>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

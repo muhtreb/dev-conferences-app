@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="flex items-center justify-center w-full mt-4 mb-2">
+        <h1 class="font-bold text-2xl text-center">{{ conference.name }}</h1>
+    </div>
+
+    {% if conference.thumbnailImageUrl %}
+        <div class="flex items-center justify-center">
+            <div class="relative w-48 h-48 mb-4 bg-gray-800 mb-4 border-2">
+                <img
+                        src="{{ conference.thumbnailImageUrl }}"
+                        alt="{{ conference.name }}"
+                        class="object-cover w-full h-full"
+                />
+            </div>
+        </div>
+    {% endif %}
+    {% if conference.description %}
+        <p class="mb-4 text-center">{{ conference.description }}</p>
+    {% endif %}
+
+    {% if conference.twitter or conference.website %}
+        <div class="mb-4 flex justify-center">
+            {% if conference.website %}
+
+                <a
+                        href="{{ conference.website }}"
+                        target="_blank"
+                        rel="noreferrer"
+                        class="mr-2"
+                        title="Website"
+                >
+                    <i class="fa-solid fa-link fa-2xl"></i>
+                </a>
+            {% endif %}
+            {% if conference.twitter %}
+                <a
+                        href="https://twitter.com/{{ conference.twitter }}"
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Twitter profile"
+                >
+                    <i class="fa-brands fa-x-twitter fa-2xl"></i>
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <h2 class="mt-8 font-bold text-xl mb-4">Editions</h2>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {% for edition in conference.editions %}
+            <li class="flex w-full">
+                <twig:EditionCard edition="{{ edition }}" url="{{ path('edition_show', { 'slug': edition.slug }) }}"/>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

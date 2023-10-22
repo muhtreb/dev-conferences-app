@@ -1,0 +1,52 @@
+<div class="w-full flex flex-col p-4 bg-gray-700 rounded-md cursor-pointer relative">
+    <div class="flex flex-col items-center justify-center relative">
+        <div class="relative w-20 h-20 shrink-0 mb-2">
+            {% if speaker.avatarUrl %}
+                <img
+                        src="{{ speaker.avatarUrl }}"
+                        alt="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}"
+                        class="rounded-full border-2 bg-gray-800"
+                />
+            {% else %}
+                <div
+                        class="h-full w-full rounded-full border-2 bg-gray-800 flex items-center justify-center"
+                >
+                    <i class="fa-solid fa-user fa-2xl"></i>
+                </div>
+            {% endif %}
+        </div>
+        <div>
+            <h2 class="font-bold">
+                <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">
+                    {{ speaker.firstName }} {{ speaker.lastName }}
+                </a>
+            </h2>
+
+            {% if speaker.github or speaker.twitter %}
+                <div class="mt-2 flex items-center justify-center relative">
+                    {% if speaker.github %}
+                        <a
+                                href="https://github.com/{{ speaker.github }}"
+                                target="_blank"
+                                rel="noreferrer"
+                                class="mr-2"
+                                title="Github profile"
+                        >
+                            <i class="fa-brands fa-github fa-lg"></i>
+                        </a>
+                    {% endif %}
+                    {% if speaker.twitter %}
+                        <a
+                                href="https://twitter.com/{{ speaker.twitter }}"
+                                target="_blank"
+                                rel="noreferrer"
+                                title="X profile"
+                        >
+                            <i class="fa-brands fa-x-twitter fa-lg"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

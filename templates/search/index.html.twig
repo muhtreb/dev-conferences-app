@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% set query = app.request.get('query') %}
+
+{% block body %}
+    <h1 class="text-3xl font-bold mb-4 text-center">
+        Recherche
+    </h1>
+
+    <twig:SearchForm />
+
+    {% if conferences|length %}
+        <section class="mb-16">
+            <h2 class="font-bold text-2xl mb-4 text-center">Conferences</h2>
+
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                {% for conference in conferences %}
+                    <li class="flex">
+                        <twig:ConferenceCard conference="{{ conference }}"
+                                             url="{{ path('conference_show', { 'slug': conference.slug }) }}"/>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {% if conferencesMeta.nextPage %}
+                <div class="mt-8 flex items-center justify-center">
+                    <twig:Button href="{{ path('conference_list', { query: query }) }}" tag="a">
+                        Voir plus de conférences {% if query %}"{{ query }}"{% endif %}
+                    </twig:Button>
+                </div>
+            {% endif %}
+        </section>
+    {% endif %}
+
+    {% if editions|length %}
+        <section class="mb-16">
+            <h2 class="font-bold text-2xl mb-4 text-center">Editions</h2>
+
+            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                {% for edition in editions %}
+                    <li class="flex">
+                        <twig:EditionCard edition="{{ edition }}"
+                                          url="{{ path('edition_show', { 'slug': edition.slug }) }}" showThumbnail />
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {% if editionsMeta.nextPage %}
+
+                <div class="mt-8 flex items-center justify-center">
+                    <twig:Button href="{{ path('edition_list', { query: query }) }}" tag="a">
+                        Voir plus d'éditions {% if query %}"{{ query }}"{% endif %}
+                    </twig:Button>
+                </div>
+            {% endif %}
+        </section>
+    {% endif %}
+
+    {% if talks|length %}
+        <section class="mb-16">
+            <h2 class="font-bold text-2xl mb-4 text-center">Talks</h2>
+
+            <ul class="grid sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {% for talk in talks %}
+                    <li class="flex">
+                        <twig:TalkCard talk="{{ talk }}" url="{{ path('talk_show', { 'slug': talk.slug }) }}"/>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if talksMeta.nextPage %}
+
+                <div class="mt-8 flex items-center justify-center">
+                    <twig:Button href="{{ path('talk_list', { query: query }) }}" tag="a">
+                        Voir plus de talks {% if query %}"{{ query }}"{% endif %}
+                    </twig:Button>
+                </div>
+            {% endif %}
+        </section>
+    {% endif %}
+
+    {% if speakers|length %}
+        <section class="speakers">
+            <h2 class="font-bold text-2xl mb-4 text-center">Speakers</h2>
+
+            <ul class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                {% for speaker in speakers %}
+                    <li class="flex">
+                        <twig:SpeakerCard speaker="{{ speaker }}"
+                                          url="{{ path('speaker_show', { 'slug': speaker.slug }) }}"/>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {% if speakersMeta.nextPage %}
+                <div class="mt-8 flex items-center justify-center">
+                    <twig:Button href="{{ path('speaker_list', { query: query }) }}" tag="a">
+                        Voir plus de speakers {% if query %}"{{ query }}"{% endif %}
+                    </twig:Button>
+                </div>
+            {% endif %}
+        </section>
+    {% endif %}
+{% endblock %}
