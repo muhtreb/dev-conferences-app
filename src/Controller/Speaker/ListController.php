@@ -27,6 +27,16 @@ class ListController extends AbstractController
         return $this->render('speaker/list.html.twig', [
             'speakers' => $speakers,
             'meta' => $meta,
+            'breadcrumbItems' => [
+                [
+                    'name' => 'Accueil',
+                    'url' => $this->generateUrl('home'),
+                ],
+                [
+                    'name' => 'Conférenciers',
+                    'url' => null,
+                ],
+            ],
         ]);
     }
 }

@@ -1,0 +1,20 @@
+<nav class="rounded-md bg-gray-800 px-4 py-2">
+    <ol class="list-reset flex flex-wrap">
+        {% for item in this.items %}
+            {% if item.url %}
+                <li>
+                    <a
+                        href="{{ item.url }}"
+                        class="text-primary underline transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700"
+                    >{{ item.name }}</a
+                    >
+                </li>
+                <li>
+                    <span class="mx-2 text-neutral-300">/</span>
+                </li>
+            {% else %}
+                <li class="text-neutral-300">{{ item.name }}</li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</nav>

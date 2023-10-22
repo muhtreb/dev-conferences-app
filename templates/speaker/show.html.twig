@@ -1,64 +1,68 @@
 {% extends 'base.html.twig' %}
 
+{% block metaTitle speaker.firstName ~ ' ' ~ speaker.lastName %}
+
 {% block body %}
-    <div class="flex items-center flex-col">
-    <div class="flex items-center justify-center w-full mb-4">
-        <h1 class="font-bold text-2xl text-center">
-            {{ speaker.firstName }} {{speaker.lastName}}
-        </h1>
-    </div>
+    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
+
+    <div class="flex items-center flex-col mt-4">
+        <div class="flex items-center justify-center w-full mb-4">
+            <h1 class="font-bold text-2xl text-center">
+                {{ speaker.firstName }} {{ speaker.lastName }}
+            </h1>
+        </div>
         {% if speaker.avatarUrl %}
-    <div class="relative w-64 h-64 mb-4">
-        <img
-                src="{{ speaker.avatarUrl}}"
-                alt="{{ speaker.firstName}} {{speaker.lastName}}"
-                class="rounded-full border-2"
-        />
-    </div>
-    {% endif %}
+            <div class="relative w-64 h-64 mb-4">
+                <img
+                        src="{{ speaker.avatarUrl }}"
+                        alt="{{ speaker.firstName }} {{ speaker.lastName }}"
+                        class="rounded-full border-2"
+                />
+            </div>
+        {% endif %}
         {% if speaker.description %}
             <p>{{ speaker.description }}</p>
         {% endif %}
         {% if speaker.github or speaker.twitter %}
-    <div class="mt-4 flex items-center">
-        {%if speaker.github %}
-        <a
-                href="https://github.com/{{ speaker.github }}"
-                target="_blank"
-                rel="noreferrer"
-                class="mr-2"
-                title="Github profile"
-        >
-            <i class="fa-brands fa-github fa-2xl"></i>
-        </a>
-        {%endif %}
-        {% if speaker.twitter %}
-        <a
-                href="https://twitter.com/{{ speaker.twitter}}"
-                target="_blank"
-                rel="noreferrer"
-                title="Twitter profile"
-        >
-            <i class="fa-brands fa-x-twitter fa-2xl"></i>
-        </a>
+            <div class="mt-4 flex items-center">
+                {% if speaker.github %}
+                    <a
+                            href="https://github.com/{{ speaker.github }}"
+                            target="_blank"
+                            rel="noreferrer"
+                            class="mr-2"
+                            title="Github profile"
+                    >
+                        <i class="fa-brands fa-github fa-2xl"></i>
+                    </a>
+                {% endif %}
+                {% if speaker.twitter %}
+                    <a
+                            href="https://twitter.com/{{ speaker.twitter }}"
+                            target="_blank"
+                            rel="noreferrer"
+                            title="Twitter profile"
+                    >
+                        <i class="fa-brands fa-x-twitter fa-2xl"></i>
+                    </a>
+                {% endif %}
+            </div>
         {% endif %}
-    </div>
-    {% endif %}
-    {%if speaker.talks|length > 0 %}
-    <div class="w-full mt-8">
-        <h2 class="font-bold text-xl mb-4 text-center">Talks</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {% for talk in speaker.talks %}
-                <twig:TalkCard
-                        talk="{{ talk }}"
-                        showDate
-                        showEdition
-                        :showSpeakers="false"
-                        url="{{ path('talk_show', {slug: talk.slug}) }}"
-                />
-            {% endfor %}
-        </div>
-    </div>
+        {% if speaker.talks|length > 0 %}
+            <div class="w-full mt-8">
+                <h2 class="font-bold text-xl mb-4 text-center">Talks</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {% for talk in speaker.talks %}
+                        <twig:TalkCard
+                                talk="{{ talk }}"
+                                showDate
+                                showEdition
+                                :showSpeakers="false"
+                                url="{{ path('talk_show', {slug: talk.slug}) }}"
+                        />
+                    {% endfor %}
+                </div>
+            </div>
         {% endif %}
     </div>
 {% endblock %}

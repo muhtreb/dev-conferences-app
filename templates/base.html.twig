@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block metaTitle %}{% endblock %} | devconf.tv</title>
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,32 +19,35 @@
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
+
+    <meta name="description" content="{% block metaDescription %}DevConf.tv est un site qui référence les conférences et les talks de développeurs.{% endblock %}">
+    <meta name="keywords" content="{% block metaKeywords %}conférence, talks, développeur, développeuse, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.{% endblock %}" />
 </head>
 <body class="bg-zinc-900 text-white min-h-screen flex flex-col items-center">
-<div class="flex w-full min-h-screen flex flex-col items-center" id="app">
+<div class="flex w-full min-h-screen flex-col items-center" id="app">
     <header class="p-4 flex flex-col w-full justify-center bg-zinc-800 md:flex-row md:justify-between"><a
-                class="font-bold text-xl text-center" href="/">DevConf.tv</a>
+                class="font-bold text-xl text-center" href="/">devconf.tv</a>
         <div class="flex-1 flex flex-col md:flex-row justify-center mt-4 md:mt-0">
             <nav class="flex ml-4 items-center flex-0 md:flex-1 md:justify-start justify-center">
                 <ul class="flex flex-row">
-                    <li><a class="block pr-3 text-white" href="{{ path('conference_list') }}">Conferences</a></li>
-                    <li><a class="block pr-3 text-white" href="{{ path('edition_list') }}">Editions</a></li>
-                    <li><a class="block pr-3 text-white" href="{{ path('speaker_list') }}">Speakers</a></li>
-                    <li><a class="block pr-3 text-white" href="{{ path('talk_list') }}">Talks</a></li>
+                    <li><a class="block pr-3 text-white" href="{{ path('conference_list') }}">Conférences</a></li>
+                    <li><a class="block pr-3 text-white" href="{{ path('edition_list') }}">Éditions</a></li>
+                    <li><a class="block pr-3 text-white" href="{{ path('speaker_list') }}">Conférenciers</a></li>
+                    <li><a class="block pr-3 text-white" href="{{ path('talk_list') }}">Vidéos</a></li>
                 </ul>
             </nav>
             <div class="flex items-center justify-center mt-4 md:mt-0">
-                <a href="{{ path('search') }}">
+                <a href="{{ path('search') }}" title="Rechercher sur le site">
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                 </a>
                 <div class="ml-4 flex items-center justify-center">
                     {% if app.user %}
                         <span class="mr-2">{{ app.user.email }}</span>
-                        <a href="{{ path('app_logout') }}">
+                        <a href="{{ path('app_logout') }}" title="Se déconnecter">
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </a>
                     {% else %}
-                        <a href="{{ path('app_login') }}">
+                        <a href="{{ path('app_login') }}" title="Se connecter">
                             <i class="fa-solid fa-user fa-lg"></i>
                         </a>
                     {% endif %}

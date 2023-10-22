@@ -2,14 +2,14 @@
     {% if showThumbnail %}
         <div class="flex items-center justify-center">
             <div class="relative w-24 h-24 mb-4 bg-gray-800 border-2 overflow-hidden">
-                <img class="mb-4" src="{{ edition.conference.thumbnailImageUrl }}" alt="{{ edition.conference.name }}">
+                <img class="mb-4" src="{{ edition.conference.thumbnailImageUrl }}" alt="" />
             </div>
         </div>
     {% endif %}
     <h2 class="font-bold text-center text-xl">
         <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">{{ edition.name }}</a>
     </h2>
-    <div class="text-sm text-center text-gray-400">
+    <div class="text-sm text-center text-gray-200 italic mt-2">
         {{ edition|editionDate }}
     </div>
 </div>
