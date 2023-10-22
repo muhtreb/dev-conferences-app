@@ -20,7 +20,6 @@ class ShowController extends AbstractController
             throw $this->createNotFoundException('Edition ' . $slug . ' not found');
         }
 
-        dump($edition);
         return $this->render('edition/show.html.twig', [
             'edition' => $edition
         ]);
