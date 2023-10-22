@@ -22,7 +22,21 @@ class ShowController extends AbstractController
         }
 
         return $this->render('conference/show.html.twig', [
-            'conference' => $conference
+            'conference' => $conference,
+            'breadcrumbItems' => [
+                [
+                    'name' => 'Accueil',
+                    'url' => $this->generateUrl('home'),
+                ],
+                [
+                    'name' => 'Conférences',
+                    'url' => $this->generateUrl('conference_list'),
+                ],
+                [
+                    'name' => $conference['name'],
+                    'url' => null
+                ],
+            ],
         ]);
     }
 }

@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block metaTitle edition.name %}
+
 {% block body %}
-    <a href="{{ path('conference_show', { slug: edition.conference.slug }) }}">&larr; {{ edition.conference.name }}</a>
+    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
 
     <div class="flex flex-col items-center">
         <div class="flex items-center mt-4 mb-2">

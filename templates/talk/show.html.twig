@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block metaTitle talk.name %}
+
 {% set hasSpeakers = talk.speakers|length > 0 %}
 
 {% block body %}
-    <a href="{{ path('edition_show', { slug: talk.edition.slug }) }}">&larr; {{ talk.edition.name }}</a>
+    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
 
     <div class="flex items-center justify-center w-full mt-4 mb-8">
         <h1 class="font-bold text-2xl text-center">{{ talk.name }}</h1>
@@ -20,15 +22,13 @@
         <div
                 class="flex mt-4 {{ hasSpeakers ? "flex-col md:flex-row " : "" }}"
         >
-            <p class="p-4 flex-1 bg-gray-800 rounded leading-7 text-sm">
-                    <span class="text-sm">
-                        {{ talk.date|date('j F Y') }}
-                    </span>
-                <br/>
-                <br/>
+            <div class="p-4 flex-1 bg-gray-800 rounded leading-7 text-sm">
                 {% if talk.description %}
-                    <span class="break-words">{{ talk.description }}</span>
+                    <p class="break-words">{{ talk.description }}</p>
                 {% endif %}
+                <div class="text-sm italic mt-4">
+                    {{ talk.date|date('j F Y') }}
+                </div>
             </p>
             {% if hasSpeakers %}
                 <div

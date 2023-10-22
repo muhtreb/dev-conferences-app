@@ -22,7 +22,21 @@ class SpeakerController extends AbstractController
         }
 
         return $this->render('speaker/show.html.twig', [
-            'speaker' => $speaker
+            'speaker' => $speaker,
+            'breadcrumbItems' => [
+                [
+                    'name' => 'Accueil',
+                    'url' => $this->generateUrl('home'),
+                ],
+                [
+                    'name' => 'Conférenciers',
+                    'url' => $this->generateUrl('speaker_list'),
+                ],
+                [
+                    'name' => $speaker['firstName'] . ' ' . $speaker['lastName'],
+                    'url' => null
+                ],
+            ],
         ]);
     }
 }

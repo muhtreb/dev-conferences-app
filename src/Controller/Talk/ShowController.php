@@ -21,7 +21,33 @@ class ShowController extends AbstractController
         }
 
         return $this->render('talk/show.html.twig', [
-            'talk' => $talk
+            'talk' => $talk,
+            'breadcrumbItems' => [
+                [
+                    'name' => 'Accueil',
+                    'url' => $this->generateUrl('home'),
+                ],
+                [
+                    'name' => 'Conférences',
+                    'url' => $this->generateUrl('conference_list'),
+                ],
+                [
+                    'name' => $talk['edition']['conference']['name'],
+                    'url' => $this->generateUrl('conference_show', [
+                        'slug' => $talk['edition']['conference']['slug']
+                    ]),
+                ],
+                [
+                    'name' => $talk['edition']['name'],
+                    'url' => $this->generateUrl('edition_show', [
+                        'slug' => $talk['edition']['slug']
+                    ]),
+                ],
+                [
+                    'name' => $talk['name'],
+                    'url' => null
+                ],
+            ],
         ]);
     }
 }
