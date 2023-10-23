@@ -37,7 +37,7 @@
     </section>
 
     <section>
-        <h2 class="font-bold text-2xl mb-4 text-center">Conférenciers les plus populaires</h2>
+        <h2 class="font-bold text-2xl mb-4 text-center">Speakers les plus populaires</h2>
         <ul class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {% for speaker in topSpeakers %}
                 <li class="flex">
@@ -47,7 +47,7 @@
         </ul>
         <div class="mt-4 flex items-center justify-center w-full">
             <twig:Button tag="a" href="{{ path('speaker_list') }}">
-                Voir tous les conférenciers
+                Voir tous les speakers
             </twig:Button>
         </div>
     </section>

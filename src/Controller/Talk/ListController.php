@@ -33,7 +33,7 @@ class ListController extends AbstractController
                     'url' => $this->generateUrl('home'),
                 ],
                 [
-                    'name' => 'Vidéos',
+                    'name' => 'Talks',
                     'url' => null,
                 ],
             ],

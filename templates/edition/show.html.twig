@@ -28,7 +28,7 @@
             <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {% for talk in edition.talks %}
                     <li class="flex w-full">
-                        <twig:TalkCard talk="{{ talk }}" url="{{ path('talk_show', { 'slug': talk.slug }) }}"/>
+                        <twig:TalkCard talk="{{ talk }}" url="{{ path('talk_show', { 'slug': talk.slug }) }}" :showEdition="false" />
                     </li>
                 {% endfor %}
             </ul>

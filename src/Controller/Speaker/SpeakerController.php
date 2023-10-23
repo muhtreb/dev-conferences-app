@@ -29,7 +29,7 @@ class SpeakerController extends AbstractController
                     'url' => $this->generateUrl('home'),
                 ],
                 [
-                    'name' => 'Conférenciers',
+                    'name' => 'Speakers',
                     'url' => $this->generateUrl('speaker_list'),
                 ],
                 [
