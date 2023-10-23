@@ -44,4 +44,22 @@
             {% endif %}
         </div>
     {% endif %}
+
+    {% if talk.prevTalk or talk.nextTalk %}
+        <h2 class="mt-8 mb-4 text-xl font-bold">Naviguer dans les conférences</h2>
+        <nav class="mt-4">
+            <ul class="grid grid-cols-2 gap-4">
+                <li class="flex w-full">
+                {% if talk.prevTalk %}
+                        <twig:TalkCard talk="{{ talk.prevTalk }}" url="{{ path('talk_show', { slug: talk.prevTalk.slug }) }}" />
+                {% endif %}
+                </li>
+                {% if talk.nextTalk %}
+                    <li class="flex w-full">
+                        <twig:TalkCard talk="{{ talk.nextTalk }}" url="{{ path('talk_show', { slug: talk.nextTalk.slug }) }}" />
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
 {% endblock %}

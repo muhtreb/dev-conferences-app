@@ -22,7 +22,7 @@
             <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">{{ talk.name }}</a>
         </h2>
 
-        {% if showEdition %}
+        {% if showEdition and talk.edition is defined and talk.edition %}
             <a
                     href="{{ path('edition_show', { slug: talk.edition.slug }) }}"
                     title="{{ talk.edition.name }}"
