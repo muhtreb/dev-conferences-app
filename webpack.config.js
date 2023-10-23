@@ -11,6 +11,11 @@ Encore
     .setPublicPath('/build')
     .addEntry('app', './assets/app.ts')
     .splitEntryChunks()
+    .copyFiles(
+        {
+            from: './assets/favicon',
+        }
+    )
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
