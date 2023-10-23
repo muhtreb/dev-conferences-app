@@ -2,6 +2,7 @@
 
 namespace App\Twig\Components;
 
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent]
@@ -13,6 +14,11 @@ class TalkCard
     public bool $showSpeakers = true;
     public bool $showDate = false;
 
+    public function __construct(
+        private TranslatorInterface $translator
+    ) {
+    }
+
     public function getHasSpeakers(): bool
     {
         return isset($this->talk['speakers']) && count($this->talk['speakers']) > 0;
@@ -20,11 +26,9 @@ class TalkCard
 
     public function getDate(): string
     {
-        return (new \DateTime($this->talk['date']))->format('j F Y');
+        return $this->translator->trans('date.long', ['date' => new \DateTime($this->talk['date'])]);
     }
 
-    // Get duration at format 01:30:03 (hours:minutes:seconds)
-    // Do not display hours if duration is less than 1 hour
     public function getDuration(): string
     {
         $duration = $this->talk['duration'];

@@ -2,11 +2,17 @@
 
 namespace App\Twig\Extension;
 
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 class EditionExtension extends AbstractExtension
 {
+    public function __construct(
+        private TranslatorInterface $translator
+    ) {
+    }
+
     public function getFilters(): array
     {
         return [
@@ -20,23 +26,25 @@ class EditionExtension extends AbstractExtension
         $endDate = new \DateTime($edition['endDate']);
 
         if ($startDate->format('d-m-Y') === $endDate->format('d-m-Y')) {
-            return $startDate->format('d F Y');
+            return $this->translator->trans('date.long', ['date' => $startDate]);
         }
 
         $startMonth = $startDate->format('F');
         $endMonth = $endDate->format('F');
 
         if ($startMonth === $endMonth) {
-            return $startDate->format('d') . ' - ' . $endDate->format('d F Y');
+            return $startDate->format('d') . ' - ' . $this->translator->trans('date.long', ['date' => $endDate]);
         }
 
         $startYear = $startDate->format('Y');
         $endYear = $endDate->format('Y');
 
         if ($startYear === $endYear) {
-            return $startDate->format('d F') . ' - ' . $endDate->format('d F Y');
+            $startDateFormatted = $this->translator->trans('date.long', ['date' => $startDate]);
+            $startDateFormatted = substr($startDateFormatted, 0, -5);
+            return $startDateFormatted . ' - ' . $this->translator->trans('date.long', ['date' => $endDate]);
         }
 
-        return $startDate->format('j F Y') . ' - ' . $endDate->format('j F Y');
+        return $this->translator->trans('date.long', ['date' => $startDate]) . ' - ' . $this->translator->trans('date.long', ['date' => $endDate]);
     }
 }

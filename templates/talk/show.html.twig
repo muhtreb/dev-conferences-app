@@ -27,7 +27,7 @@
                     <p class="break-words">{{ talk.description }}</p>
                 {% endif %}
                 <div class="text-sm italic mt-4">
-                    {{ talk.date|date('j F Y') }}
+                    {{ talk.date|format_datetime('long', 'none') }}
                 </div>
             </div>
             {% if hasSpeakers %}
@@ -46,7 +46,7 @@
     {% endif %}
 
     {% if talk.prevTalk or talk.nextTalk %}
-        <h2 class="mt-8 mb-4 text-xl font-bold">Naviguer dans les conférences</h2>
+        <h2 class="mt-8 mb-4 text-xl font-bold">{{ 'talks.navigation_talks.title'|trans }}</h2>
         <nav class="mt-4">
             <ul class="grid grid-cols-2 gap-4">
                 <li class="flex w-full">

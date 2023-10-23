@@ -33,7 +33,7 @@
                         target="_blank"
                         rel="noreferrer"
                         class="mr-2"
-                        title="Website"
+                        title="{{ 'conference.website.title'|trans({ name: conference.name }) }}"
                 >
                     <i class="fa-solid fa-link fa-2xl"></i>
                 </a>
@@ -43,7 +43,7 @@
                         href="https://twitter.com/{{ conference.twitter }}"
                         target="_blank"
                         rel="noreferrer"
-                        title="Twitter profile"
+                        title="{{ 'conference.x.title'|trans({ name: conference.name }) }}"
                 >
                     <i class="fa-brands fa-x-twitter fa-2xl"></i>
                 </a>
@@ -51,7 +51,7 @@
         </div>
     {% endif %}
 
-    <h2 class="mt-8 font-bold text-xl mb-4">Editions</h2>
+    <h2 class="mt-8 font-bold text-xl mb-4">{{ 'conference.editions.title'|trans }}</h2>
     <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {% for edition in conference.editions %}
             <li class="flex w-full">

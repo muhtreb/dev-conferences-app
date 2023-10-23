@@ -7,11 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class IndexController extends AbstractController
 {
     #[Route('/search', name: 'search')]
-    public function __invoke(ApiClient $apiClient, Request $request): Response
+    public function __invoke(ApiClient $apiClient, Request $request, TranslatorInterface $translator): Response
     {
         $query = $request->query->get('query');
 
@@ -34,6 +35,12 @@ class IndexController extends AbstractController
             'talksMeta' => $talksMeta,
             'speakers' => $speakers,
             'speakersMeta' => $speakersMeta,
+            'breadcrumbItems' => [
+                [
+                    'name' => $translator->trans('breadcrumb.search'),
+                    'url' => null,
+                ],
+            ],
         ]);
     }
 }
