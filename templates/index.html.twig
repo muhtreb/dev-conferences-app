@@ -1,23 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block metaTitle 'Toutes vos conférences au même endroit' %}
-
 {% block body %}
     <section class="mb-16">
         <h1 class="text-3xl font-bold text-center mb-4">
             devconf.tv
         </h1>
         <p class="presentation__content text-xl">
-            Optimisez votre veille technique avec devconf.tv ! Explorez une multitude de conférences pointues en développement pour rester à la pointe de l'innovation. Notre moteur de recherche vous permet de cibler précisément les sujets qui vous importent. Ne manquez plus aucune avancée technologique !
+            {{ 'home.banner.content'|trans }}
         </p>
     </section>
 
     <section class="mb-16">
-        <h2 class="font-bold text-2xl mb-4 text-center">Rechercher</h2>
+        <h2 class="font-bold text-2xl mb-4 text-center">{{ 'home.search.title'|trans }}</h2>
         <twig:SearchForm action="{{ path('search') }}" />
     </section>
     <section class="mb-16">
-        <h2 class="font-bold text-2xl mb-4 text-center">{{ 'last_editions_title'|trans }}</h2>
+        <h2 class="font-bold text-2xl mb-4 text-center">{{ 'home.latest_editions.title'|trans }}</h2>
         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {% for edition in editions %}
                 <li class="flex flex-col p-4 bg-gray-700 text-white rounded-md cursor-pointer relative">
@@ -31,13 +29,13 @@
         </ul>
         <div class="mt-4 flex items-center justify-center w-full">
             <twig:Button tag="a" href="{{ path('edition_list') }}">
-                Voir toutes les éditions
+                {{ 'home.latest_editions.button'|trans }}
             </twig:Button>
         </div>
     </section>
 
     <section>
-        <h2 class="font-bold text-2xl mb-4 text-center">Speakers les plus populaires</h2>
+        <h2 class="font-bold text-2xl mb-4 text-center">{{ 'home.most_popular_speakers.title'|trans }}</h2>
         <ul class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {% for speaker in topSpeakers %}
                 <li class="flex">
@@ -47,7 +45,7 @@
         </ul>
         <div class="mt-4 flex items-center justify-center w-full">
             <twig:Button tag="a" href="{{ path('speaker_list') }}">
-                Voir tous les speakers
+                {{ 'home.most_popular_speakers.button'|trans }}
             </twig:Button>
         </div>
     </section>

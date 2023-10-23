@@ -6,6 +6,7 @@ use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ListController extends AbstractController
 {
@@ -13,7 +14,7 @@ class ListController extends AbstractController
         path: '/talks',
         name: 'talk_list',
     )]
-    public function __invoke(ApiClient $client, Request $request)
+    public function __invoke(ApiClient $client, Request $request, TranslatorInterface $translator)
     {
         [
             'data' => $talks,
@@ -29,11 +30,7 @@ class ListController extends AbstractController
             'meta' => $talksMeta,
             'breadcrumbItems' => [
                 [
-                    'name' => 'Accueil',
-                    'url' => $this->generateUrl('home'),
-                ],
-                [
-                    'name' => 'Talks',
+                    'name' => $translator->trans('breadcrumb.talks'),
                     'url' => null,
                 ],
             ],

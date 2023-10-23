@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ListController extends AbstractController
 {
@@ -14,7 +15,7 @@ class ListController extends AbstractController
         path: '/editions',
         name: 'edition_list',
     )]
-    public function __invoke(ApiClient $client, Request $request)
+    public function __invoke(ApiClient $client, Request $request, TranslatorInterface $translator)
     {
         [
             'data' => $editions,
@@ -28,6 +29,12 @@ class ListController extends AbstractController
         return $this->render('edition/list.html.twig', [
             'editions' => $editions,
             'meta' => $meta,
-        ]);
+            'breadcrumbItems' => [
+                [
+                    'name' => $translator->trans('breadcrumb.editions'),
+                    'url' => null,
+                ],
+            ],
+            ]);
     }
 }

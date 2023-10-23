@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block metaTitle 'Recherche' %}
+{% block metaTitle 'search.title'|trans %}
 
 {% set query = app.request.get('query') %}
 
 {% block body %}
-    <h1 class="text-3xl font-bold mb-4 text-center">
-        Recherche
+    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
+
+    <h1 class="text-3xl font-bold mb-4 mt-4 text-center">
+        {{ 'search.title'|trans }}
     </h1>
 
     <twig:SearchForm />
 
     {% if conferences|length %}
         <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">Conferences</h2>
+            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'search.conferences.title'|trans }}</h2>
 
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {% for conference in conferences %}
@@ -27,7 +29,7 @@
             {% if conferencesMeta.nextPage %}
                 <div class="mt-8 flex items-center justify-center">
                     <twig:Button href="{{ path('conference_list', { query: query }) }}" tag="a">
-                        Voir plus de conférences {% if query %}"{{ query }}"{% endif %}
+                        {{ 'search.conferences.more'|trans({ query: query ? '"' ~ query ~ '"' : '' }) }}
                     </twig:Button>
                 </div>
             {% endif %}
@@ -36,7 +38,7 @@
 
     {% if editions|length %}
         <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">Editions</h2>
+            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'search.editions.title'|trans }}</h2>
 
             <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {% for edition in editions %}
@@ -51,7 +53,7 @@
 
                 <div class="mt-8 flex items-center justify-center">
                     <twig:Button href="{{ path('edition_list', { query: query }) }}" tag="a">
-                        Voir plus d'éditions {% if query %}"{{ query }}"{% endif %}
+                        {{ 'search.editions.more'|trans({ query: query ? '"' ~ query ~ '"' : '' }) }}
                     </twig:Button>
                 </div>
             {% endif %}
@@ -60,7 +62,7 @@
 
     {% if talks|length %}
         <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">Talks</h2>
+            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'search.talks.title'|trans }}</h2>
 
             <ul class="grid sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {% for talk in talks %}
@@ -73,7 +75,7 @@
 
                 <div class="mt-8 flex items-center justify-center">
                     <twig:Button href="{{ path('talk_list', { query: query }) }}" tag="a">
-                        Voir plus de talks {% if query %}"{{ query }}"{% endif %}
+                        {{ 'search.talks.more'|trans({ query: query ? '"' ~ query ~ '"' : '' }) }}
                     </twig:Button>
                 </div>
             {% endif %}
@@ -82,7 +84,7 @@
 
     {% if speakers|length %}
         <section class="speakers">
-            <h2 class="font-bold text-2xl mb-4 text-center">Speakers</h2>
+            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'search.speakers.title'|trans }}</h2>
 
             <ul class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {% for speaker in speakers %}
@@ -96,7 +98,7 @@
             {% if speakersMeta.nextPage %}
                 <div class="mt-8 flex items-center justify-center">
                     <twig:Button href="{{ path('speaker_list', { query: query }) }}" tag="a">
-                        Voir plus de speakers {% if query %}"{{ query }}"{% endif %}
+                        {{ 'search.speakers.more'|trans({ query: query ? '"' ~ query ~ '"' : '' }) }}
                     </twig:Button>
                 </div>
             {% endif %}

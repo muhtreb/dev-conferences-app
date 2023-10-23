@@ -1,0 +1,48 @@
+home.latest_editions.title: Latest editions
+home.latest_editions.button: Go to all editions
+home.banner.content: Optimize your technical watch with devconf.tv! Explore a multitude of in-depth development conferences to stay at the forefront of innovation. Our search engine allows you to precisely target the topics that matter to you. Never miss a technological advancement again!
+home.most_popular_speakers.title: Most Popular Speakers
+home.most_popular_speakers.button: View all speakers
+home.search.title: Search
+header.conferences.title: Conferences
+header.editions.title: Editions
+header.speakers.title: Speakers
+header.talks.title: Talks
+header.search.title: Search on the site
+header.login.title: Log in
+header.logout.title: Log out
+search.label: Search for a conference, edition, speaker, or talk...
+search.placeholder: Search for a conference, edition, speaker, or talk...
+search.button: Search
+date.long: '{date, date, long}'
+breadcrumb.home: Home
+breadcrumb.conferences: Conferences
+breadcrumb.editions: Editions
+breadcrumb.speakers: Speakers
+breadcrumb.talks: Talks
+breadcrumb.search: Search
+search.title: Search
+search.conferences.title: Conferences
+search.conferences.more: View all conferences {query}
+search.editions.title: Editions
+search.editions.more: View all editions {query}
+search.talks.title: Talks
+search.talks.more: View all talks {query}
+search.speakers.title: Speakers
+search.speakers.more: View all speakers {query}
+meta.next_page.title: Next Page
+meta.prev_page.title: Previous Page
+talks.navigation_talks.title: Navigate through conferences
+conference.website.title: Conference website for {name}
+conference.x.title: Page X of conference {name}
+conference.editions.title: Editions of the conference
+speaker.github.title: GitHub Profile of {name}
+speaker.x.title: Profile X of {name}
+speaker.talks.title: Talks
+conferences.list.title: List of conferences
+editions.list.title: List of editions
+speakers.list.title: List of speakers
+talks.list.title: List of talks
+seo.meta_description: devconf.tv is a website that lists developer conferences and talks.
+seo.meta_keywords: conference, talks, developer, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
+seo.title: All your technical conferences (PHP, Javascript, Ruby, Symfony, Laravel, Typescript, React, Vue, ..)

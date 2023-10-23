@@ -30,7 +30,7 @@
                                 target="_blank"
                                 rel="noreferrer"
                                 class="mr-2"
-                                title="Github profile"
+                                title="{{ 'speaker.github.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                         >
                             <i class="fa-brands fa-github fa-lg"></i>
                         </a>
@@ -40,7 +40,7 @@
                                 href="https://twitter.com/{{ speaker.twitter }}"
                                 target="_blank"
                                 rel="noreferrer"
-                                title="X profile"
+                                title="{{ 'speaker.x.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                         >
                             <i class="fa-brands fa-x-twitter fa-lg"></i>
                         </a>

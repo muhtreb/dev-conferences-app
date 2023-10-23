@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block metaTitle 'Toutes les conférences' %}
+{% block metaTitle 'conferences.list.title'|trans %}
 
 {% block body %}
     <twig:Breadcrumb items="{{ breadcrumbItems }}" />
 
-    <h1 class="font-bold text-2xl mb-4 mt-4 text-center">Toutes les conférences</h1>
+    <h1 class="font-bold text-2xl mb-4 mt-4 text-center">{{ 'conferences.list.title'|trans }}</h1>
 
     <twig:SearchForm placeholder="Rechercher une conférence"/>
 

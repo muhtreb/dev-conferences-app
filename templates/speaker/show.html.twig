@@ -31,7 +31,7 @@
                             target="_blank"
                             rel="noreferrer"
                             class="mr-2"
-                            title="Github profile"
+                            title="{{ 'speaker.github.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                     >
                         <i class="fa-brands fa-github fa-2xl"></i>
                     </a>
@@ -41,7 +41,7 @@
                             href="https://twitter.com/{{ speaker.twitter }}"
                             target="_blank"
                             rel="noreferrer"
-                            title="Twitter profile"
+                            title="{{ 'speaker.x.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                     >
                         <i class="fa-brands fa-x-twitter fa-2xl"></i>
                     </a>
@@ -50,7 +50,7 @@
         {% endif %}
         {% if speaker.talks|length > 0 %}
             <div class="w-full mt-8">
-                <h2 class="font-bold text-xl mb-4 text-center">Talks</h2>
+                <h2 class="font-bold text-xl mb-4 text-center">{{ 'speaker.talks.title'|trans }}</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {% for talk in speaker.talks %}
                         <twig:TalkCard

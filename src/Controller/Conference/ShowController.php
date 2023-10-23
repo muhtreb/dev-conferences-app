@@ -5,6 +5,7 @@ namespace App\Controller\Conference;
 use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ShowController extends AbstractController
 {
@@ -13,7 +14,7 @@ class ShowController extends AbstractController
         name: 'conference_show',
         requirements: ['slug' => '[a-z0-9-]+']
     )]
-    public function __invoke(ApiClient $client, string $slug)
+    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator)
     {
         try {
             $conference = $client->getConferenceBySlug($slug);
@@ -25,11 +26,7 @@ class ShowController extends AbstractController
             'conference' => $conference,
             'breadcrumbItems' => [
                 [
-                    'name' => 'Accueil',
-                    'url' => $this->generateUrl('home'),
-                ],
-                [
-                    'name' => 'Conférences',
+                    'name' => $translator->trans('breadcrumb.conferences'),
                     'url' => $this->generateUrl('conference_list'),
                 ],
                 [

@@ -5,6 +5,7 @@ namespace App\Controller\Talk;
 use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ShowController extends AbstractController
 {
@@ -12,7 +13,7 @@ class ShowController extends AbstractController
         path: '/talk/{slug}',
         name: 'talk_show'
     )]
-    public function __invoke(ApiClient $client, string $slug)
+    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator)
     {
         try {
             $talk = $client->getTalkBySlug($slug);
@@ -24,11 +25,7 @@ class ShowController extends AbstractController
             'talk' => $talk,
             'breadcrumbItems' => [
                 [
-                    'name' => 'Accueil',
-                    'url' => $this->generateUrl('home'),
-                ],
-                [
-                    'name' => 'Conférences',
+                    'name' => $translator->trans('breadcrumb.conferences'),
                     'url' => $this->generateUrl('conference_list'),
                 ],
                 [
