@@ -20,21 +20,21 @@ class EditionExtension extends AbstractExtension
         $endDate = new \DateTime($edition['endDate']);
 
         if ($startDate->format('d-m-Y') === $endDate->format('d-m-Y')) {
-            return $startDate->format('j F Y');
+            return $startDate->format('d F Y');
         }
 
         $startMonth = $startDate->format('F');
         $endMonth = $endDate->format('F');
 
         if ($startMonth === $endMonth) {
-            return $startDate->format('d') . ' - ' . $endDate->format('j F Y');
+            return $startDate->format('d') . ' - ' . $endDate->format('d F Y');
         }
 
         $startYear = $startDate->format('Y');
         $endYear = $endDate->format('Y');
 
         if ($startYear === $endYear) {
-            return $startDate->format('j F') . ' - ' . $endDate->format('j F Y');
+            return $startDate->format('d F') . ' - ' . $endDate->format('d F Y');
         }
 
         return $startDate->format('j F Y') . ' - ' . $endDate->format('j F Y');
