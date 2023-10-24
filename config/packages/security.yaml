@@ -11,17 +11,11 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
-            provider: app_user_provider
-            custom_authenticator: App\Security\AppCustomAuthenticator
+            login_link:
+                check_route: security_login_check
+                signature_properties: ['id']
             logout:
-                path: app_logout
-
-            remember_me:
-                secret: '%kernel.secret%'
-                lifetime: 604800
-                path: /
-                always_remember_me: true
+                path: security_logout
 
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }

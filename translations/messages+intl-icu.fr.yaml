@@ -46,3 +46,12 @@ talks.list.title: Liste des talks
 seo.meta_description: devconf.tv est un site qui référence les conférences et les talks de développeurs.
 seo.meta_keywords: conférence, talks, développeur, développeuse, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
 seo.title: Toutes vos conférences techniques (PHP, Javascript, Ruby, Symfony, Laravel, Javascript, React, Vue, ..)
+login.title: Se connecter
+login.description: Pour vous connecter, veuillez saisir votre adresse email. Un lien de connexion vous sera envoyé par email.
+login.email.label: Adresse email
+login.email.placeholder: Saisissez votre adresse email
+login.send_magic_link: Recevoir un lien de connexion
+login_link_sent.title: Lien de connexion envoyé
+login_link_sent.text: Un lien de connexion a été envoyé à l'adresse email {email}. Veuillez cliquer sur le lien pour vous connecter.
+login_link_email.subject: Lien de connexion à devconf.tv
+login_link_email.button: Se connecter

@@ -46,11 +46,11 @@
                 <div class="ml-4 flex items-center justify-center">
                     {% if app.user %}
                         <span class="mr-2">{{ app.user.email }}</span>
-                        <a href="{{ path('app_logout') }}" title="{{ 'header.logout.title'|trans }}">
+                        <a href="{{ path('security_logout') }}" title="{{ 'header.logout.title'|trans }}">
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </a>
                     {% else %}
-                        <a href="{{ path('app_login') }}" title="{{ 'header.login.title'|trans }}">
+                        <a href="{{ path('security_login') }}" title="{{ 'header.login.title'|trans }}">
                             <i class="fa-solid fa-user fa-lg"></i>
                         </a>
                     {% endif %}
