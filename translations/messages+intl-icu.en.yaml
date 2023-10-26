@@ -55,3 +55,11 @@ login_link_sent.title: Login link sent
 login_link_sent.text: A login link has been sent to the email address {email}. Please click on the link to log in.
 login_link_email.subject: Login link to devconf.tv
 login_link_email.button: Log in
+user.favorite.title: My favorites
+user.favorite.description: Find here all the conferences, editions, speakers, and talks you have added to your favorites.
+user.favorite.conferences.title: Conferences ({count})
+user.favorite.editions.title: Editions ({count})
+user.favorite.speakers.title: Speakers ({count})
+user.favorite.talks.title: Talks ({count})
+like.add: Add to favorites
+like.remove: Remove from favorites

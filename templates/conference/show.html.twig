@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
 
 {% block metaTitle conference.name %}
 
@@ -12,6 +12,9 @@
     {% if conference.thumbnailImageUrl %}
         <div class="flex items-center justify-center">
             <div class="relative w-48 h-48 mb-4 bg-gray-800 mb-4 border-2">
+                <div class="absolute top-3 left-3">
+                    <twig:Like type="conference" id="{{ conference.id }}" />
+                </div>
                 <img
                         src="{{ conference.thumbnailImageUrl }}"
                         alt="{{ conference.name }}"

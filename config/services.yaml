@@ -23,6 +23,7 @@ services:
     App\Client\ApiClient:
         arguments:
             $baseUrl: '%env(API_BASE_URL)%'
+            $apiAdminToken: '%env(API_ADMIN_TOKEN)%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

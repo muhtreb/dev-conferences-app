@@ -55,3 +55,12 @@ login_link_sent.title: Lien de connexion envoyé
 login_link_sent.text: Un lien de connexion a été envoyé à l'adresse email {email}. Veuillez cliquer sur le lien pour vous connecter.
 login_link_email.subject: Lien de connexion à devconf.tv
 login_link_email.button: Se connecter
+user.favorite.title: Mes favoris
+user.favorite.description: Retrouvez ici toutes les conférences, éditions, speakers et talks que vous avez ajouté à vos favoris.
+user.favorite.conferences.title: Conférences ({count})
+user.favorite.editions.title: Éditions ({count})
+user.favorite.speakers.title: Speakers ({count})
+user.favorite.talks.title: Talks ({count})
+like.add: Ajouter aux favoris
+like.remove: Supprimer des favoris
+
