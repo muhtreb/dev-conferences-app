@@ -1,5 +1,8 @@
 <div class="w-full flex flex-col p-4 bg-gray-700 text-white rounded-md cursor-pointer relative">
     {% if showThumbnail %}
+        <div class="absolute left-4 top-4 z-20">
+            <twig:Like type="edition" id="{{ edition.id }}" />
+        </div>
         <div class="flex items-center justify-center">
             <div class="relative w-24 h-24 mb-4 bg-gray-800 border-2 overflow-hidden">
                 <img class="mb-4" src="{{ edition.conference.thumbnailImageUrl }}" alt="" />

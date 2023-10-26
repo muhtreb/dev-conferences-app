@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
 
 {% block metaTitle talk.name %}
 
@@ -9,19 +9,19 @@
 
     <div class="flex items-center justify-center w-full mt-4 mb-8">
         <h1 class="font-bold text-2xl text-center">{{ talk.name }}</h1>
+        <div class="ml-2">
+            <twig:Like type="talk" id="{{ talk.id }}" />
+        </div>
     </div>
 
     <div class="flex {{ hasSpeakers ? "flex-col md:flex-row " : "" }}">
-        <div class="relative flex-1">
-            <div class="w-full absolute" id="player" data-plyr-provider="youtube"
-                 data-plyr-embed-id="{{ talk.youtubeId }}"></div>
+        <div class="relative flex-1 aspect-video">
+            <youtube-player video-id="{{ talk.youtubeId }}"></youtube-player>
         </div>
     </div>
 
     {% if hasSpeakers or talk.description %}
-        <div
-                class="flex mt-4 {{ hasSpeakers ? "flex-col md:flex-row " : "" }}"
-        >
+        <div class="flex mt-4 {{ hasSpeakers ? "flex-col md:flex-row " : "" }}">
             <div class="p-4 flex-1 bg-gray-800 rounded leading-7 text-sm">
                 {% if talk.description %}
                     <p class="break-words">{{ talk.description }}</p>

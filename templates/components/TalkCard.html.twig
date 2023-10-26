@@ -1,10 +1,9 @@
 <div class="flex p-4 bg-gray-700 rounded-md cursor-pointer relative h-full flex-col w-full">
-    <div
-            class="relative"
-    >
-        <div
-                class="relative w-full aspect-video border-2"
-        >
+    <div class="absolute left-6 top-6 z-30">
+        <twig:Like type="talk" id="{{ talk.id }}" />
+    </div>
+    <div class="relative z-10">
+        <div class="relative w-full aspect-video border-2">
             <img
                     src="{{ talk.images.thumbnail }}"
                     class="w-full"
@@ -19,7 +18,7 @@
     </div>
     <div class="mt-2">
         <h2 class="text-lg font-medium">
-            <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">{{ talk.name }}</a>
+            <a href="{{ url }}" class="before:inset-0 before:absolute before:content-[''] before:z-20">{{ talk.name }}</a>
         </h2>
 
         {% if showEdition and talk.edition is defined and talk.edition %}

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
 
 {% block metaTitle edition.name %}
 
@@ -12,6 +12,9 @@
 
         {% if edition.conference.thumbnailImageUrl %}
             <div class="relative w-48 h-48 border-2 mb-4">
+                <div class="absolute top-3 left-3">
+                    <twig:Like type="edition" id="{{ edition.id }}" />
+                </div>
                 <img
                         src="{{ edition.conference.thumbnailImageUrl }}"
                         alt="{{ edition.conference.name }}"

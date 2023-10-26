@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
 
 {% block body %}
     <section class="mb-16">
@@ -18,7 +18,7 @@
         <h2 class="font-bold text-2xl mb-4 text-center">{{ 'home.latest_editions.title'|trans }}</h2>
         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {% for edition in editions %}
-                <li class="flex flex-col p-4 bg-gray-700 text-white rounded-md cursor-pointer relative">
+                <li class="flex">
                     <twig:EditionCard
                         edition="{{ edition }}"
                         url="{{ url('edition_show', { slug: edition.slug }) }}"
