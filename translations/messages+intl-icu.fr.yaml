@@ -42,6 +42,12 @@ speaker.talks.title: Talks
 conferences.list.title: Liste des conférences
 editions.list.title: Liste des éditions
 speakers.list.title: Liste des speakers
+edition.count_talks: >-
+    {count, plural,
+        =0 {Aucun talk}
+        =1 {1 talk}
+        other {# talks}
+    }
 talks.list.title: Liste des talks
 seo.meta_description: devconf.tv est un site qui référence les conférences et les talks de développeurs.
 seo.meta_keywords: conférence, talks, développeur, développeuse, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
@@ -63,4 +69,7 @@ user.favorite.speakers.title: Speakers ({count})
 user.favorite.talks.title: Talks ({count})
 like.add: Ajouter aux favoris
 like.remove: Supprimer des favoris
-
+menu.user.favorites: Mes favoris
+menu.logout: Se déconnecter
+menu.user.profile: Mon profil
+header.skip_to_content: Aller au contenu

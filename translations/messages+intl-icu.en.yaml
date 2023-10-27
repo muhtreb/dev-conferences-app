@@ -43,6 +43,12 @@ conferences.list.title: List of conferences
 editions.list.title: List of editions
 speakers.list.title: List of speakers
 talks.list.title: List of talks
+edition.count_talks: >-
+    {count, plural,
+        =0 {No talks}
+        =1 {1 talk}
+        other {# talks}
+    }
 seo.meta_description: devconf.tv is a website that lists developer conferences and talks.
 seo.meta_keywords: conference, talks, developer, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
 seo.title: All your technical conferences (PHP, Javascript, Ruby, Symfony, Laravel, Typescript, React, Vue, ..)
@@ -63,3 +69,7 @@ user.favorite.speakers.title: Speakers ({count})
 user.favorite.talks.title: Talks ({count})
 like.add: Add to favorites
 like.remove: Remove from favorites
+menu.user.favorites: My favorites
+menu.logout: Log out
+menu.user.profile: My profile
+header.skip_to_content: Go to content

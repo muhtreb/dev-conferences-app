@@ -10,6 +10,11 @@
             <h1 class="font-bold text-2xl text-center">
                 {{ speaker.firstName }} {{ speaker.lastName }}
             </h1>
+            {% if app.user %}
+                <div class="ml-2">
+                    <twig:Like type="speaker" id="{{ speaker.id }}" name="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
+                </div>
+            {% endif %}
         </div>
         {% if speaker.avatarUrl %}
             <div class="relative w-64 h-64 mb-4">

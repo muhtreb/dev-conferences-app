@@ -33,15 +33,22 @@
 </head>
 <body class="bg-zinc-900 text-white min-h-screen flex flex-col items-center">
 <div class="flex w-full min-h-screen flex-col items-center" id="app">
+    <!-- Create a link only for screen readers to go to main content -->
+    <a
+        class="transition left-0 bg-primary text-primary-content absolute focus:relative -translate-y-16 focus:translate-y-0"
+        href="#main"
+    >
+        {{ 'header.skip_to_content'|trans }}
+    </a>
     <header class="p-4 flex flex-col w-full justify-center bg-zinc-800 md:flex-row md:justify-between"><a
                 class="font-bold text-xl text-center" href="/">devconf.tv</a>
         <div class="flex-1 flex flex-col md:flex-row justify-center mt-4 md:mt-0">
             <nav class="flex ml-4 items-center flex-0 md:flex-1 md:justify-start justify-center">
                 <ul class="flex flex-row">
-                    <li><a class="block pr-3 text-white hover:underline" href="{{ path('conference_list') }}">{{ 'header.conferences.title'|trans }}</a></li>
-                    <li><a class="block pr-3 text-white hover:underline" href="{{ path('edition_list') }}">{{ 'header.editions.title'|trans }}</a></li>
-                    <li><a class="block pr-3 text-white hover:underline" href="{{ path('speaker_list') }}">{{ 'header.speakers.title'|trans }}</a></li>
-                    <li><a class="block pr-3 text-white hover:underline" href="{{ path('talk_list') }}">{{ 'header.talks.title'|trans }}</a></li>
+                    <li><a class="block mr-3 text-white hover:underline" href="{{ path('conference_list') }}">{{ 'header.conferences.title'|trans }}</a></li>
+                    <li><a class="block mr-3 text-white hover:underline" href="{{ path('edition_list') }}">{{ 'header.editions.title'|trans }}</a></li>
+                    <li><a class="block mr-3 text-white hover:underline" href="{{ path('speaker_list') }}">{{ 'header.speakers.title'|trans }}</a></li>
+                    <li><a class="block text-white hover:underline" href="{{ path('talk_list') }}">{{ 'header.talks.title'|trans }}</a></li>
                 </ul>
             </nav>
             <div class="flex items-center justify-center mt-4 md:mt-0">
@@ -50,10 +57,7 @@
                 </a>
                 <div class="ml-4 flex items-center justify-center">
                     {% if app.user %}
-                        <span class="mr-2">{{ app.user.email }}</span>
-                        <a href="{{ path('security_logout') }}" title="{{ 'header.logout.title'|trans }}">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                        </a>
+                        <user-dropdown email="{{ app.user.email }}"></user-dropdown>
                     {% else %}
                         <a href="{{ path('security_login') }}" title="{{ 'header.login.title'|trans }}">
                             <i class="fa-solid fa-user fa-lg"></i>
@@ -64,7 +68,7 @@
         </div>
     </header>
 
-    <main class="px-4 py-4 max-w-7xl flex-grow w-full">
+    <main class="px-4 py-4 max-w-7xl flex-grow w-full" id="main">
         {% block body %}{% endblock %}
     </main>
     <footer class="mt-8 p-4 bg-zinc-800 w-full text-center text-sm">

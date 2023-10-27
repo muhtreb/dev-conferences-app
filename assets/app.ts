@@ -22,5 +22,6 @@ getTranslator().then(translator => {
         })
         .component('Like', require('@/vue/components/Like/Like.vue').default)
         .component('youtube-player', require('@/vue/components/YoutubePlayer/YoutubePlayer.vue').default)
+        .component('user-dropdown', require('@/vue/components/UserDropdown/UserDropdown.vue').default)
         .mount('#app');
 })
