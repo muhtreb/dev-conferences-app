@@ -253,7 +253,7 @@ class ApiClient
             case 'speaker':
                 $endpoint = 'speakers';
                 break;
-            case 'edition':
+            case 'conferenceEdition':
                 $endpoint = 'conference_editions';
                 break;
         }
