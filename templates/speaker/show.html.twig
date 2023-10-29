@@ -2,6 +2,23 @@
 
 {% block metaTitle speaker.firstName ~ ' ' ~ speaker.lastName %}
 
+{% block metaSocialNetwork %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
+    <meta name="twitter:description" content="{{ speaker.description }}" />
+    {% if speaker.avatarUrl %}
+        <meta name="twitter:image" content="{{ speaker.avatarUrl }}" />
+        <meta name="twitter:image:alt" content="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
+    {% endif %}
+
+    <meta property="og:title" content="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
+    <meta property="og:description" content="{{ speaker.description }}" />
+    <meta property="og:type" content="website" />
+    {% if speaker.avatarUrl %}
+        <meta property="og:image" content="{{ speaker.avatarUrl }}" />
+    {% endif %}
+{% endblock %}
+
 {% block body %}
     <twig:Breadcrumb items="{{ breadcrumbItems }}" />
 

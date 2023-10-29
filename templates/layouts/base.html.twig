@@ -26,6 +26,8 @@
     <meta name="description" content="{% block metaDescription %}{{ 'seo.meta_description'|trans }}{% endblock %}">
     <meta name="keywords" content="{% block metaKeywords %}{{ 'seo.meta_keyworkds'|trans }}{% endblock %}" />
 
+    {% block metaSocialNetwork %}{% endblock %}
+
     <script>
         window.isAuthenticated = {{ app.user ? 'true' : 'false' }};
         window.jsonTranslationsUrl = '{{ url('bazinga_jstranslation_js', { '_format': 'json' }) }}';

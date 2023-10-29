@@ -2,6 +2,22 @@
 
 {% block metaTitle talk.name %}
 
+{% block metaSocialNetwork %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ talk.name }}" />
+    <meta name="twitter:description" content="{{ talk.description }}" />
+    {% if talk.images.thumbnail %}
+        <meta name="twitter:image" content="{{ talk.images.thumbnail }}" />
+        <meta name="twitter:image:alt" content="{{ talk.name }}" />
+    {% endif %}
+    <meta property="og:title" content="{{ talk.name }}" />
+    <meta property="og:description" content="{{ talk.description }}" />
+    <meta property="og:type" content="website" />
+    {% if talk.images.thumbnail %}
+        <meta property="og:image" content="{{ talk.images.thumbnail }}" />
+    {% endif %}
+{% endblock %}
+
 {% set hasSpeakers = talk.speakers|length > 0 %}
 
 {% block body %}

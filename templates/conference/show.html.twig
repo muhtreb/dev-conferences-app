@@ -2,6 +2,24 @@
 
 {% block metaTitle conference.name %}
 
+{% block metaSocialNetwork %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ conference.name }}" />
+    <meta name="twitter:description" content="{{ conference.description }}" />
+
+    {% if conference.thumbnailImageUrl %}
+        <meta name="twitter:image" content="{{ conference.thumbnailImageUrl }}" />
+        <meta name="twitter:image:alt" content="{{ conference.name }}" />
+    {% endif %}
+
+    <meta property="og:title" content="{{ conference.name }}" />
+    <meta property="og:description" content="{{ conference.description }}" />
+    <meta property="og:type" content="website" />
+
+    {% if conference.thumbnailImageUrl %}
+        <meta property="og:image" content="{{ conference.thumbnailImageUrl }}" />
+    {% endif %}
+{% endblock %}
 {% block body %}
     <twig:Breadcrumb items="{{ breadcrumbItems }}" />
 
