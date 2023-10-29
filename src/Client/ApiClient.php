@@ -20,6 +20,11 @@ class ApiClient
         ]);
     }
 
+    public function request(string $method, string $endpoint, array $options = []): ResponseInterface
+    {
+        return $this->client->request($method, $endpoint, $options);
+    }
+
     public function getConferences(int $limit = 10, int $offset = 0): array
     {
         return $this->client->request('GET', '/conferences',
@@ -217,7 +222,7 @@ class ApiClient
         ])->toArray();
     }
 
-    public function createUserFavorite(string $userId, string $type, string $id): void
+    private function sendFavoriteRequest(string $userId, string $type, string $id, string $action): void
     {
         switch ($type) {
             case 'conference':
@@ -232,35 +237,24 @@ class ApiClient
             case 'conferenceEdition':
                 $endpoint = 'conference_editions';
                 break;
+            default:
+                throw new \InvalidArgumentException('Invalid type');
         }
 
-        $this->client->request('POST', '/user/' . $userId . '/favorite/' . $endpoint . '/' . $id . '/create', [
+        $this->client->request('POST', "/user/{$userId}/favorite/{$endpoint}/{$id}/{$action}", [
             'headers' => [
                 'x-auth-token' => $this->apiAdminToken
             ],
         ]);
     }
 
+    public function createUserFavorite(string $userId, string $type, string $id): void
+    {
+        $this->sendFavoriteRequest($userId, $type, $id, 'create');
+    }
+
     public function deleteUserFavorite(string $userId, string $type, string $id): void
     {
-        switch ($type) {
-            case 'conference':
-                $endpoint = 'conferences';
-                break;
-            case 'talk':
-                $endpoint = 'talks';
-                break;
-            case 'speaker':
-                $endpoint = 'speakers';
-                break;
-            case 'conferenceEdition':
-                $endpoint = 'conference_editions';
-                break;
-        }
-        $this->client->request('POST', '/user/' . $userId . '/favorite/' . $endpoint . '/' . $id . '/delete', [
-            'headers' => [
-                'x-auth-token' => $this->apiAdminToken
-            ],
-        ]);
+        $this->sendFavoriteRequest($userId, $type, $id, 'delete');
     }
 }
