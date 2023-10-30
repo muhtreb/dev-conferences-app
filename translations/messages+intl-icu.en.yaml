@@ -53,10 +53,14 @@ seo.meta_description: devconf.tv is a website that lists developer conferences a
 seo.meta_keywords: conference, talks, developer, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
 seo.title: All your technical conferences (PHP, Javascript, Ruby, Symfony, Laravel, Typescript, React, Vue, ..)
 login.title: Log in
-login.description: To log in, please enter your email address. A login link will be sent to you via email.
+login.email_link.title: Log in with a login link
+login.email_link.description: To log in, please enter your email address. A login link will be sent to you via email.
+login.email_link.button: Receive a login link
+login.oauth.title: Log in with GitHub account
+login.oauth.description: You can log in with your GitHub account.
+login.oauth.github_button: Log in with GitHub
 login.email.label: Email address
 login.email.placeholder: Enter your email address
-login.send_magic_link: Receive a login link
 login_link_sent.title: Login link sent
 login_link_sent.text: A login link has been sent to the email address {email}. Please click on the link to log in.
 login_link_email.subject: Login link to devconf.tv

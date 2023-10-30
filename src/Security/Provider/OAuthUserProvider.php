@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Security\Provider;
+
+use App\Entity\User;
+use App\Repository\UserRepository;
+use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
+use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
+
+class OAuthUserProvider implements OAuthAwareUserProviderInterface
+{
+    public function  __construct(
+        private UserRepository $userRepository
+    )
+    {
+    }
+
+    public function loadUserByOAuthUserResponse(UserResponseInterface $response)
+    {
+        $user = $this->userRepository->findOneBy(['email' => $response->getEmail()]);
+
+        if (!$user) {
+            $user = new User();
+            $user->setEmail($response->getEmail());
+            $this->userRepository->save($user);
+        }
+
+        return $user;
+    }
+}

@@ -16,6 +16,16 @@ security:
                 signature_properties: ['id']
             logout:
                 path: security_logout
+            oauth:
+                resource_owners:
+                    github: "/login/check-github"
+                login_path: /login
+                use_forward: false
+                failure_path: /login
+
+                oauth_user_provider:
+                    service: oauth_user_provider
+
 
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }

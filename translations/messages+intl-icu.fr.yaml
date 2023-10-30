@@ -53,10 +53,14 @@ seo.meta_description: devconf.tv est un site qui référence les conférences et
 seo.meta_keywords: conférence, talks, développeur, développeuse, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
 seo.title: Toutes vos conférences techniques (PHP, Javascript, Ruby, Symfony, Laravel, Javascript, React, Vue, ..)
 login.title: Se connecter
-login.description: Pour vous connecter, veuillez saisir votre adresse email. Un lien de connexion vous sera envoyé par email.
+login.email_link.title: Se connecter avec un lien de connexion
+login.email_link.description: Pour vous connecter, veuillez saisir votre adresse email. Un lien de connexion vous sera envoyé par email.
+login.email_link.button: Recevoir un lien de connexion
+login.oauth.title: Se connecter avec un compte GitHub
+login.oauth.description: Vous pouvez vous connecter avec votre compte GitHub.
+login.oauth.github_button: Se connecter avec GitHub
 login.email.label: Adresse email
 login.email.placeholder: Saisissez votre adresse email
-login.send_magic_link: Recevoir un lien de connexion
 login_link_sent.title: Lien de connexion envoyé
 login_link_sent.text: Un lien de connexion a été envoyé à l'adresse email {email}. Veuillez cliquer sur le lien pour vous connecter.
 login_link_email.subject: Lien de connexion à devconf.tv
