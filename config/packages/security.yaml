@@ -15,7 +15,7 @@ security:
                 check_route: security_login_check
                 signature_properties: ['id']
             logout:
-                path: security_logout
+                path: '/logout'
             oauth:
                 resource_owners:
                     github: "/login/check-github"
