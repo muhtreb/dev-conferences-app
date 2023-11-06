@@ -1,7 +1,7 @@
-<div class="w-full flex flex-col justify-between p-4 bg-gray-700 rounded-md cursor-pointer relative">
+<div class="w-full flex flex-col justify-between p-4 bg-gray-700 rounded-md cursor-pointer relative hover:bg-gray-600 transition-colors duration-200 ease-in-out">
     {% if app.user %}
         <div class="absolute left-4 top-4 z-20">
-            <twig:Like type="conference" id="{{ conference.id }}" name="{{ conference.name }}" />
+            <twig:Like type="conference" id="{{ conference.id }}" name="{{ conference.name }}" :focusable="false" />
         </div>
     {% endif %}
     <div class="flex items-center justify-center mb-4 ">

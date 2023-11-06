@@ -21,40 +21,61 @@
     {% endif %}
 {% endblock %}
 {% block body %}
-    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
-
-    <div class="flex flex-col items-center">
-        <div class="flex items-center mt-4 mb-2">
-            <h1 class="font-bold text-2xl text-center">{{ edition.name }}</h1>
-        </div>
-
-        {% if edition.conference.thumbnailImageUrl %}
-            <div class="relative w-48 h-48 border-2 mb-4">
+    <div class="flex flex-col">
+        <div class="flex flex-row mb-8 bg-gray-700 rounded-lg p-4">
+            <div class="relative w-48 h-48 border-2 overflow-hidden mr-4 shrink-0">
                 {% if app.user %}
                     <div class="absolute top-3 left-3">
                         <twig:Like type="conferenceEdition" id="{{ edition.id }}" name="{{ edition.name }}" />
                     </div>
                 {% endif %}
-                <img
-                        src="{{ edition.conference.thumbnailImageUrl }}"
-                        alt="{{ edition.conference.name }}"
-                        class="w-full h-full object-cover"
-                />
+                {% if edition.conference.thumbnailImageUrl %}
+                    <img
+                            src="{{ edition.conference.thumbnailImageUrl }}"
+                            alt="{{ edition.conference.name }}"
+                            class="object-cover w-full h-full"
+                    />
+                {% endif %}
             </div>
-        {% endif %}
+            <div class="flex flex-col items-start w-full">
+                <div class="mb-4">
+                    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
+                </div>
 
-        <span class="text-md px-4 py-2 bg-gray-800 rounded text-center mb-8">
-            {{ edition|editionDate }}
-        </span>
+                <div class="flex flex-row items-center justify-center  mb-4">
+                    <h1 class="font-bold text-2xl">{{ edition.name }}</h1>
+
+                    <span class="ml-4 text-md italic">
+                        {{ edition|editionDate }}
+                    </span>
+                </div>
+
+                <p class="mb-4">
+                    {{ edition.description|default('edition.no_description'|trans({ count: edition.talks|length })) }}
+                </p>
+
+                {% if edition.playlists|length > 0 %}
+                    <div class="flex flex-col items-center">
+                        <a href="https://www.youtube.com/playlist?list={{ edition.playlists.0.id  }}" target="_blank" class="flex flex-col items-center">
+                            <span class="text-md px-4 py-2 bg-gray-800 rounded text-center">
+                                <i class="fab fa-youtube fa-xl"></i> {{ 'edition.show_on_youtube'|trans }}
+                            </span>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
 
         {% if edition.talks|length > 0 %}
-            <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {% for talk in edition.talks %}
-                    <li class="flex w-full">
-                        <twig:TalkCard talk="{{ talk }}" url="{{ path('talk_show', { 'slug': talk.slug }) }}" :showEdition="false" />
-                    </li>
-                {% endfor %}
-            </ul>
+            <section>
+                <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {% for talk in edition.talks %}
+                        <li class="flex w-full">
+                            <twig:TalkCard talk="{{ talk }}" url="{{ path('talk_show', { 'slug': talk.slug }) }}" :showEdition="false" />
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
         {% endif %}
     </div>
 {% endblock %}

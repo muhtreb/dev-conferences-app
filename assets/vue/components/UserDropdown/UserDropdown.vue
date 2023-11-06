@@ -1,6 +1,6 @@
 <template>
   <div class="relative inline-block">
-    <button class="rounded hover:bg-gray-600 px-2 py-1" @click="toggleDropdown" :aria-expanded="showDropdown" aria-controls="user-dropdown">
+    <button class="rounded px-2 py-1 hover:bg-gray-600 transition-colors duration-200 ease-in-out" @click="toggleDropdown" :aria-expanded="showDropdown" aria-controls="user-dropdown">
       <i class="fa-solid fa-user fa-lg mr-2"></i>
       <span class="hidden md:inline-block mr-2">{{ email }}</span>
       <i class="fa-solid fa-chevron-down"></i>

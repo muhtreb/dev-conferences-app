@@ -49,6 +49,9 @@ edition.count_talks: >-
         =1 {1 talk}
         other {# talks}
     }
+edition.show_on_youtube: View on Youtube
+edition.talks: Talks ({count})
+edition.no_description: Discover the {count} talks of this edition.
 seo.meta_description: devconf.tv is a website that lists developer conferences and talks.
 seo.meta_keywords: conference, talks, developer, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
 seo.title: All your technical conferences (PHP, Javascript, Ruby, Symfony, Laravel, Typescript, React, Vue, ..)

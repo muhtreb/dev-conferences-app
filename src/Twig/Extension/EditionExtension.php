@@ -41,7 +41,10 @@ class EditionExtension extends AbstractExtension
 
         if ($startYear === $endYear) {
             $startDateFormatted = $this->translator->trans('date.long', ['date' => $startDate]);
-            $startDateFormatted = substr($startDateFormatted, 0, -5);
+            $startDateFormatted = str_replace($startYear, '', $startDateFormatted);
+            $startDateFormatted = preg_replace('/[^A-Za-z0-9 ]/', '', $startDateFormatted);
+            $startDateFormatted = trim($startDateFormatted);
+
             return $startDateFormatted . ' - ' . $this->translator->trans('date.long', ['date' => $endDate]);
         }
 

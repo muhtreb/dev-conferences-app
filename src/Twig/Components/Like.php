@@ -13,4 +13,5 @@ class Like
     public string $id;
     public string $name;
     public bool $active = false;
+    public bool $focusable = true;
 }
