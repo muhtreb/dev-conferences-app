@@ -67,7 +67,7 @@
             <ul class="grid sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {% for talk in talks %}
                     <li class="flex">
-                        <twig:TalkCard talk="{{ talk }}" url="{{ path('talk_show', { 'slug': talk.slug }) }}"/>
+                        <twig:TalkCard talk="{{ talk }}" url="{{ path('talk_show', { 'slug': talk.slug }) }}" showDate />
                     </li>
                 {% endfor %}
             </ul>

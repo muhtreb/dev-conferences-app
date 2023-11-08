@@ -34,10 +34,14 @@ meta.next_page.title: Next Page
 meta.prev_page.title: Previous Page
 talks.navigation_talks.title: Navigate through conferences
 conference.website.title: Conference website for {name}
+conference.show_website: View website
 conference.x.title: Page X of conference {name}
+conference.show_x_profile: View X profile
 conference.editions.title: Editions of the conference
 speaker.github.title: GitHub Profile of {name}
+speaker.show_github_profile: View Github profile
 speaker.x.title: Profile X of {name}
+speaker.show_x_profile: View X profile
 speaker.talks.title: Talks
 conferences.list.title: List of conferences
 editions.list.title: List of editions
