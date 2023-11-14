@@ -46,6 +46,7 @@ speaker.talks.title: Talks
 conferences.list.title: Liste des conférences
 editions.list.title: Liste des éditions
 speakers.list.title: Liste des speakers
+speakers.search.placeholder: Rechercher un speaker
 edition.count_talks: >-
     {count, plural,
         =0 {Aucun talk}
@@ -84,3 +85,5 @@ menu.user.favorites: Mes favoris
 menu.logout: Se déconnecter
 menu.user.profile: Mon profil
 header.skip_to_content: Aller au contenu
+menu.show_navigation: Afficher la navigation
+menu.hide_navigation: Masquer la navigation

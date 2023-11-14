@@ -21,6 +21,7 @@ getTranslator().then(translator => {
             plyr: {}
         })
         .component('Like', require('@/vue/components/Like/Like.vue').default)
+        .component('BurgerButton', require('@/vue/components/BurgerButton/BurgerButton.vue').default)
         .component('youtube-player', require('@/vue/components/YoutubePlayer/YoutubePlayer.vue').default)
         .component('user-dropdown', require('@/vue/components/UserDropdown/UserDropdown.vue').default)
         .mount('#app');
