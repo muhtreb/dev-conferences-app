@@ -23,8 +23,8 @@ class ListController extends AbstractController
             'data' => $conferences,
             'meta' => $meta
         ] = $client->getSearchConferencesResponse(
-            limit: $limit,
             query: $request->get('query'),
+            limit: $limit,
             page: $page
         )->toArray();
 

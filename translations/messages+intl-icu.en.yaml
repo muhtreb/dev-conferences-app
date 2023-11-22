@@ -1,6 +1,7 @@
 home.latest_editions.title: Latest editions
 home.latest_editions.button: Go to all editions
-home.banner.content: Optimize your technical watch with devconf.tv! Explore a multitude of in-depth development conferences to stay at the forefront of innovation. Our search engine allows you to precisely target the topics that matter to you. Never miss a technological advancement again!
+home.banner.title: Welcome to devconf.net
+home.banner.content: Find the replay of your favorite tech conferences gathered in one place. You can search for conferences, editions, speakers, and talks. Additionally, by logging in, you'll be able to bookmark your favorite conferences, editions, speakers, and talks.
 home.most_popular_speakers.title: Most Popular Speakers
 home.most_popular_speakers.button: View all speakers
 home.search.title: Search
@@ -57,8 +58,8 @@ edition.count_talks: >-
 edition.show_on_youtube: View on Youtube
 edition.talks: Talks ({count})
 edition.no_description: Discover the {count} talks of this edition.
-seo.meta_description: devconf.tv is a website that lists developer conferences and talks.
-seo.meta_keywords: conference, talks, developer, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
+seo.meta_description: devconf.net is a website that lists developer conferences and talks.
+seo.meta_keywords: conference, talks, developer, dev, devconf, devconf.net, devconftv, devconf tv, devconf.
 seo.title: All your technical conferences (PHP, Javascript, Ruby, Symfony, Laravel, Typescript, React, Vue, ..)
 login.title: Log in
 login.email_link.title: Log in with a login link
@@ -71,7 +72,7 @@ login.email.label: Email address
 login.email.placeholder: Enter your email address
 login_link_sent.title: Login link sent
 login_link_sent.text: A login link has been sent to the email address {email}. Please click on the link to log in.
-login_link_email.subject: Login link to devconf.tv
+login_link_email.subject: Login link to devconf.net
 login_link_email.button: Log in
 user.favorite.title: My favorites
 user.favorite.description: Find here all the conferences, editions, speakers, and talks you have added to your favorites.

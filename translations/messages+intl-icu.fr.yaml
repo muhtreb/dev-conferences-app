@@ -1,6 +1,7 @@
 home.latest_editions.title: Dernières éditions
 home.latest_editions.button: Voir toutes les éditions
-home.banner.content: Optimisez votre veille technique avec devconf.tv ! Explorez une multitude de conférences pointues en développement pour rester à la pointe de l'innovation. Notre moteur de recherche vous permet de cibler précisément les sujets qui vous importent. Ne manquez plus aucune avancée technologique !
+home.banner.title: Bienvenue sur devconf.net
+home.banner.content: Retrouvez le replay de vos conférences tech préférées réunies au même endroit. Vous pouvez rechercher des conférences, des éditions, des speakers et des talks. De plus, en vous connectant, vous pourrez mettre en favoris vos conférences, éditions, speakers et talks préférés.
 home.most_popular_speakers.title: Speakers les plus populaires
 home.most_popular_speakers.button: Voir tous les speakers
 home.search.title: Recherche
@@ -57,8 +58,8 @@ edition.show_on_youtube: Voir sur Youtube
 edition.talks: Talks ({count})
 edition.no_description: Découvrez les {count} talks de cette édition.
 talks.list.title: Liste des talks
-seo.meta_description: devconf.tv est un site qui référence les conférences et les talks de développeurs.
-seo.meta_keywords: conférence, talks, développeur, développeuse, dev, devconf, devconf.tv, devconftv, devconf tv, devconf.
+seo.meta_description: devconf.net est un site qui référence les conférences et les talks de développeurs.
+seo.meta_keywords: conférence, talks, développeur, développeuse, dev, devconf, devconf.net, devconftv, devconf tv, devconf.
 seo.title: Toutes vos conférences techniques (PHP, Javascript, Ruby, Symfony, Laravel, Javascript, React, Vue, ..)
 login.title: Se connecter
 login.email_link.title: Se connecter avec un lien de connexion
@@ -71,7 +72,7 @@ login.email.label: Adresse email
 login.email.placeholder: Saisissez votre adresse email
 login_link_sent.title: Lien de connexion envoyé
 login_link_sent.text: Un lien de connexion a été envoyé à l'adresse email {email}. Veuillez cliquer sur le lien pour vous connecter.
-login_link_email.subject: Lien de connexion à devconf.tv
+login_link_email.subject: Lien de connexion à devconf.net
 login_link_email.button: Se connecter
 user.favorite.title: Mes favoris
 user.favorite.description: Retrouvez ici toutes les conférences, éditions, speakers et talks que vous avez ajouté à vos favoris.

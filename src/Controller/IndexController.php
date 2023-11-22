@@ -13,8 +13,8 @@ class IndexController extends AbstractController
 {
     public function __invoke(ApiClient $apiClient): Response
     {
-        $editionsResponse = $apiClient->getLatestEditionsResponse(limit: 30);
-        $topSpeakersResponse = $apiClient->getTopSpeakersResponse(limit: 30);
+        $editionsResponse = $apiClient->getLatestEditionsResponse(limit: 8);
+        $topSpeakersResponse = $apiClient->getTopSpeakersResponse(limit: 12);
 
         return $this->render('index.html.twig', [
             'editions' => $editionsResponse->toArray(),
