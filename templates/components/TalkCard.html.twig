@@ -21,10 +21,10 @@
     <div class="mt-2">
         {% if showEdition and talk.edition is defined and talk.edition %}
             <div class="flex items-center relative p-2 bg-gray-900 rounded hover:bg-gray-800 transition-colors duration-200 ease-in-out mb-2  z-20">
-                {% if talk.edition.conference.thumbnailImageUrl %}
+                {% if talk.edition.thumbnailImageUrl %}
                     <div class="relative w-8 h-8 shrink-0">
                         <img
-                                src="{{ talk.edition.conference.thumbnailImageUrl }}"
+                                src="{{ talk.edition.thumbnailImageUrl }}"
                                 alt=""
                                 class="border-2"
                         />

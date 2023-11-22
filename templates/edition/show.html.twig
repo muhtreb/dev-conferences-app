@@ -7,8 +7,8 @@
     <meta name="twitter:title" content="{{ edition.name }}" />
     <meta name="twitter:description" content="{{ edition.description }}" />
 
-    {% if edition.conference.thumbnailImageUrl %}
-        <meta name="twitter:image" content="{{ edition.conference.thumbnailImageUrl }}" />
+    {% if edition.thumbnailImageUrl %}
+        <meta name="twitter:image" content="{{ edition.thumbnailImageUrl }}" />
         <meta name="twitter:image:alt" content="{{ edition.conference.name }}" />
     {% endif %}
 
@@ -16,8 +16,8 @@
     <meta property="og:description" content="{{ edition.name }}" />
     <meta property="og:type" content="website" />
 
-    {% if edition.conference.thumbnailImageUrl %}
-        <meta property="og:image" content="{{ edition.conference.thumbnailImageUrl }}" />
+    {% if edition.thumbnailImageUrl %}
+        <meta property="og:image" content="{{ edition.thumbnailImageUrl }}" />
     {% endif %}
 {% endblock %}
 {% block body %}
@@ -29,9 +29,9 @@
                         <twig:Like type="conferenceEdition" id="{{ edition.id }}" name="{{ edition.name }}" />
                     </div>
                 {% endif %}
-                {% if edition.conference.thumbnailImageUrl %}
+                {% if edition.thumbnailImageUrl %}
                     <img
-                            src="{{ edition.conference.thumbnailImageUrl }}"
+                            src="{{ edition.thumbnailImageUrl }}"
                             alt="{{ edition.conference.name }}"
                             class="object-cover w-full h-full"
                     />
