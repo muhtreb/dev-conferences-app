@@ -11,10 +11,10 @@ class SpeakersController extends AbstractController
     #[Route('/sitemap/speakers', name: 'sitemap_speakers')]
     public function __invoke(ApiClient $apiClient)
     {
-        $editions = $apiClient->getEditions(limit: 1000);
+        $speakers = $apiClient->getSpeakers(limit: 1000);
 
         return $this->render('sitemap/speakers.xml.twig', [
-            'editions' => $editions,
+            'speakers' => $speakers,
         ]);
     }
 }
