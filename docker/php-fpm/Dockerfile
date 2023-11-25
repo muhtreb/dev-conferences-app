@@ -1,4 +1,4 @@
-FROM php:8.2.4-fpm
+FROM php:8.3.0RC6-fpm-bullseye
 WORKDIR "/application"
 
 # Fix debconf warnings upon build
