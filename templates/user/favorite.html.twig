@@ -3,14 +3,14 @@
 {% block metaTitle 'user.favorite.title'|trans %}
 
 {% block body %}
-    <h1 class="font-bold text-2xl mb-4 mt-4 text-center">{{ 'user.favorite.title'|trans }}</h1>
+    <h1 class="font-bold text-3xl mb-4 mt-4 text-center">{{ 'user.favorite.title'|trans }}</h1>
 
     <p class="mb-8 text-center">
         {{ 'user.favorite.description'|trans }}
     </p>
     {% if conferences|length %}
         <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'user.favorite.conferences.title'|trans({ count: conferences|length }) }}</h2>
+            <h2 class="font-bold text-2xl mb-4 text-left">{{ 'user.favorite.conferences.title'|trans({ count: conferences|length }) }}</h2>
 
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {% for conference in conferences %}
@@ -25,7 +25,7 @@
 
     {% if editions|length %}
         <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'user.favorite.editions.title'|trans({ count: editions|length }) }}</h2>
+            <h2 class="font-bold text-2xl mb-4 text-left">{{ 'user.favorite.editions.title'|trans({ count: editions|length }) }}</h2>
 
             <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {% for edition in editions %}
@@ -40,7 +40,7 @@
 
     {% if talks|length %}
         <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'user.favorite.talks.title'|trans({ count: talks|length }) }}</h2>
+            <h2 class="font-bold text-2xl mb-4 text-left">{{ 'user.favorite.talks.title'|trans({ count: talks|length }) }}</h2>
 
             <ul class="grid sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {% for talk in talks %}
@@ -54,7 +54,7 @@
 
     {% if speakers|length %}
         <section class="speakers">
-            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'user.favorite.speakers.title'|trans({ count: speakers|length }) }}</h2>
+            <h2 class="font-bold text-2xl mb-4 text-left">{{ 'user.favorite.speakers.title'|trans({ count: speakers|length }) }}</h2>
 
             <ul class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {% for speaker in speakers %}

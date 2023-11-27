@@ -7,15 +7,15 @@
 {% block body %}
     <twig:Breadcrumb items="{{ breadcrumbItems }}" />
 
-    <h1 class="text-3xl font-bold mb-4 mt-4 text-center">
+    <h1 class="text-3xl font-bold mb-4 text-center mt-16">
         {{ 'search.title'|trans }}
     </h1>
 
     <twig:SearchForm />
 
     {% if conferences|length %}
-        <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'search.conferences.title'|trans }}</h2>
+        <section class="mb-16 mt-16">
+            <h2 class="font-bold text-2xl mb-4">{{ 'search.conferences.title'|trans }}</h2>
 
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {% for conference in conferences %}
@@ -37,8 +37,8 @@
     {% endif %}
 
     {% if editions|length %}
-        <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'search.editions.title'|trans }}</h2>
+        <section class="mb-16 mt-16">
+            <h2 class="font-bold text-2xl mb-4">{{ 'search.editions.title'|trans }}</h2>
 
             <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {% for edition in editions %}
@@ -61,8 +61,8 @@
     {% endif %}
 
     {% if talks|length %}
-        <section class="mb-16">
-            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'search.talks.title'|trans }}</h2>
+        <section class="mb-16 mt-16">
+            <h2 class="font-bold text-2xl mb-4">{{ 'search.talks.title'|trans }}</h2>
 
             <ul class="grid sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {% for talk in talks %}
@@ -71,8 +71,8 @@
                     </li>
                 {% endfor %}
             </ul>
-            {% if talksMeta.nextPage %}
 
+            {% if talksMeta.nextPage %}
                 <div class="mt-8 flex items-center justify-center">
                     <twig:Button href="{{ path('talk_list', { query: query }) }}" tag="a">
                         {{ 'search.talks.more'|trans({ query: query ? '"' ~ query ~ '"' : '' }) }}
@@ -83,8 +83,8 @@
     {% endif %}
 
     {% if speakers|length %}
-        <section class="speakers">
-            <h2 class="font-bold text-2xl mb-4 text-center">{{ 'search.speakers.title'|trans }}</h2>
+        <section class="mb-16 mt-16">
+            <h2 class="font-bold text-2xl mb-4">{{ 'search.speakers.title'|trans }}</h2>
 
             <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                 {% for speaker in speakers %}

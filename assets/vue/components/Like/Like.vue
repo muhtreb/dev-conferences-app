@@ -33,7 +33,7 @@ const toggleFavorite = () => {
 }
 
 const title = () => {
-  return isFavorite() ? `Remove ${props.name} from favorites` : `Add ${props.name} to favorites`
+  return isFavorite() ? this.$t('like.remove') : this.$t('like.add')
 }
 </script>
 

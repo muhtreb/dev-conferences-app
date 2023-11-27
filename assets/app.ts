@@ -1,6 +1,7 @@
 import './styles/app.scss';
 
 import './ts/like'
+
 import {createApp} from 'vue';
 
 import {createPinia} from 'pinia';
@@ -13,7 +14,8 @@ getTranslator().then(translator => {
     app.use(createPinia())
         .use(i18n, {translator})
         .component('Like', require('@/vue/components/Like/Like.vue').default)
-        .component('BurgerButton', require('@/vue/components/BurgerButton/BurgerButton.vue').default)
+        .component('burger-button', require('@/vue/components/BurgerButton/BurgerButton.vue').default)
         .component('user-dropdown', require('@/vue/components/UserDropdown/UserDropdown.vue').default)
+        .component('search-button', require('@/vue/components/SearchButton/SearchButton.vue').default)
         .mount('#app');
 })

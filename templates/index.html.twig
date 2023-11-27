@@ -1,22 +1,19 @@
 {% extends 'layouts/base.html.twig' %}
 
 {% block body %}
-    <section class="mb-16">
-        <h1 class="text-3xl font-bold text-center mb-4">
-            {{ 'home.banner.title'|trans }}
-        </h1>
-        <p class="presentation__content text-xl text-center">
-            {{ 'home.banner.content'|trans }}
-        </p>
+    <section class="mt-16 mb-24 flex flex-col justify-center items-center">
+        <div class="max-w-4xl">
+            <h1 class="text-4xl font-bold text-center mb-8">
+                {{ 'home.banner.title'|trans }}
+            </h1>
+            <p class="presentation__content text-xl text-center">
+                {{ 'home.banner.content'|trans }}
+            </p>
+        </div>
     </section>
 
-    <section class="mb-16">
-        <h2 class="font-bold text-2xl mb-4 text-center">{{ 'home.search.title'|trans }}</h2>
-        <twig:SearchForm action="{{ path('search') }}" />
-    </section>
-
-    <section class="mb-16">
-        <h2 class="font-bold text-2xl mb-4 text-center">{{ 'home.latest_editions.title'|trans }}</h2>
+    <section class="mb-24">
+        <h2 class="font-bold text-3xl mb-8 text-center">{{ 'home.latest_editions.title'|trans }}</h2>
         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {% for edition in editions %}
                 <li class="flex">
@@ -35,8 +32,8 @@
         </div>
     </section>
 
-    <section>
-        <h2 class="font-bold text-2xl mb-4 text-center">{{ 'home.most_popular_speakers.title'|trans }}</h2>
+    <section class="mb-16">
+        <h2 class="font-bold text-3xl mb-8 text-center">{{ 'home.most_popular_speakers.title'|trans }}</h2>
         <ul class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
             {% for speaker in topSpeakers %}
                 <li class="flex">

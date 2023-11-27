@@ -12,6 +12,7 @@ header.talks.title: Talks
 header.search.title: Rechercher sur le site
 header.login.title: Se connecter
 header.logout.title: Se déconnecter
+footer.github: Profil Github de Julien HUMBERT
 search.label: Rechercher une conférence, une édition, un speaker, un talk...
 search.placeholder: Rechercher une conférence, une édition, un speaker, un talk...
 search.button: Rechercher
