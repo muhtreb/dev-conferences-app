@@ -32,10 +32,8 @@
         "fetch": "^1.1.0",
         "intl-messageformat": "^10.5.4",
         "pinia": "^2.1.7",
-        "plyr": "^3.7.8",
         "vue": "^3.2.36",
         "vue-loader": "^17",
-        "vue-plyr": "^7.0.0",
         "vue-router": "^4.0.13",
         "vuex": "^4.0.2"
     }

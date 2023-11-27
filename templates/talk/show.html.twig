@@ -23,24 +23,28 @@
 {% block body %}
     <twig:Breadcrumb items="{{ breadcrumbItems }}" />
 
-    <div class="flex items-center justify-center w-full mt-4 mb-8">
-        <h1 class="font-bold text-2xl text-center">{{ talk.name }}</h1>
-        {% if app.user %}
-            <div class="ml-2">
-                <twig:Like type="talk" id="{{ talk.id }}" name="{{ talk.name }}" />
-            </div>
-        {% endif %}
-    </div>
-
-    <div class="flex {{ hasSpeakers ? "flex-col md:flex-row " : "" }}">
+    <div class="flex mt-4 {{ hasSpeakers ? "flex-col md:flex-row " : "" }}">
         <div class="relative flex-1 aspect-video">
-            <youtube-player video-id="{{ talk.youtubeId }}"></youtube-player>
+            <iframe
+                    class="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/{{ talk.youtubeId }}"
+                    allowfullscreen
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            ></iframe>
         </div>
     </div>
 
     {% if hasSpeakers or talk.description %}
         <div class="flex mt-4 {{ hasSpeakers ? "flex-col md:flex-row " : "" }}">
             <div class="p-4 flex-1 bg-gray-800 rounded leading-7 text-sm">
+                <div class="flex items-center justify-start w-full mb-4">
+                    <h1 class="font-bold text-2xl text-left">{{ talk.name }}</h1>
+                    {% if app.user %}
+                        <div class="ml-2">
+                            <twig:Like type="talk" id="{{ talk.id }}" name="{{ talk.name }}" />
+                        </div>
+                    {% endif %}
+                </div>
                 {% if talk.description %}
                     <p class="break-words">{{ talk.description }}</p>
                 {% endif %}
