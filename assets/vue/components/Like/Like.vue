@@ -1,7 +1,7 @@
 <script setup>
 import {useMainStore} from "@/store"
-import {defineProps, inject} from 'vue'
-inject('i18n')
+import {computed, defineProps, inject} from 'vue'
+const i18n = inject('i18n')
 
 const props = defineProps({
   type: {
@@ -32,9 +32,9 @@ const toggleFavorite = () => {
   store.toggleUserFavorite(props.type, props.id)
 }
 
-const title = () => {
-  return isFavorite() ? this.$t('like.remove') : this.$t('like.add')
-}
+const title = computed(() => {
+  return isFavorite() ? i18n.trans('like.remove') : i18n.trans('like.add')
+})
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" id="header_search_button" :aria-label="title" :aria-expanded="isSearchOpen ? 'true' : 'false'" aria-controls="#search-form">
+  <button @click="onClick" id="header_search_button" :aria-label="$t('header.search.title')" :aria-expanded="isSearchOpen ? 'true' : 'false'" aria-controls="#search-form">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 </template>
@@ -8,10 +8,6 @@
 import {inject, onMounted, ref} from "vue"
 
 inject('i18n')
-
-const title = () => {
-  return this.$t('header.search.title')
-}
 
 const isSearchOpen = ref(false)
 

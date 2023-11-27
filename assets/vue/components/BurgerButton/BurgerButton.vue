@@ -5,9 +5,9 @@
 </template>
 
 <script setup>
-import {inject, onMounted, ref} from "vue"
+import {computed, inject, onMounted, ref} from "vue"
 
-inject('i18n')
+const i18n = inject('i18n')
 
 const isNavOpen = ref(false)
 
@@ -24,9 +24,9 @@ const toggleNav = () => {
   }
 }
 
-const title = () => {
-  return !isNavOpen.value ? this.$t('menu.show_navigation') : this.$t('menu.hide_navigation')
-}
+const title = computed(() => {
+  return !isNavOpen.value ? i18n.trans('menu.show_navigation') : i18n.trans('menu.hide_navigation')
+})
 
 // Handle escape key to close nav
 onMounted(() => {
