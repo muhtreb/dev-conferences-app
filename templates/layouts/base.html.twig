@@ -101,6 +101,11 @@
     </header>
 
     <div id="search-form" class="absolute top-0 left-0 w-full h-full bg-gray-900 bg-opacity-95 z-50 flex justify-center items-center hidden">
+        <div class="absolute top-0 right-0 p-4">
+            <button id="search-form-close-button" class="text-white" aria-label="{{ 'search.close'|trans }}">
+                <i class="fa-solid fa-times fa-2xl"></i>
+            </button>
+        </div>
         <section class="w-full">
             <h2 class="font-bold text-3xl mb-8 text-center">{{ 'home.search.title'|trans }}</h2>
             <twig:SearchForm action="{{ path('search') }}" />

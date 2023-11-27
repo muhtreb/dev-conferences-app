@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" id="header_search_button" :title="title">
+  <button @click="onClick" id="header_search_button" :title="title" :aria-expanded="isSearchOpen ? 'true' : 'false'" aria-controls="#search-form">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 </template>
@@ -29,8 +29,13 @@ const onClick = () => {
 
 onMounted(() => {
   document.addEventListener('keydown', (e) => {
-    console.log(e)
     if (e.key === 'Escape' && isSearchOpen.value) {
+      toggleSearch()
+    }
+  })
+
+  document.getElementById('search-form-close-button').addEventListener('click', (e) => {
+    if (isSearchOpen.value) {
       toggleSearch()
     }
   })
