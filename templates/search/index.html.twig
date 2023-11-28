@@ -104,4 +104,12 @@
             {% endif %}
         </section>
     {% endif %}
+
+    {% if speakers|length == 0 and conferences|length == 0 and editions|length == 0 and talks|length == 0 %}
+        <section class="flex flex-col items-center justify-center">
+            <p class="font-bold text-2xl mb-4">
+                {{ 'search.no_results.title'|trans({ query }) }}
+            </p>
+        </section>
+    {% endif %}
 {% endblock %}

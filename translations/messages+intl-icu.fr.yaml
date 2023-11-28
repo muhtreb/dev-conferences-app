@@ -37,9 +37,7 @@ meta.next_page.title: Page suivante
 meta.prev_page.title: Page précédente
 talks.navigation_talks.title: Naviguer dans les conférences
 conference.website.title: Site web de la conférence {name}
-conference.show_website: Voir le site web
 conference.x.title: Page X de la conférence {name}
-conference.show_x_profile: Voir le profil X
 conference.editions.title: Éditions de la conférence
 speaker.github.title: Profil GitHub de {name}
 speaker.x.title: Profil X de {name}
@@ -95,3 +93,4 @@ menu.hide_navigation: Masquer la navigation
 search.close: Fermer la recherche
 error.404.title: Page non trouvée
 error.404.message: La page que vous recherchez n'existe plus.
+search.no_results.title: Aucun résultat pour la recherche "{query}"
