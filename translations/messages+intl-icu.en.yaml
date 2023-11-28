@@ -13,6 +13,7 @@ header.search.title: Search on the site
 header.login.title: Log in
 header.logout.title: Log out
 footer.github: Julien HUMBERT's Github Profile
+footer.about: About
 search.label: Search for a conference, edition, speaker, or talk...
 search.placeholder: Search for a conference, edition, speaker, or talk...
 search.button: Search
@@ -40,10 +41,12 @@ conference.show_website: View website
 conference.x.title: Page X of conference {name}
 conference.show_x_profile: View X profile
 conference.editions.title: Editions of the conference
-speaker.github.title: GitHub Profile of {name}
-speaker.show_github_profile: View Github profile
-speaker.x.title: Profile X of {name}
-speaker.show_x_profile: View X profile
+speaker.github.title: "{name}'s GitHub profile"
+speaker.x.title: "{name}'s X profile"
+speaker.mastodon.title: "{name}'s Mastodon profile"
+speaker.bluesky.title: "{name}'s Bluesky profile"
+speaker.website.title: "{name}'s website"
+speaker.speakerDeck.title: "{name}'s SpeakerDeck profile"
 speaker.talks.title: Talks
 conferences.list.title: List of conferences
 editions.list.title: List of editions
@@ -90,3 +93,4 @@ header.skip_to_content: Go to content
 menu.show_navigation: Show navigation
 menu.hide_navigation: Hide navigation
 search.close: Close search
+about.title: About

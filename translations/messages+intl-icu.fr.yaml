@@ -13,6 +13,7 @@ header.search.title: Rechercher sur le site
 header.login.title: Se connecter
 header.logout.title: Se déconnecter
 footer.github: Profil Github de Julien HUMBERT
+footer.about: À propos
 search.label: Rechercher une conférence, une édition, un speaker, un talk...
 search.placeholder: Rechercher une conférence, une édition, un speaker, un talk...
 search.button: Rechercher
@@ -41,9 +42,11 @@ conference.x.title: Page X de la conférence {name}
 conference.show_x_profile: Voir le profil X
 conference.editions.title: Éditions de la conférence
 speaker.github.title: Profil GitHub de {name}
-speaker.show_github_profile: Voir le profil Github
 speaker.x.title: Profil X de {name}
-speaker.show_x_profile: Voir le profil X
+speaker.mastodon.title: Profil Mastodon de {name}
+speaker.bluesky.title: Profil Bluesky de {name}
+speaker.website.title: Site web de {name}
+speaker.speakerDeck.title: Profil SpeakerDeck de {name}
 speaker.talks.title: Talks
 conferences.list.title: Liste des conférences
 editions.list.title: Liste des éditions

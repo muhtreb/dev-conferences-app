@@ -49,7 +49,14 @@
                     <p>{{ speaker.description }}</p>
                 {% endif %}
 
-                {% if (speaker.githubUsername is defined and speaker.githubUsername) or (speaker.xUsername is defined and speaker.xUsername) %}
+                {% if
+                    (speaker.githubUsername is defined and speaker.githubUsername) or
+                    (speaker.xUsername is defined and speaker.xUsername) or
+                    (speaker.website is defined and speaker.website) or
+                    (speaker.mastodonUsername is defined and speaker.mastodonUsername) or
+                    (speaker.blueskyUsername is defined and speaker.blueskyUsername) or
+                    (speaker.speakerDeckUsername is defined and speaker.speakerDeckUsername)
+                %}
                     <div class="mt-4 flex items-center">
                         {% if speaker.githubUsername is defined and speaker.xUsername %}
                             <a
@@ -57,10 +64,9 @@
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.github.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                    class="flex flex-row items-center justify-center text-md px-4 py-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
                             >
-                                <i class="fa-brands fa-github fa-md mr-2"></i>
-                                <span class="mt-1">{{ 'speaker.show_github_profile'|trans }}</span>
+                                <i class="fa-brands fa-github fa-md"></i>
                             </a>
                         {% endif %}
                         {% if speaker.xUsername is defined and speaker.xUsername %}
@@ -69,10 +75,53 @@
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.x.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                    class="flex flex-row items-center justify-center text-md px-4 py-2 bg-gray-800 rounded text-center hover:underline"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
                             >
-                                <i class="fa-brands fa-x-twitter fa-md mr-2"></i>
-                                <span class="mt-1">{{ 'speaker.show_x_profile'|trans }}</span>
+                                <i class="fa-brands fa-x-twitter fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.mastodonUsername is defined and speaker.mastodonUsername %}
+                            <a
+                                    href="{{ speaker.mastodonUsername }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.mastodon.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                            >
+                                <i class="fa-brands fa-mastodon fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.blueskyUsername is defined and speaker.blueskyUsername %}
+                            <a
+                                    href="https://blueskytech.io/{{ speaker.blueskyUsername }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.bluesky.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                            >
+                                <i class="fa-brands fa-bluesky fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.speakerDeckUsername is defined and speaker.speakerDeckUsername %}
+                            <a
+                                    href="https://speakerdeck.com/{{ speaker.speakerDeckUsername }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.speakerDeck.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                            >
+                                <i class="fa-brands fa-speaker-deck fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.website is defined and speaker.website %}
+                            <a
+                                    href="{{ speaker.website }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.website.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center hover:underline"
+                            >
+                                <i class="fa-solid fa-globe fa-md"></i>
                             </a>
                         {% endif %}
                     </div>

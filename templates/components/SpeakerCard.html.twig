@@ -24,34 +24,6 @@
                     {{ speaker.firstName }} {{ speaker.lastName }}
                 </a>
             </h2>
-
-            {% if (speaker.githubUsername is defined and speaker.githubUsername) or (speaker.xUsername is defined and speaker.xUsername) %}
-                <div class="mt-2 flex items-center justify-center relative">
-                    {% if speaker.githubUsername is defined and speaker.githubUsername %}
-                        <a
-                                href="https://github.com/{{ speaker.githubUsername }}"
-                                target="_blank"
-                                rel="noreferrer"
-                                class="mr-2"
-                                title="{{ 'speaker.github.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                tabindex="-1"
-                        >
-                            <i class="fa-brands fa-github fa-lg"></i>
-                        </a>
-                    {% endif %}
-                    {% if speaker.xUsername is defined and speaker.xUsername %}
-                        <a
-                                href="https://twitter.com/{{ speaker.xUsername }}"
-                                target="_blank"
-                                rel="noreferrer"
-                                title="{{ 'speaker.x.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                tabindex="-1"
-                        >
-                            <i class="fa-brands fa-x-twitter fa-lg"></i>
-                        </a>
-                    {% endif %}
-                </div>
-            {% endif %}
         </div>
     </div>
 </div>

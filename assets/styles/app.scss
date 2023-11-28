@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'scss/markdown';
+
 body {
     font-family: 'Roboto', sans-serif;
 }

@@ -1,0 +1,9 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block metaTitle 'about.title'|trans %}
+
+{% block body %}
+    <div class="markdown">
+        {{ markdown|markdown_to_html }}
+    </div>
+{% endblock %}

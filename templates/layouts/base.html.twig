@@ -118,6 +118,17 @@
     <footer class="mt-8 p-4 bg-gray-800 w-full text-center text-sm">
         Développé par <a class="font-bold" href="https://github.com/muhtreb" target="_blank" rel="noreferrer"
                          title="{{ 'footer.github'|trans }}">muhtreb</a>
+
+        <ul class="mt-2 flex justify-center">
+            <li class="mr-2">
+                <a href="https://twitter.com/devconfnet" class="text-gray-300 hover:underline" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+            </li>
+            <li class="before:mr-2 mr-2 before:content-['-']">
+                <a href="{{ path('about') }}" class="text-gray-300 hover:underline">{{ 'footer.about'|trans }}</a>
+            </li>
+        </ul>
     </footer>
 </div>
 </body>
