@@ -21,8 +21,11 @@ class ShowController extends AbstractController
             throw $this->createNotFoundException('Talk ' . $slug . ' not found');
         }
 
+        $edition = $client->getEditionBySlug($talk['edition']['slug']);
+
         return $this->render('talk/show.html.twig', [
             'talk' => $talk,
+            'edition' => $edition,
             'breadcrumbItems' => [
                 [
                     'name' => $translator->trans('breadcrumb.conferences'),

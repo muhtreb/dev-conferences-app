@@ -13,6 +13,7 @@ class TalkCard
     public bool $showEdition = true;
     public bool $showSpeakers = true;
     public bool $showDate = false;
+    public bool $horizontal = false;
 
     public function __construct(
         private TranslatorInterface $translator
