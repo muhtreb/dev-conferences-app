@@ -94,3 +94,5 @@ menu.show_navigation: Show navigation
 menu.hide_navigation: Hide navigation
 search.close: Close search
 about.title: About
+error.404.title: Page not found
+error.404.message: The page you are looking for does not exist.

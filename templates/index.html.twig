@@ -13,23 +13,7 @@
     </section>
 
     <section class="mb-24">
-        <h2 class="font-bold text-3xl mb-8 text-center">{{ 'home.latest_editions.title'|trans }}</h2>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {% for edition in editions %}
-                <li class="flex">
-                    <twig:EditionCard
-                        edition="{{ edition }}"
-                        url="{{ url('edition_show', { slug: edition.slug }) }}"
-                        showThumbnail
-                    />
-                </li>
-            {% endfor %}
-        </ul>
-        <div class="mt-4 flex items-center justify-center w-full">
-            <twig:Button tag="a" href="{{ path('edition_list') }}">
-                {{ 'home.latest_editions.button'|trans }}
-            </twig:Button>
-        </div>
+        {{ render(controller('App\\Controller\\LatestEditions\\PartialController')) }}
     </section>
 
     <section class="mb-16">
