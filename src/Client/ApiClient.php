@@ -156,7 +156,7 @@ class ApiClient
 
     private function sendUserFavoriteRequest(string $method, string $endpoint, string $userId, ?string $resourceId = null): ResponseInterface
     {
-        $url = '/user/' . $userId . '/favorite/' . $endpoint;
+        $url = '/admin/user/' . $userId . '/favorite/' . $endpoint;
         if ($resourceId !== null) {
             $url .= '/' . $resourceId;
         }
@@ -214,7 +214,7 @@ class ApiClient
 
     public function getUserFavoriteData(string $userId, array $data): array
     {
-        return $this->client->request('POST', '/user/' . $userId . '/favorite/data', [
+        return $this->client->request('POST', '/admin/user/' . $userId . '/favorite/data', [
             'headers' => [
                 'x-auth-token' => $this->apiAdminToken
             ],
@@ -241,7 +241,7 @@ class ApiClient
                 throw new \InvalidArgumentException('Invalid type');
         }
 
-        $this->client->request('POST', "/user/{$userId}/favorite/{$endpoint}/{$id}/{$action}", [
+        $this->client->request('POST', '/admin/user/' . $userId . '/favorite/' . $endpoint . '/' . $id .'/' . $action, [
             'headers' => [
                 'x-auth-token' => $this->apiAdminToken
             ],
