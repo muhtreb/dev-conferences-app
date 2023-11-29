@@ -6,13 +6,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent]
-class TalkCard
+class TalkCardHorizontal
 {
     public array $talk;
     public string $url;
-    public bool $showEdition = true;
-    public bool $showSpeakers = true;
-    public bool $showDate = false;
+    public bool $current = false;
 
     public function __construct(
         private TranslatorInterface $translator
