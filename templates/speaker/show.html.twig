@@ -82,7 +82,7 @@
                         {% endif %}
                         {% if speaker.mastodonUsername is defined and speaker.mastodonUsername %}
                             <a
-                                    href="{{ speaker.mastodonUsername }}"
+                                    href="https://mastodon.social/{{ speaker.mastodonUsername }}"
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.mastodon.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
