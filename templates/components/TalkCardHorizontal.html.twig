@@ -1,9 +1,4 @@
 <div class="{{ current ? 'bg-gray-600 hover:bg-gray-500' : 'bg-gray-700 hover:bg-gray-600' }} flex p-2  rounded-md cursor-pointer relative h-full flex-row w-full transition-colors duration-200 ease-in-out">
-    {% if app.user %}
-        <div class="absolute left-6 top-6 z-20">
-            <twig:Like type="talk" id="{{ talk.id }}" name="{{ talk.name }}" :focusable="false" />
-        </div>
-    {% endif %}
     <div class="relative">
         <div class="relative w-24 aspect-video border-2">
             <img
