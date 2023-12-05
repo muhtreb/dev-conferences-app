@@ -50,37 +50,35 @@
         </div>
     </div>
 
-    {% if hasSpeakers or talk.description %}
-        <div>
-            <div class="flex mt-4 {{ hasSpeakers ? "flex-col md:flex-row " : "" }}">
-                <div class="p-4 flex-1 bg-gray-800 rounded leading-7 text-sm">
-                    <div class="flex items-center justify-start w-full mb-4">
-                        <h1 class="font-bold text-2xl text-left">{{ talk.name }}</h1>
-                        {% if app.user %}
-                            <div class="ml-2">
-                                <twig:Like type="talk" id="{{ talk.id }}" name="{{ talk.name }}" />
-                            </div>
-                        {% endif %}
-                    </div>
-                    {% if talk.description %}
-                        <p class="break-words">{{ talk.description }}</p>
+    <div>
+        <div class="flex mt-4 {{ hasSpeakers ? "flex-col md:flex-row " : "" }}">
+            <div class="p-4 flex-1 bg-gray-800 rounded leading-7 text-sm">
+                <div class="flex items-center justify-start w-full mb-4">
+                    <h1 class="font-bold text-2xl text-left">{{ talk.name }}</h1>
+                    {% if app.user %}
+                        <div class="ml-2">
+                            <twig:Like type="talk" id="{{ talk.id }}" name="{{ talk.name }}" />
+                        </div>
                     {% endif %}
-                    <div class="text-sm italic mt-4">
-                        {{ talk.date|format_datetime('long', 'none') }}
-                    </div>
                 </div>
-                {% if hasSpeakers %}
-                    <div
-                            class="w-full md:w-64 shrink-0 mt-4 ml-0 md:mt-0 md:ml-4"
-                    >
-                        {% for speaker in talk.speakers %}
-                            <div class="mb-4 w-full">
-                                <twig:SpeakerCard speaker="{{ speaker }}" url="{{ path('speaker_show', { slug: speaker.slug }) }}"/>
-                            </div>
-                        {% endfor %}
-                    </div>
+                {% if talk.description %}
+                    <p class="break-words">{{ talk.description }}</p>
                 {% endif %}
+                <div class="text-sm italic mt-4">
+                    {{ talk.date|format_datetime('long', 'none') }}
+                </div>
             </div>
+            {% if hasSpeakers %}
+                <div
+                        class="w-full md:w-64 shrink-0 mt-4 ml-0 md:mt-0 md:ml-4"
+                >
+                    {% for speaker in talk.speakers %}
+                        <div class="mb-4 w-full">
+                            <twig:SpeakerCard speaker="{{ speaker }}" url="{{ path('speaker_show', { slug: speaker.slug }) }}"/>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
-    {% endif %}
+    </div>
 {% endblock %}

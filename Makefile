@@ -8,6 +8,10 @@ bash:
 composer-update:
 	$(DOCKER_EXEC_PHP_FPM) composer update
 
+.PHONY: composer-install
+composer-install:
+	$(DOCKER_EXEC_PHP_FPM) composer install
+
 .PHONY: tests
 tests:
 	$(DOCKER_EXEC_PHP_FPM) php vendor/bin/phpunit
