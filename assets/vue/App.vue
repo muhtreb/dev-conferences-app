@@ -21,7 +21,10 @@
             const currentVideo = document.querySelector('[data-playlist-talk-id="' + currentTalkId + '"]')
             if (window.innerWidth >= 768) {
               if (null !== currentVideo) {
-                currentVideo.scrollIntoView()
+                const parent = currentVideo.parentElement
+                if (null !== parent) {
+                  parent.scrollTop = currentVideo.offsetTop - parent.offsetTop
+                }
               }
             }
           }
