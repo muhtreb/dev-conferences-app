@@ -11,7 +11,7 @@
             <item>
                 <title>{{ edition.name }}</title>
                 <link>{{ url('edition_show', { slug: edition.slug }) }}</link>
-                <description>{{ edition.description }}</description>
+                <description>{{ edition|editionDate }}</description>
                 <pubDate>{{ edition.startDate|date('D, d M Y H:i:s O') }}</pubDate>
                 <guid>{{ url('edition_show', { slug: edition.slug }) }}</guid>
             </item>
