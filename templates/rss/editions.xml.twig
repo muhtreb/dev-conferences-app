@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+        <title>Devconf.net</title>
+        <link>https://devconf.net</link>
+        <description>{{ 'seo.meta_description'|trans }}</description>
+        <language>{{ app.request.locale|split('_')[0] }}</language>
+        <lastBuildDate>{{ 'now'|date('D, d M Y H:i:s O') }}</lastBuildDate>
+        <generator>Devconf.net</generator>
+        {% for edition in editions %}
+            <item>
+                <title>{{ edition.name }}</title>
+                <link>{{ url('edition_show', { slug: edition.slug }) }}</link>
+                <description>{{ edition.description }}</description>
+                <pubDate>{{ edition.startDate|date('D, d M Y H:i:s O') }}</pubDate>
+                <guid>{{ url('edition_show', { slug: edition.slug }) }}</guid>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>
