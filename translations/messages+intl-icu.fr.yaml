@@ -94,3 +94,4 @@ search.close: Fermer la recherche
 error.404.title: Page non trouvée
 error.404.message: La page que vous recherchez n'existe plus.
 search.no_results.title: Aucun résultat pour la recherche "{query}"
+rss.editions: RSS Dernières éditions

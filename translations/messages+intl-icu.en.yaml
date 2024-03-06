@@ -95,3 +95,4 @@ about.title: About
 error.404.title: Page not found
 error.404.message: The page you are looking for does not exist.
 search.no_results.title: No results for "{query}"
+rss.editions: RSS Latest editions
