@@ -53,16 +53,17 @@ class ApiClient
         ]);
     }
 
-    public function getLatestEditions(int $limit = 12): array
+    public function getLatestEditions(int $limit = 12, bool $withTalks = false): array
     {
-        return $this->getLatestEditionsResponse($limit)->toArray();
+        return $this->getLatestEditionsResponse($limit, $withTalks)->toArray();
     }
 
-    public function getLatestEditionsResponse(int $limit = 12): ResponseInterface
+    public function getLatestEditionsResponse(int $limit = 12, bool $withTalks = false): ResponseInterface
     {
         return $this->client->request('GET', '/conferences/editions/latest', [
             'query' => [
                 'limit' => $limit,
+                'withTalks' => $withTalks,
             ]
         ]);
     }

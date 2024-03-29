@@ -11,7 +11,7 @@ class EditionsController extends AbstractController
     #[Route('/rss/editions', name: 'rss_editions')]
     public function __invoke(ApiClient $apiClient)
     {
-        $editions = $apiClient->getLatestEditions(limit: 30);
+        $editions = $apiClient->getLatestEditions(limit: 30, withTalks: true);
 
         return $this->render('rss/editions.xml.twig', [
             'editions' => $editions,

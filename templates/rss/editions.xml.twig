@@ -11,7 +11,18 @@
             <item>
                 <title>{{ edition.name }}</title>
                 <link>{{ url('edition_show', { slug: edition.slug }) }}</link>
-                <description>{{ edition|editionDate }}</description>
+                <description>
+                    <![CDATA[
+                        <h2>{{ edition|editionDate }}</h2>
+                        <ul>
+                            {% for talk in edition.talks|slice(0, 5) %}
+                                <li>
+                                    <a href="{{ url('talk_show', { slug: talk.slug }) }}">{{  talk.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    ]]>
+                </description>
                 <pubDate>{{ edition.startDate|date('D, d M Y H:i:s O') }}</pubDate>
                 <guid>{{ url('edition_show', { slug: edition.slug }) }}</guid>
             </item>
