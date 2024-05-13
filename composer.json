@@ -12,33 +12,33 @@
         "doctrine/orm": "^2.16",
         "hwi/oauth-bundle": "^2.0",
         "league/commonmark": "^2.4",
-        "symfony/console": "6.4.*",
-        "symfony/dotenv": "6.4.*",
+        "symfony/console": "7.0.*",
+        "symfony/dotenv": "7.0.*",
         "symfony/flex": "^2",
-        "symfony/form": "6.4.*",
-        "symfony/framework-bundle": "6.4.*",
-        "symfony/http-client": "6.4.*",
-        "symfony/intl": "6.4.*",
-        "symfony/mailer": "6.4.*",
-        "symfony/messenger": "6.4.*",
+        "symfony/form": "7.0.*",
+        "symfony/framework-bundle": "7.0.*",
+        "symfony/http-client": "7.0.*",
+        "symfony/intl": "7.0.*",
+        "symfony/mailer": "7.0.*",
+        "symfony/messenger": "7.0.*",
         "symfony/monolog-bundle": "^3.0",
-        "symfony/notifier": "6.4.*",
-        "symfony/runtime": "6.4.*",
-        "symfony/security-bundle": "6.4.*",
-        "symfony/translation": "6.4.*",
-        "symfony/twig-bundle": "6.4.*",
-        "symfony/uid": "6.4.*",
+        "symfony/notifier": "7.0.*",
+        "symfony/runtime": "7.0.*",
+        "symfony/security-bundle": "7.0.*",
+        "symfony/translation": "7.0.*",
+        "symfony/twig-bundle": "7.0.*",
+        "symfony/uid": "7.0.*",
         "symfony/ux-twig-component": "^2.12",
-        "symfony/validator": "6.4.*",
+        "symfony/validator": "7.0.*",
         "symfony/webpack-encore-bundle": "^2.1",
-        "symfony/yaml": "6.4.*",
+        "symfony/yaml": "7.0.*",
         "twig/cssinliner-extra": "^3.7",
         "twig/extra-bundle": "^3.7",
         "twig/inky-extra": "^3.7",
         "twig/intl-extra": "^3.7",
         "twig/markdown-extra": "^3.8",
         "twig/string-extra": "^3.7",
-        "willdurand/js-translation-bundle": "^5.1"
+        "willdurand/js-translation-bundle": "^6.0"
     },
     "config": {
         "allow-plugins": {
@@ -88,13 +88,13 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.4.*"
+            "require": "7.0.*"
         }
     },
     "require-dev": {
-        "symfony/debug-bundle": "6.4.*",
+        "symfony/debug-bundle": "7.0.*",
         "symfony/maker-bundle": "^1.51",
-        "symfony/stopwatch": "6.4.*",
-        "symfony/web-profiler-bundle": "6.4.*"
+        "symfony/stopwatch": "7.0.*",
+        "symfony/web-profiler-bundle": "7.0.*"
     }
 }
