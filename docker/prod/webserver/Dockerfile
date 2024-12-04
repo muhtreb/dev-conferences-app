@@ -54,6 +54,9 @@ COPY . /application
 WORKDIR /application
 RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader --no-scripts
 
+RUN npm install
+RUN npm run build
+
 # Set up Nginx
 COPY ./docker/prod/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
