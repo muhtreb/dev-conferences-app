@@ -6,17 +6,6 @@ jobs:
   build-and-push-prod-images:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.4
-      # ext-xsl
-      - run: sudo apt-get install -y libxslt-dev
-      - run: sudo docker-php-ext-install xsl
-      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
-      - uses: php-actions/composer@v6
-      - run: echo "Composer dependencies have been installed"
       - run: |
           docker build -t ghcr.io/muhtreb/dev-conferences-app-symfony/webserver:latest -f docker/prod/webserver/Dockerfile .
       - run: echo "Images have been built"
