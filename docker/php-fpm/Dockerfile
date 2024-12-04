@@ -1,4 +1,4 @@
-FROM php:8.3.0-fpm
+FROM php:8.4-fpm
 WORKDIR "/application"
 
 # Fix debconf warnings upon build
@@ -32,8 +32,7 @@ RUN apt-get update \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install pecl excimer extension
-RUN pecl install excimer-1.1.1 \
-    && docker-php-ext-enable excimer
+RUN pecl install excimer
 
 # Install node and yarn
 RUN set -uex; \

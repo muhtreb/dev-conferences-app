@@ -28,7 +28,11 @@ COPY ./docker/prod/php-fpm/php-ini-overrides.ini /etc/php/8.4/fpm/conf.d/99-over
 RUN docker-php-ext-install -j$(nproc) intl \
     && docker-php-ext-install -j$(nproc) pdo pdo_pgsql pgsql \
     && docker-php-ext-install -j$(nproc) zip \
-    && docker-php-ext-install -j$(nproc) pdo_mysql
+    && docker-php-ext-install -j$(nproc) pdo_mysql \
+    && docker-php-ext-install -j$(nproc) xsl
+
+# Install pecl excimer extension
+RUN pecl install excimer
 
 # APP_ENV is set to prod
 ENV APP_ENV=prod
@@ -38,6 +42,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Remove vendor directory if it exists
 RUN rm -rf /application/vendor
+
+# Install node
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g yarn
 
 # Install the composer dependencies
 COPY . /application
