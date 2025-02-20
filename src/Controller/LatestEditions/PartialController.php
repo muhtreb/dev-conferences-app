@@ -10,10 +10,10 @@ class PartialController extends AbstractController
 {
     public function __invoke(ApiClient $apiClient): Response
     {
-        $editionsResponse = $apiClient->getLatestEditionsResponse(limit: 8);
+        ['data' => $editions] = $apiClient->getLatestEditionsResponse(limit: 8)->toArray();
 
         return $this->render('latest_editions/_partial.html.twig', [
-            'editions' => $editionsResponse->toArray(),
+            'editions' => $editions,
         ]);
     }
 }

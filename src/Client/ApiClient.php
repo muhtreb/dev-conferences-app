@@ -49,13 +49,14 @@ class ApiClient
                 'query' => $query,
                 'limit' => $limit,
                 'page' => $page,
+                'withEditions' => false,
             ],
         ]);
     }
 
     public function getLatestEditions(int $limit = 12, bool $withTalks = false): array
     {
-        return $this->getLatestEditionsResponse($limit, $withTalks)->toArray();
+        return $this->getLatestEditionsResponse($limit, $withTalks)->toArray()['data'];
     }
 
     public function getLatestEditionsResponse(int $limit = 12, bool $withTalks = false): ResponseInterface
