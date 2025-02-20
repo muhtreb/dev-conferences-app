@@ -93,7 +93,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.69",
-        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan": "^1.10",
         "symfony/debug-bundle": "7.2.*",
         "symfony/maker-bundle": "^1.51",
         "symfony/stopwatch": "7.2.*",

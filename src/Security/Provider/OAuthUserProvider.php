@@ -19,7 +19,7 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface
         $user = $this->userRepository->findOneBy(['email' => $response->getEmail()]);
 
         if (null === $user) {
-            $user = new User()
+            $user = (new User())
                 ->setEmail($response->getEmail());
 
             $this->userRepository->save($user);
