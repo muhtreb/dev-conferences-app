@@ -1,5 +1,10 @@
-DOCKER_EXEC = docker compose exec
+DOCKER_COMPOSE = docker compose
+DOCKER_EXEC = $(DOCKER_COMPOSE) exec
 DOCKER_EXEC_PHP_FPM = $(DOCKER_EXEC) php-fpm
+
+.PHONE: up
+up:
+	$(DOCKER_COMPOSE) up -d
 
 .PHONY: bash
 bash:
