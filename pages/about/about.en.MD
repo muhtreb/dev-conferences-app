@@ -13,3 +13,7 @@ devconf.net is a personal project by [Julien HUMBERT](https://github.com/muhtreb
 ## How to contribute?
 
 If you know of conferences that are not yet referenced, you can send an email to [contact@devconf.net](mailto:contact@devconf.net).
+
+## Github
+
+The source code of devconf.net is available on [Github](https://github.com/muhtreb).
