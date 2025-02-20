@@ -13,7 +13,7 @@ class TalkCardHorizontal
     public bool $current = false;
 
     public function __construct(
-        private TranslatorInterface $translator
+        private TranslatorInterface $translator,
     ) {
     }
 
@@ -36,10 +36,10 @@ class TalkCardHorizontal
 
         $duration = '';
         if ($hours > 0) {
-            $duration .= $hours . ':';
+            $duration .= $hours.':';
         }
 
-        $duration .= str_pad($minutes, 2, '0', STR_PAD_LEFT) . ':';
+        $duration .= str_pad($minutes, 2, '0', STR_PAD_LEFT).':';
         $duration .= str_pad($seconds, 2, '0', STR_PAD_LEFT);
 
         return $duration;

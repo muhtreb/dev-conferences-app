@@ -18,7 +18,7 @@ class ListController extends AbstractController
     {
         [
             'data' => $speakers,
-            'meta' => $meta
+            'meta' => $meta,
         ] = $client->getSearchSpeakersResponse(
             query: $request->get('query'),
             limit: 30,

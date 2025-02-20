@@ -9,7 +9,7 @@ use Twig\TwigFilter;
 class EditionExtension extends AbstractExtension
 {
     public function __construct(
-        private TranslatorInterface $translator
+        private TranslatorInterface $translator,
     ) {
     }
 
@@ -33,7 +33,7 @@ class EditionExtension extends AbstractExtension
         $endMonth = $endDate->format('F');
 
         if ($startMonth === $endMonth) {
-            return $startDate->format('d') . ' - ' . $this->translator->trans('date.long', ['date' => $endDate]);
+            return $startDate->format('d').' - '.$this->translator->trans('date.long', ['date' => $endDate]);
         }
 
         $startYear = $startDate->format('Y');
@@ -45,9 +45,9 @@ class EditionExtension extends AbstractExtension
             $startDateFormatted = preg_replace('/[^A-Za-z0-9 ]/', '', $startDateFormatted);
             $startDateFormatted = trim($startDateFormatted);
 
-            return $startDateFormatted . ' - ' . $this->translator->trans('date.long', ['date' => $endDate]);
+            return $startDateFormatted.' - '.$this->translator->trans('date.long', ['date' => $endDate]);
         }
 
-        return $this->translator->trans('date.long', ['date' => $startDate]) . ' - ' . $this->translator->trans('date.long', ['date' => $endDate]);
+        return $this->translator->trans('date.long', ['date' => $startDate]).' - '.$this->translator->trans('date.long', ['date' => $endDate]);
     }
 }

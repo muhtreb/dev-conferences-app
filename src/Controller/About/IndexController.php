@@ -13,7 +13,7 @@ class IndexController extends AbstractController
     public function __invoke(Request $request): Response
     {
         $locale = $request->getLocale();
-        $file = $this->getParameter('kernel.project_dir') . '/pages/about/about.' . $locale . '.MD';
+        $file = $this->getParameter('kernel.project_dir').'/pages/about/about.'.$locale.'.MD';
         $markdown = file_get_contents($file);
 
         return $this->render('about/index.html.twig', [

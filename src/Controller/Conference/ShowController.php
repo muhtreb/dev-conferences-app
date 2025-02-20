@@ -19,7 +19,7 @@ class ShowController extends AbstractController
         try {
             $conference = $client->getConferenceBySlug($slug);
         } catch (\Exception $e) {
-            throw $this->createNotFoundException('Conference ' . $slug . ' not found');
+            throw $this->createNotFoundException('Conference '.$slug.' not found');
         }
 
         return $this->render('conference/show.html.twig', [
@@ -31,7 +31,7 @@ class ShowController extends AbstractController
                 ],
                 [
                     'name' => $conference['name'],
-                    'url' => null
+                    'url' => null,
                 ],
             ],
         ]);

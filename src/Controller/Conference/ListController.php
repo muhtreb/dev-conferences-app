@@ -21,7 +21,7 @@ class ListController extends AbstractController
 
         [
             'data' => $conferences,
-            'meta' => $meta
+            'meta' => $meta,
         ] = $client->getSearchConferencesResponse(
             query: $request->get('query'),
             limit: $limit,

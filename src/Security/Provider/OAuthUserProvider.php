@@ -9,19 +9,19 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
 
 class OAuthUserProvider implements OAuthAwareUserProviderInterface
 {
-    public function  __construct(
-        private UserRepository $userRepository
-    )
-    {
+    public function __construct(
+        private UserRepository $userRepository,
+    ) {
     }
 
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $user = $this->userRepository->findOneBy(['email' => $response->getEmail()]);
 
-        if (!$user) {
-            $user = new User();
-            $user->setEmail($response->getEmail());
+        if (null === $user) {
+            $user = new User()
+                ->setEmail($response->getEmail());
+
             $this->userRepository->save($user);
         }
 

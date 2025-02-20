@@ -1,28 +1,5 @@
 services:
     webserver:
-        image: ghcr.io/muhtreb/dev-conferences-app/webserver:latest
-        restart: always
-        labels:
-            - "traefik.enable=true"
-            - "traefik.docker.network=dev-conferences-traefik"
-            - "traefik.http.routers.api.rule=Host(`app-devconf.traefik.me`)"
-            - "traefik.http.routers.api.tls=true"
-            - "traefik.http.services.api.loadbalancer.server.port=8080"
-        networks:
-            - dev-conferences-traefik
-            - dev-conferences-services
-        volumes:
-            - ./init.sh:/init.sh
-            - ./:/application
-            - logs:/application/var/log
-        entrypoint: sh -c '/init.sh'
-
-volumes:
-    logs:
-        external: true
-
-networks:
-    dev-conferences-services:
-        external: true
-    dev-conferences-traefik:
-        external: true
+        image: devconf-app-webserver:latest
+        ports:
+            -   "8081:80"

@@ -19,7 +19,7 @@ class SpeakerController extends AbstractController
         try {
             $speaker = $client->getSpeakerBySlug($slug);
         } catch (\Exception $e) {
-            throw $this->createNotFoundException('Speaker ' . $slug . ' not found');
+            throw $this->createNotFoundException('Speaker '.$slug.' not found');
         }
 
         return $this->render('speaker/show.html.twig', [
@@ -30,8 +30,8 @@ class SpeakerController extends AbstractController
                     'url' => $this->generateUrl('speaker_list'),
                 ],
                 [
-                    'name' => $speaker['firstName'] . ' ' . $speaker['lastName'],
-                    'url' => null
+                    'name' => $speaker['firstName'].' '.$speaker['lastName'],
+                    'url' => null,
                 ],
             ],
         ]);

@@ -2,7 +2,6 @@
 
 namespace App\Twig\Components;
 
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
@@ -14,9 +13,8 @@ class Breadcrumb
 
     public function __construct(
         private TranslatorInterface $translator,
-        private UrlGeneratorInterface $urlGenerator
-    )
-    {
+        private UrlGeneratorInterface $urlGenerator,
+    ) {
     }
 
     public function getBreadcrumbItems(): array
@@ -24,9 +22,9 @@ class Breadcrumb
         return [
             [
                 'name' => $this->translator->trans('breadcrumb.home'),
-                'url' => $this->urlGenerator->generate('home')
+                'url' => $this->urlGenerator->generate('home'),
             ],
-            ...$this->items
+            ...$this->items,
         ];
     }
 }

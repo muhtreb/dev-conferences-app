@@ -18,7 +18,7 @@ class ShowController extends AbstractController
         try {
             $edition = $client->getEditionBySlug($slug);
         } catch (\Exception $e) {
-            throw $this->createNotFoundException('Edition ' . $slug . ' not found');
+            throw $this->createNotFoundException('Edition '.$slug.' not found');
         }
 
         return $this->render('edition/show.html.twig', [
@@ -31,12 +31,12 @@ class ShowController extends AbstractController
                 [
                     'name' => $edition['conference']['name'],
                     'url' => $this->generateUrl('conference_show', [
-                        'slug' => $edition['conference']['slug']
+                        'slug' => $edition['conference']['slug'],
                     ]),
                 ],
                 [
                     'name' => $edition['name'],
-                    'url' => null
+                    'url' => null,
                 ],
             ],
         ]);

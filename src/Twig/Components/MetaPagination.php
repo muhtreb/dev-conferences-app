@@ -20,7 +20,7 @@ class MetaPagination
         $query = $request->query->all();
         $query['page'] = $this->meta['nextPage'];
 
-        return $request->getPathInfo() . '?' . http_build_query($query);
+        return $request->getPathInfo().'?'.http_build_query($query);
     }
 
     public function getPrevPageUrl(): string
@@ -29,7 +29,7 @@ class MetaPagination
         $query = $request->query->all();
         $query['page'] = $this->meta['prevPage'];
 
-        if ($query['page'] === 1) {
+        if (1 === $query['page']) {
             unset($query['page']);
         }
 
@@ -37,6 +37,6 @@ class MetaPagination
             return $request->getPathInfo();
         }
 
-        return $request->getPathInfo() . '?' . http_build_query($query);
+        return $request->getPathInfo().'?'.http_build_query($query);
     }
 }

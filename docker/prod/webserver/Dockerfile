@@ -1,70 +1,16 @@
-# Base image
-FROM php:8.4-fpm
+FROM jkaninda/nginx-php-fpm:8.3
 
-# Install necessary packages for both PHP and Nginx
-RUN apt-get clean && apt-get update \
-    && apt-get -y --no-install-recommends install \
-        nginx \
-        locales \
-        vim \
-        unzip \
-        iputils-ping \
-        libicu-dev \
-        libpq-dev \
-        zlib1g-dev \
-        libzip-dev \
-        supervisor \
-        git \
-        libxslt-dev \
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+COPY . /var/www/html
 
-# Set up locales
-RUN locale-gen en_US.UTF-8 && locale-gen fr_FR.UTF-8
+VOLUME /var/www/html/storage
 
-# Configure PHP
-COPY ./docker/prod/php-fpm/docker-www.conf /etc/php/8.4/fpm/conf.d/docker-www.conf
-COPY ./docker/prod/php-fpm/php-ini-overrides.ini /etc/php/8.4/fpm/conf.d/99-overrides.ini
+WORKDIR /var/www/html
 
-# Install PHP extensions
-RUN docker-php-ext-install -j$(nproc) intl \
-    && docker-php-ext-install -j$(nproc) pdo pdo_pgsql pgsql \
-    && docker-php-ext-install -j$(nproc) zip \
-    && docker-php-ext-install -j$(nproc) pdo_mysql \
-    && docker-php-ext-install -j$(nproc) xsl
+# install xsl extension
+RUN apt-get update && apt-get install -y libxslt-dev && docker-php-ext-install xsl
 
-# Install pecl excimer extension
-RUN pecl install excimer
+RUN composer install
 
-# APP_ENV is set to prod
-ENV APP_ENV=prod
+RUN chown -R www-data:www-data /var/www/html
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Remove vendor directory if it exists
-RUN rm -rf /application/vendor
-
-# Install node
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g yarn
-
-# Install the composer dependencies
-COPY . /application
-WORKDIR /application
-RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader --no-scripts
-
-RUN npm install
-RUN npm run build
-
-# Set up Nginx
-COPY ./docker/prod/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
-# Configure Supervisor
-COPY ./docker/prod/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
-
-# Expose ports for Nginx and PHP-FPM
-EXPOSE 8080
-
-# Start Supervisord to manage both services
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+USER www-data

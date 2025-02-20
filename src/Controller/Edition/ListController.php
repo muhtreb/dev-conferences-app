@@ -5,7 +5,6 @@ namespace App\Controller\Edition;
 use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -19,7 +18,7 @@ class ListController extends AbstractController
     {
         [
             'data' => $editions,
-            'meta' => $meta
+            'meta' => $meta,
         ] = $client->getSearchEditionsResponse(
             query: $request->get('query'),
             limit: 30,
@@ -35,6 +34,6 @@ class ListController extends AbstractController
                     'url' => null,
                 ],
             ],
-            ]);
+        ]);
     }
 }

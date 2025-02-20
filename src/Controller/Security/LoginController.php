@@ -23,7 +23,7 @@ class LoginController extends AbstractController
         Request $request,
         LoginLinkHandlerInterface $loginLinkHandler,
         NotifierInterface $notifier,
-        TranslatorInterface $translator
+        TranslatorInterface $translator,
     ): Response {
         $form = $this->createForm(LoginLinkFormType::class);
         $form->handleRequest($request);

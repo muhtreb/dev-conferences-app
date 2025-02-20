@@ -18,7 +18,7 @@ class ShowController extends AbstractController
         try {
             $talk = $client->getTalkBySlug($slug);
         } catch (\Exception $e) {
-            throw $this->createNotFoundException('Talk ' . $slug . ' not found');
+            throw $this->createNotFoundException('Talk '.$slug.' not found');
         }
 
         $edition = $client->getEditionBySlug($talk['edition']['slug']);
@@ -34,18 +34,18 @@ class ShowController extends AbstractController
                 [
                     'name' => $talk['edition']['conference']['name'],
                     'url' => $this->generateUrl('conference_show', [
-                        'slug' => $talk['edition']['conference']['slug']
+                        'slug' => $talk['edition']['conference']['slug'],
                     ]),
                 ],
                 [
                     'name' => $talk['edition']['name'],
                     'url' => $this->generateUrl('edition_show', [
-                        'slug' => $talk['edition']['slug']
+                        'slug' => $talk['edition']['slug'],
                     ]),
                 ],
                 [
                     'name' => $talk['name'],
-                    'url' => null
+                    'url' => null,
                 ],
             ],
         ]);

@@ -12,7 +12,7 @@ class ApiClient
     public function __construct(
         HttpClientInterface $client,
         private string $baseUrl,
-        private string $apiAdminToken
+        private string $apiAdminToken,
     ) {
         $this->client = $client->withOptions([
             'base_uri' => $this->baseUrl,
@@ -32,14 +32,14 @@ class ApiClient
                 'query' => [
                     'limit' => $limit,
                     'offset' => $offset,
-                ]
+                ],
             ]
         )->toArray();
     }
 
     public function getConferenceBySlug(string $slug): array
     {
-        return $this->client->request('GET', '/conferences/slug/' . $slug)->toArray();
+        return $this->client->request('GET', '/conferences/slug/'.$slug)->toArray();
     }
 
     public function getSearchConferencesResponse(?string $query = null, int $limit = 10, int $page = 1): ResponseInterface
@@ -49,7 +49,7 @@ class ApiClient
                 'query' => $query,
                 'limit' => $limit,
                 'page' => $page,
-            ]
+            ],
         ]);
     }
 
@@ -64,7 +64,7 @@ class ApiClient
             'query' => [
                 'limit' => $limit,
                 'withTalks' => $withTalks,
-            ]
+            ],
         ]);
     }
 
@@ -74,7 +74,7 @@ class ApiClient
             'query' => [
                 'limit' => $limit,
                 'offset' => $offset,
-            ]
+            ],
         ])->toArray();
     }
 
@@ -84,19 +84,19 @@ class ApiClient
             'query' => [
                 'query' => $query,
                 'limit' => $limit,
-                'page' => $page
-            ]
+                'page' => $page,
+            ],
         ]);
     }
 
     public function getConferenceEditions(string $id): array
     {
-        return $this->client->request('GET', '/conferences/' . $id . '/editions')->toArray();
+        return $this->client->request('GET', '/conferences/'.$id.'/editions')->toArray();
     }
 
     public function getEditionBySlug(string $slug): array
     {
-        return $this->client->request('GET', '/conferences/editions/slug/' . $slug)->toArray();
+        return $this->client->request('GET', '/conferences/editions/slug/'.$slug)->toArray();
     }
 
     public function getSearchTalksResponse(?string $query = null, int $limit = 10, int $page = 1): ResponseInterface
@@ -105,14 +105,14 @@ class ApiClient
             'query' => [
                 'query' => $query,
                 'limit' => $limit,
-                'page' => $page
-            ]
+                'page' => $page,
+            ],
         ]);
     }
 
     public function getTalkBySlug(string $slug): array
     {
-        return $this->client->request('GET', '/talks/slug/' . $slug)->toArray();
+        return $this->client->request('GET', '/talks/slug/'.$slug)->toArray();
     }
 
     public function getSearchSpeakersResponse(?string $query = null, int $limit = 10, int $page = 1): ResponseInterface
@@ -121,8 +121,8 @@ class ApiClient
             'query' => [
                 'query' => $query,
                 'limit' => $limit,
-                'page' => $page
-            ]
+                'page' => $page,
+            ],
         ]);
     }
 
@@ -136,13 +136,13 @@ class ApiClient
         return $this->client->request('GET', '/speakers/top', [
             'query' => [
                 'limit' => $limit,
-            ]
+            ],
         ]);
     }
 
     public function getSpeakerBySlug(string $slug): array
     {
-        return $this->client->request('GET', '/speakers/slug/' . $slug)->toArray();
+        return $this->client->request('GET', '/speakers/slug/'.$slug)->toArray();
     }
 
     public function getSpeakers(int $limit = 10, int $offset = 0): array
@@ -151,15 +151,15 @@ class ApiClient
             'query' => [
                 'limit' => $limit,
                 'offset' => $offset,
-            ]
+            ],
         ])->toArray();
     }
 
     private function sendUserFavoriteRequest(string $method, string $endpoint, string $userId, ?string $resourceId = null): ResponseInterface
     {
-        $url = '/admin/user/' . $userId . '/favorite/' . $endpoint;
-        if ($resourceId !== null) {
-            $url .= '/' . $resourceId;
+        $url = '/admin/user/'.$userId.'/favorite/'.$endpoint;
+        if (null !== $resourceId) {
+            $url .= '/'.$resourceId;
         }
 
         return $this->client->request(
@@ -167,8 +167,8 @@ class ApiClient
             $url,
             [
                 'headers' => [
-                    'x-auth-token' => $this->apiAdminToken
-                ]
+                    'x-auth-token' => $this->apiAdminToken,
+                ],
             ]
         );
     }
@@ -215,36 +215,27 @@ class ApiClient
 
     public function getUserFavoriteData(string $userId, array $data): array
     {
-        return $this->client->request('POST', '/admin/user/' . $userId . '/favorite/data', [
+        return $this->client->request('POST', '/admin/user/'.$userId.'/favorite/data', [
             'headers' => [
-                'x-auth-token' => $this->apiAdminToken
+                'x-auth-token' => $this->apiAdminToken,
             ],
-            'json' => $data
+            'json' => $data,
         ])->toArray();
     }
 
     private function sendFavoriteRequest(string $userId, string $type, string $id, string $action): void
     {
-        switch ($type) {
-            case 'conference':
-                $endpoint = 'conferences';
-                break;
-            case 'talk':
-                $endpoint = 'talks';
-                break;
-            case 'speaker':
-                $endpoint = 'speakers';
-                break;
-            case 'conferenceEdition':
-                $endpoint = 'conference_editions';
-                break;
-            default:
-                throw new \InvalidArgumentException('Invalid type');
-        }
+        $endpoint = match ($type) {
+            'conference' => 'conferences',
+            'talk' => 'talks',
+            'speaker' => 'speakers',
+            'conferenceEdition' => 'conference_editions',
+            default => throw new \InvalidArgumentException('Invalid type'),
+        };
 
-        $this->client->request('POST', '/admin/user/' . $userId . '/favorite/' . $endpoint . '/' . $id .'/' . $action, [
+        $this->client->request('POST', '/admin/user/'.$userId.'/favorite/'.$endpoint.'/'.$id.'/'.$action, [
             'headers' => [
-                'x-auth-token' => $this->apiAdminToken
+                'x-auth-token' => $this->apiAdminToken,
             ],
         ]);
     }
