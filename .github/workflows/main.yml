@@ -1,40 +1,40 @@
-name: CI
-
-on: [push]
-
-jobs:
-  phpstan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.4
-          extensions: xsl
-      - uses: php-actions/composer@v6
-        with:
-          php_version: 8.4
-      - uses: php-actions/phpstan@v3
-        with:
-          php_version: 8.4
-          path: src/
-
-  build-and-push-prod-images:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.4
-      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
-      - run: |
-          docker build -t ghcr.io/muhtreb/dev-conferences-app-symfony/webserver:latest -f docker/prod/webserver/Dockerfile .
-      - run: echo "Images have been built"
-      - run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u muhtreb --password-stdin
-      - run: |
-          docker push ghcr.io/muhtreb/dev-conferences-app-symfony/webserver:latest
-      - run: echo "Images have been pushed"
+#name: CI
+#
+#on: [push]
+#
+#jobs:
+#  phpstan:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: 8.4
+#          extensions: xsl
+#      - uses: php-actions/composer@v6
+#        with:
+#          php_version: 8.4
+#      - uses: php-actions/phpstan@v3
+#        with:
+#          php_version: 8.4
+#          path: src/
+#
+#  build-and-push-prod-images:
+#    if: github.ref == 'refs/heads/main'
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: 8.4
+#      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+#      - run: |
+#          docker build -t ghcr.io/muhtreb/dev-conferences-app-symfony/webserver:latest -f docker/prod/webserver/Dockerfile .
+#      - run: echo "Images have been built"
+#      - run: |
+#          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u muhtreb --password-stdin
+#      - run: |
+#          docker push ghcr.io/muhtreb/dev-conferences-app-symfony/webserver:latest
+#      - run: echo "Images have been pushed"
