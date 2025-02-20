@@ -12,8 +12,8 @@ jobs:
           php_version: 8.4
       - uses: php-actions/phpstan@v3
         with:
-          path: src/
           php_version: 8.4
+          path: src/
 
   build-and-push-prod-images:
     if: github.ref == 'refs/heads/main'
