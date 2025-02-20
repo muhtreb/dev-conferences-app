@@ -1,0 +1,29 @@
+<div class="w-full flex flex-col p-4 bg-gray-700 rounded-md cursor-pointer relative hover:bg-gray-600 transition-colors duration-200 ease-in-out">
+    {% if app.user %}
+        <div class="absolute left-4 top-4 z-20">
+            <twig:Like type="speaker" id="{{ speaker.id }}" name="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" :focusable="false" />
+        </div>
+    {% endif %}
+    <div class="flex flex-col items-center justify-center relative">
+        <div class="relative w-20 h-20 shrink-0 mb-2">
+            {% if speaker.avatarUrl %}
+                <img
+                        src="{{ speaker.avatarUrl }}"
+                        alt=""
+                        class="rounded-full border-2 bg-gray-800"
+                />
+            {% else %}
+                <div class="h-full w-full rounded-full border-2 bg-gray-800 flex items-center justify-center">
+                    <i class="fa-solid fa-user fa-2xl"></i>
+                </div>
+            {% endif %}
+        </div>
+        <div>
+            <h2 class="font-bold">
+                <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">
+                    {{ speaker.firstName }} {{ speaker.lastName }}
+                </a>
+            </h2>
+        </div>
+    </div>
+</div>

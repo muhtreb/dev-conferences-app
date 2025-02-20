@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block metaTitle 'speakers.list.title'|trans %}
+
+{% block body %}
+    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
+
+    <h1 class="font-bold text-2xl mb-4 mt-4 text-center">{{ 'speakers.list.title'|trans }}</h1>
+
+    <twig:SearchForm placeholder="{{ 'speakers.search.placeholder'|trans }}" />
+
+    <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        {% for speaker in speakers %}
+            <li class="flex">
+                <twig:SpeakerCard speaker="{{ speaker }}" url="{{ path('speaker_show', { 'slug': speaker.slug }) }}"/>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <twig:MetaPagination meta="{{ meta }}" />
+{% endblock %}

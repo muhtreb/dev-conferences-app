@@ -1,0 +1,93 @@
+<div class="flex p-4 bg-gray-700 rounded-md cursor-pointer relative h-full flex-col w-full hover:bg-gray-600 transition-colors duration-200 ease-in-out">
+    {% if app.user %}
+        <div class="absolute left-6 top-6 z-20">
+            <twig:Like type="talk" id="{{ talk.id }}" name="{{ talk.name }}" :focusable="false" />
+        </div>
+    {% endif %}
+    <div class="relative">
+        <div class="relative w-full aspect-video border-2">
+            <img
+                    src="{{ talk.images.thumbnail }}"
+                    class="w-full"
+                    alt=""
+            />
+        </div>
+        {% if talk.duration %}
+            <p class="bg-gray-800/75 px-1 text-sm rounded absolute bottom-1 left-1">
+                {{ this.duration }}
+            </p>
+        {% endif %}
+    </div>
+    <div class="mt-2">
+        {% if showEdition and talk.edition is defined and talk.edition %}
+            <div class="flex items-center relative p-2 bg-gray-900 rounded hover:bg-gray-800 transition-colors duration-200 ease-in-out mb-2  z-20">
+                {% if talk.edition.thumbnailImageUrl %}
+                    <div class="relative w-8 h-8 shrink-0">
+                        <img
+                                src="{{ talk.edition.thumbnailImageUrl }}"
+                                alt=""
+                                class="border-2"
+                        />
+                    </div>
+                {% endif %}
+                <div class="ml-2 text-md text-right">
+                    <a
+                            href="{{ path('edition_show', { slug: talk.edition.slug }) }}"
+                            title="{{ talk.edition.name }}"
+                            class="before:inset-0 before:absolute before:content-[''] hover:underline"
+                            tabindex="-1"
+                    >
+                        {{ talk.edition.name }}
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+
+        <h2 class="text-lg font-medium mb-2">
+            <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">{{ talk.name }}</a>
+        </h2>
+
+        {% if showDate %}
+            <div class="text-xs font-regular italic">
+                {{ this.date }}
+            </div>
+        {% endif %}
+
+
+        {% if showSpeakers and this.hasSpeakers %}
+            <div class="flex flex-col flex-wrap mt-4">
+                {% for speaker in talk.speakers %}
+                    <div class="flex flex-row w-full {{ not loop.last ? 'mb-4' : '' }}">
+                        <div class="flex items-center relative p-2 bg-gray-800 rounded hover:bg-gray-700 transition-colors duration-200 ease-in-out">
+                            <div class="relative w-8 h-8 shrink-0">
+                                {% if speaker.avatarUrl %}
+                                    <img
+                                            src="{{ speaker.avatarUrl }}"
+                                            alt="{{ speaker.firstName }} {{ speaker.lastName }}"
+                                            class="rounded-full border-2"
+                                    />
+                                {% else %}
+                                    <div
+                                            class="h-full w-full rounded-full border-2 bg-gray-800 flex items-center justify-center"
+                                    >
+                                        <i class="fa-solid fa-user fa-lg"></i>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <a
+                                        href="{{ path('speaker_show', {slug: speaker.slug }) }}"
+                                        title="{{ speaker.firstName }} {{ speaker.lastName }}"
+                                        class="before:inset-0 before:absolute before:content-[''] hover:underline"
+                                        tabindex="-1"
+                                >
+                                    {{ speaker.firstName }} {{ speaker.lastName }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>

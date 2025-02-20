@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block metaTitle 'error.404.title'|trans %}
+
+{% block body %}
+    <section class="mb-16">
+        <h1 class="text-center text-3xl mb-8">{{ 'error.404.title'|trans }}</h1>
+        <p class="text-center">{{ 'error.404.message'|trans }}</p>
+    </section>
+
+    <section>
+        {{ render(controller('App\\Controller\\LatestEditions\\PartialController')) }}
+    </section>
+{% endblock %}

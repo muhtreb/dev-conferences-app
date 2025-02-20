@@ -1,0 +1,148 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block metaTitle speaker.firstName ~ ' ' ~ speaker.lastName %}
+
+{% block metaSocialNetwork %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
+    <meta name="twitter:description" content="{{ speaker.description }}" />
+    {% if speaker.avatarUrl %}
+        <meta name="twitter:image" content="{{ speaker.avatarUrl }}" />
+        <meta name="twitter:image:alt" content="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
+    {% endif %}
+
+    <meta property="og:title" content="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
+    <meta property="og:description" content="{{ speaker.description }}" />
+    <meta property="og:type" content="website" />
+    {% if speaker.avatarUrl %}
+        <meta property="og:image" content="{{ speaker.avatarUrl }}" />
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col">
+        <div class="flex flex-col mb-8 bg-gray-700 rounded-lg p-4 md:flex-row items-center md:items-start">
+            <div class="relative w-48 h-48 border-2 overflow-hidden mr-4 shrink-0 mb-4 md:mb-0">
+                {% if app.user %}
+                    <div class="absolute top-3 left-3">
+                        <twig:Like type="speaker" id="{{ speaker.id }}" name="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
+                    </div>
+                {% endif %}
+                {% if speaker.avatarUrl %}
+                    <img
+                        src="{{ speaker.avatarUrl }}"
+                        alt="{{ speaker.firstName }} {{ speaker.lastName }}"
+                        class="object-cover w-full h-full"
+                    />
+                {% endif %}
+            </div>
+            <div class="flex flex-col items-start w-full">
+                <div class="mb-4 w-full md:w-auto">
+                    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
+                </div>
+
+                <div class="flex flex-row items-center justify-center  mb-4">
+                    <h1 class="font-bold text-2xl">{{ speaker.firstName }} {{ speaker.lastName }}</h1>
+                </div>
+
+                {% if speaker.description %}
+                    <p>{{ speaker.description }}</p>
+                {% endif %}
+
+                {% if
+                    (speaker.githubUsername is defined and speaker.githubUsername) or
+                    (speaker.xUsername is defined and speaker.xUsername) or
+                    (speaker.website is defined and speaker.website) or
+                    (speaker.mastodonUsername is defined and speaker.mastodonUsername) or
+                    (speaker.blueskyUsername is defined and speaker.blueskyUsername) or
+                    (speaker.speakerDeckUsername is defined and speaker.speakerDeckUsername)
+                %}
+                    <div class="mt-4 flex items-center">
+                        {% if speaker.githubUsername is defined and speaker.githubUsername %}
+                            <a
+                                    href="https://github.com/{{ speaker.githubUsername }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.github.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                            >
+                                <i class="fa-brands fa-github fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.xUsername is defined and speaker.xUsername %}
+                            <a
+                                    href="https://twitter.com/{{ speaker.xUsername }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.x.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                            >
+                                <i class="fa-brands fa-x-twitter fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.mastodonUsername is defined and speaker.mastodonUsername %}
+                            <a
+                                    href="https://mastodon.social/{{ speaker.mastodonUsername }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.mastodon.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                            >
+                                <i class="fa-brands fa-mastodon fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.blueskyUsername is defined and speaker.blueskyUsername %}
+                            <a
+                                    href="https://bsky.app/profile/{{ speaker.blueskyUsername }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.bluesky.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                            >
+                                <i class="fa-brands fa-bluesky fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.speakerDeckUsername is defined and speaker.speakerDeckUsername %}
+                            <a
+                                    href="https://speakerdeck.com/{{ speaker.speakerDeckUsername }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.speakerDeck.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                            >
+                                <i class="fa-brands fa-speaker-deck fa-md"></i>
+                            </a>
+                        {% endif %}
+                        {% if speaker.website is defined and speaker.website %}
+                            <a
+                                    href="{{ speaker.website }}"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title="{{ 'speaker.website.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
+                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center hover:underline"
+                            >
+                                <i class="fa-solid fa-globe fa-md"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if speaker.talks|length > 0 %}
+            <div class="w-full">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {% for talk in speaker.talks %}
+                        <twig:TalkCard
+                                talk="{{ talk }}"
+                                showDate
+                                showEdition
+                                :showSpeakers="false"
+                                url="{{ path('talk_show', {slug: talk.slug}) }}"
+                        />
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

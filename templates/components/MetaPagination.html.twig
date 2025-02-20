@@ -1,0 +1,17 @@
+{% if meta.nextPage != null or meta.prevPage != null %}
+    <div class="flex justify-center mt-8">
+        {% if meta.prevPage != null %}
+            <div class="{% if meta.nextPage != null %}mr-4 flex{% endif %}">
+                <twig:Button tag="a" href="{{ this.prevPageUrl }}">
+                    {{ 'meta.prev_page.title'|trans }}
+                </twig:Button>
+            </div>
+        {% endif %}
+
+        {% if meta.nextPage != null %}
+            <twig:Button tag="a" href="{{ this.nextPageUrl }}">
+                {{ 'meta.next_page.title'|trans }}
+            </twig:Button>
+        {% endif %}
+    </div>
+{% endif %}

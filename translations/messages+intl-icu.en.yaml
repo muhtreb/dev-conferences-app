@@ -1,0 +1,98 @@
+home.latest_editions.title: Latest editions
+home.latest_editions.button: Go to all editions
+home.banner.title: Welcome to devconf.net
+home.banner.content: Find the replay of your favorite tech conferences gathered in one place. You can search for conferences, editions, speakers, and talks. Additionally, by logging in, you'll be able to bookmark your favorite conferences, editions, speakers, and talks.
+home.most_popular_speakers.title: Most Popular Speakers
+home.most_popular_speakers.button: View all speakers
+home.search.title: Search
+header.conferences.title: Conferences
+header.editions.title: Editions
+header.speakers.title: Speakers
+header.talks.title: Talks
+header.search.title: Search on the site
+header.login.title: Log in
+header.logout.title: Log out
+footer.github: Julien HUMBERT's Github Profile
+footer.about: About
+search.label: Search for a conference, edition, speaker, or talk...
+search.placeholder: Search for a conference, edition, speaker, or talk...
+search.button: Search
+date.long: '{date, date, long}'
+breadcrumb.home: Home
+breadcrumb.conferences: Conferences
+breadcrumb.editions: Editions
+breadcrumb.speakers: Speakers
+breadcrumb.talks: Talks
+breadcrumb.search: Search
+search.title: Search
+search.conferences.title: Conferences
+search.conferences.more: View all conferences {query}
+search.editions.title: Editions
+search.editions.more: View all editions {query}
+search.talks.title: Talks
+search.talks.more: View all talks {query}
+search.speakers.title: Speakers
+search.speakers.more: View all speakers {query}
+meta.next_page.title: Next Page
+meta.prev_page.title: Previous Page
+talks.navigation_talks.title: Navigate through conferences
+conference.website.title: Conference website for {name}
+conference.x.title: Page X of conference {name}
+conference.editions.title: Editions of the conference
+speaker.github.title: "{name}'s GitHub profile"
+speaker.x.title: "{name}'s X profile"
+speaker.mastodon.title: "{name}'s Mastodon profile"
+speaker.bluesky.title: "{name}'s Bluesky profile"
+speaker.website.title: "{name}'s website"
+speaker.speakerDeck.title: "{name}'s SpeakerDeck profile"
+speaker.talks.title: Talks
+conferences.list.title: List of conferences
+editions.list.title: List of editions
+speakers.list.title: List of speakers
+speakers.search.placeholder: Search for a speaker
+talks.list.title: List of talks
+edition.count_talks: >-
+    {count, plural,
+        =0 {No talks}
+        =1 {1 talk}
+        other {# talks}
+    }
+edition.show_on_youtube: View on Youtube
+edition.talks: Talks ({count})
+edition.no_description: Discover the {count} talks of this edition.
+seo.meta_description: devconf.net is a website that lists developer conferences and talks.
+seo.meta_keywords: conference, talks, developer, dev, devconf, devconf.net, devconftv, devconf tv, devconf.
+seo.title: All your technical conferences (PHP, Javascript, Ruby, Symfony, Laravel, Typescript, React, Vue, ..)
+login.title: Log in
+login.email_link.title: Log in with a login link
+login.email_link.description: To log in, please enter your email address. A login link will be sent to you via email.
+login.email_link.button: Receive a login link
+login.oauth.title: Log in with GitHub account
+login.oauth.description: You can log in with your GitHub account.
+login.oauth.github_button: Log in with GitHub
+login.email.label: Email address
+login.email.placeholder: Enter your email address
+login_link_sent.title: Login link sent
+login_link_sent.text: A login link has been sent to the email address {email}. Please click on the link to log in.
+login_link_email.subject: Login link to devconf.net
+login_link_email.button: Log in
+user.favorite.title: My favorites
+user.favorite.description: Find here all the conferences, editions, speakers, and talks you have added to your favorites.
+user.favorite.conferences.title: Conferences ({count})
+user.favorite.editions.title: Editions ({count})
+user.favorite.speakers.title: Speakers ({count})
+user.favorite.talks.title: Talks ({count})
+like.add: Add to favorites
+like.remove: Remove from favorites
+menu.user.favorites: My favorites
+menu.logout: Log out
+menu.user.profile: My profile
+header.skip_to_content: Go to content
+menu.show_navigation: Show navigation
+menu.hide_navigation: Hide navigation
+search.close: Close search
+about.title: About
+error.404.title: Page not found
+error.404.message: The page you are looking for does not exist.
+search.no_results.title: No results for "{query}"
+rss.editions: RSS Latest editions

@@ -1,0 +1,32 @@
+<div class="w-full flex flex-col p-4 bg-gray-700 text-white rounded-md cursor-pointer relative hover:bg-gray-600 transition-colors duration-200 ease-in-out">
+    {% if showThumbnail %}
+        {% if app.user %}
+            <div class="absolute left-4 top-4 z-20">
+                <twig:Like type="conferenceEdition" id="{{ edition.id }}" name="{{ edition.name }}" :focusable="false" />
+            </div>
+        {% endif %}
+        <div class="flex items-center justify-center">
+            <div class="relative w-24 h-24 mb-4 bg-gray-800 border-2 overflow-hidden">
+                <img class="mb-4" src="{{ edition.thumbnailImageUrl }}" alt="" />
+            </div>
+        </div>
+    {% endif %}
+    <h2 class="font-bold text-center text-xl">
+        <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">{{ edition.name }}</a>
+    </h2>
+    <div class="text-sm text-center text-gray-200 italic mt-2">
+        {{ edition|editionDate }}
+    </div>
+    {% if edition.countTalks > 0 %}
+        <div class="text-sm text-center text-gray-200 font-semibold mt-2">
+            {{ 'edition.count_talks'|trans({ count: edition.countTalks }) }}
+        </div>
+    {% endif %}
+    {% if not showThumbnail and app.user %}
+        <div class="mt-4 flex w-full items-center justify-center">
+            <div class="relative z-20">
+                <twig:Like type="conferenceEdition" id="{{ edition.id }}" name="{{ edition.name }}" :focusable="false" />
+            </div>
+        </div>
+    {% endif %}
+</div>

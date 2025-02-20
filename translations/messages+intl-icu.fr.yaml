@@ -1,0 +1,97 @@
+home.latest_editions.title: Dernières éditions
+home.latest_editions.button: Voir toutes les éditions
+home.banner.title: Bienvenue sur devconf.net
+home.banner.content: Retrouvez le replay de vos conférences tech préférées réunies au même endroit. Vous pouvez rechercher des conférences, des éditions, des speakers et des talks. De plus, en vous connectant, vous pourrez mettre en favoris vos conférences, éditions, speakers et talks préférés.
+home.most_popular_speakers.title: Speakers les plus populaires
+home.most_popular_speakers.button: Voir tous les speakers
+home.search.title: Recherche
+header.conferences.title: Conférences
+header.editions.title: Éditions
+header.speakers.title: Speakers
+header.talks.title: Talks
+header.search.title: Rechercher sur le site
+header.login.title: Se connecter
+header.logout.title: Se déconnecter
+footer.github: Profil Github de Julien HUMBERT
+footer.about: À propos
+search.label: Rechercher une conférence, une édition, un speaker, un talk...
+search.placeholder: Rechercher une conférence, une édition, un speaker, un talk...
+search.button: Rechercher
+date.long: '{date, date, long}'
+breadcrumb.home: Accueil
+breadcrumb.conferences: Conférences
+breadcrumb.editions: Éditions
+breadcrumb.speakers: Speakers
+breadcrumb.talks: Talks
+breadcrumb.search: Recherche
+search.title: Recherche
+search.conferences.title: Conférences
+search.conferences.more: Voir toutes les conférences {query}
+search.editions.title: Éditions
+search.editions.more: Voir toutes les éditions {query}
+search.talks.title: Talks
+search.talks.more: Voir tous les talks {query}
+search.speakers.title: Speakers
+search.speakers.more: Voir tous les speakers {query}
+meta.next_page.title: Page suivante
+meta.prev_page.title: Page précédente
+talks.navigation_talks.title: Naviguer dans les conférences
+conference.website.title: Site web de la conférence {name}
+conference.x.title: Page X de la conférence {name}
+conference.editions.title: Éditions de la conférence
+speaker.github.title: Profil GitHub de {name}
+speaker.x.title: Profil X de {name}
+speaker.mastodon.title: Profil Mastodon de {name}
+speaker.bluesky.title: Profil Bluesky de {name}
+speaker.website.title: Site web de {name}
+speaker.speakerDeck.title: Profil SpeakerDeck de {name}
+speaker.talks.title: Talks
+conferences.list.title: Liste des conférences
+editions.list.title: Liste des éditions
+speakers.list.title: Liste des speakers
+speakers.search.placeholder: Rechercher un speaker
+edition.count_talks: >-
+    {count, plural,
+        =0 {Aucun talk}
+        =1 {1 talk}
+        other {# talks}
+    }
+edition.show_on_youtube: Voir sur Youtube
+edition.talks: Talks ({count})
+edition.no_description: Découvrez les {count} talks de cette édition.
+talks.list.title: Liste des talks
+seo.meta_description: devconf.net est un site qui référence les conférences et les talks de développeurs.
+seo.meta_keywords: conférence, talks, développeur, développeuse, dev, devconf, devconf.net, devconftv, devconf tv, devconf.
+seo.title: Toutes vos conférences techniques (PHP, Javascript, Ruby, Symfony, Laravel, Javascript, React, Vue, ..)
+login.title: Se connecter
+login.email_link.title: Se connecter avec un lien de connexion
+login.email_link.description: Pour vous connecter, veuillez saisir votre adresse email. Un lien de connexion vous sera envoyé par email.
+login.email_link.button: Recevoir un lien de connexion
+login.oauth.title: Se connecter avec un compte GitHub
+login.oauth.description: Vous pouvez vous connecter avec votre compte GitHub.
+login.oauth.github_button: Se connecter avec GitHub
+login.email.label: Adresse email
+login.email.placeholder: Saisissez votre adresse email
+login_link_sent.title: Lien de connexion envoyé
+login_link_sent.text: Un lien de connexion a été envoyé à l'adresse email {email}. Veuillez cliquer sur le lien pour vous connecter.
+login_link_email.subject: Lien de connexion à devconf.net
+login_link_email.button: Se connecter
+user.favorite.title: Mes favoris
+user.favorite.description: Retrouvez ici toutes les conférences, éditions, speakers et talks que vous avez ajouté à vos favoris.
+user.favorite.conferences.title: Conférences ({count})
+user.favorite.editions.title: Éditions ({count})
+user.favorite.speakers.title: Speakers ({count})
+user.favorite.talks.title: Talks ({count})
+like.add: Ajouter aux favoris
+like.remove: Supprimer des favoris
+menu.user.favorites: Mes favoris
+menu.logout: Se déconnecter
+menu.user.profile: Mon profil
+header.skip_to_content: Aller au contenu
+menu.show_navigation: Afficher la navigation
+menu.hide_navigation: Masquer la navigation
+search.close: Fermer la recherche
+error.404.title: Page non trouvée
+error.404.message: La page que vous recherchez n'existe plus.
+search.no_results.title: Aucun résultat pour la recherche "{query}"
+rss.editions: RSS Dernières éditions

@@ -1,0 +1,9 @@
+<{{ tag }}
+    class="text-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200 ease-in-out"
+    {% if tag == 'a' %}
+        {% if href %}href="{{ href }}"{% endif %}
+        {% if target %}target="{{ target }}"{% endif %}
+    {% endif %}
+>
+    {% block content %}{% endblock %}
+</{{ tag }}>

@@ -1,0 +1,30 @@
+.markdown {
+  @apply bg-gray-800 p-4 text-white;
+
+  h1 {
+    @apply text-4xl mb-8;
+  }
+
+  h2 {
+    @apply text-3xl mb-4;
+  }
+
+  h3 {
+    @apply text-2xl mb-2;
+  }
+
+  h4 {
+    @apply text-xl mb-2;
+  }
+
+  p {
+    @apply mb-4;
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+
+  a {
+    @apply text-gray-300 font-bold hover:underline;
+  }
+}

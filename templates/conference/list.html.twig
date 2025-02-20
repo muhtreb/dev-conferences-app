@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block metaTitle 'conferences.list.title'|trans %}
+
+{% block body %}
+    <twig:Breadcrumb items="{{ breadcrumbItems }}" />
+
+    <h1 class="font-bold text-2xl mb-4 mt-4 text-center">{{ 'conferences.list.title'|trans }}</h1>
+
+    <twig:SearchForm placeholder="Rechercher une conférence"/>
+
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {% for conference in conferences %}
+            <li class="flex">
+                <twig:ConferenceCard conference="{{ conference }}"
+                                     url="{{ path('conference_show', { 'slug': conference.slug }) }}"/>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <twig:MetaPagination meta="{{ meta }}" />
+{% endblock %}
