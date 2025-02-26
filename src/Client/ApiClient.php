@@ -7,12 +7,12 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class ApiClient
 {
-    private HttpClientInterface $client;
+    private readonly HttpClientInterface $client;
 
     public function __construct(
         HttpClientInterface $client,
-        private string $baseUrl,
-        private string $apiAdminToken,
+        private readonly string $baseUrl,
+        private readonly string $apiAdminToken,
     ) {
         $this->client = $client->withOptions([
             'base_uri' => $this->baseUrl,

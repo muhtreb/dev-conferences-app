@@ -17,7 +17,7 @@ class ShowController extends AbstractController
     {
         try {
             $edition = $client->getEditionBySlug($slug);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw $this->createNotFoundException('Edition '.$slug.' not found');
         }
 

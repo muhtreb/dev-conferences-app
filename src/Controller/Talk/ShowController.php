@@ -17,7 +17,7 @@ class ShowController extends AbstractController
     {
         try {
             $talk = $client->getTalkBySlug($slug);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw $this->createNotFoundException('Talk '.$slug.' not found');
         }
 

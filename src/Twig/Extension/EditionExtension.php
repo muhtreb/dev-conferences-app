@@ -9,14 +9,14 @@ use Twig\TwigFilter;
 class EditionExtension extends AbstractExtension
 {
     public function __construct(
-        private TranslatorInterface $translator,
+        private readonly TranslatorInterface $translator,
     ) {
     }
 
     public function getFilters(): array
     {
         return [
-            new TwigFilter('editionDate', [$this, 'formatEditionDate']),
+            new TwigFilter('editionDate', $this->formatEditionDate(...)),
         ];
     }
 
@@ -43,7 +43,7 @@ class EditionExtension extends AbstractExtension
             $startDateFormatted = $this->translator->trans('date.long', ['date' => $startDate]);
             $startDateFormatted = str_replace($startYear, '', $startDateFormatted);
             $startDateFormatted = preg_replace('/[^A-Za-z0-9 ]/', '', $startDateFormatted);
-            $startDateFormatted = trim($startDateFormatted);
+            $startDateFormatted = trim((string) $startDateFormatted);
 
             return $startDateFormatted.' - '.$this->translator->trans('date.long', ['date' => $endDate]);
         }

@@ -18,7 +18,7 @@ class SpeakerController extends AbstractController
     {
         try {
             $speaker = $client->getSpeakerBySlug($slug);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw $this->createNotFoundException('Speaker '.$slug.' not found');
         }
 

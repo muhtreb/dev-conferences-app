@@ -13,7 +13,7 @@ class TalkCardHorizontal
     public bool $current = false;
 
     public function __construct(
-        private TranslatorInterface $translator,
+        private readonly TranslatorInterface $translator,
     ) {
     }
 

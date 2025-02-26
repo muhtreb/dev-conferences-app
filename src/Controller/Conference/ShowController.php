@@ -18,7 +18,7 @@ class ShowController extends AbstractController
     {
         try {
             $conference = $client->getConferenceBySlug($slug);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw $this->createNotFoundException('Conference '.$slug.' not found');
         }
 

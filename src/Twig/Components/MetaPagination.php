@@ -10,7 +10,7 @@ class MetaPagination
 {
     public array $meta;
 
-    public function __construct(private RequestStack $requestStack)
+    public function __construct(private readonly RequestStack $requestStack)
     {
     }
 

@@ -15,7 +15,7 @@ class TalkCard
     public bool $showDate = false;
 
     public function __construct(
-        private TranslatorInterface $translator,
+        private readonly TranslatorInterface $translator,
     ) {
     }
 
