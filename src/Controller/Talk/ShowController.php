@@ -4,6 +4,7 @@ namespace App\Controller\Talk;
 
 use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -13,7 +14,7 @@ class ShowController extends AbstractController
         path: '/talk/{slug}',
         name: 'talk_show'
     )]
-    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator)
+    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator): Response
     {
         try {
             $talk = $client->getTalkBySlug($slug);

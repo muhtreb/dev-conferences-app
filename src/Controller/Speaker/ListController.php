@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class ListController extends AbstractController
 {
@@ -14,7 +15,7 @@ class ListController extends AbstractController
         path: '/speakers',
         name: 'speaker_list',
     )]
-    public function __invoke(ApiClient $client, Request $request, TranslatorInterface $translator)
+    public function __invoke(ApiClient $client, Request $request, TranslatorInterface $translator): Response
     {
         [
             'data' => $speakers,

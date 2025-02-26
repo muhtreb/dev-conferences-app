@@ -6,6 +6,7 @@ use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class ShowController extends AbstractController
 {
@@ -14,7 +15,7 @@ class ShowController extends AbstractController
         name: 'conference_show',
         requirements: ['slug' => '[a-z0-9-]+']
     )]
-    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator)
+    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator): Response
     {
         try {
             $conference = $client->getConferenceBySlug($slug);

@@ -6,6 +6,7 @@ use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class ShowController extends AbstractController
 {
@@ -13,7 +14,7 @@ class ShowController extends AbstractController
         path: '/edition/{slug}',
         name: 'edition_show'
     )]
-    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator)
+    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator): Response
     {
         try {
             $edition = $client->getEditionBySlug($slug);

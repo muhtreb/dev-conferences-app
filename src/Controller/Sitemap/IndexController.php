@@ -5,11 +5,12 @@ namespace App\Controller\Sitemap;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class IndexController extends AbstractController
 {
     #[Route('/sitemap', name: 'sitemap')]
-    public function __invoke()
+    public function __invoke(): Response
     {
         return $this->render('sitemap/index.xml.twig', [
             'links' => [

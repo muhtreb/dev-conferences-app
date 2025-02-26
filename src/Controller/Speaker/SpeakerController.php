@@ -6,6 +6,7 @@ use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class SpeakerController extends AbstractController
 {
@@ -14,7 +15,7 @@ class SpeakerController extends AbstractController
         name: 'speaker_show',
         requirements: ['slug' => '.*']
     )]
-    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator)
+    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator): Response
     {
         try {
             $speaker = $client->getSpeakerBySlug($slug);
