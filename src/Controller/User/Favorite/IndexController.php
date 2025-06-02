@@ -6,7 +6,7 @@ use App\Client\ApiClient;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/user/favorite', name: 'user_favorite_list')]
 class IndexController extends AbstractController

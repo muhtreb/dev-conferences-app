@@ -25,13 +25,14 @@ class ApiClient
         return $this->client->request($method, $endpoint, $options);
     }
 
-    public function getConferences(int $limit = 10, int $offset = 0): array
+    public function getConferences(int $limit = 10, int $page = 1, $withEditions = false): array
     {
         return $this->client->request('GET', '/conferences',
             [
                 'query' => [
                     'limit' => $limit,
-                    'offset' => $offset,
+                    'page' => $page,
+                    'withEditions' => $withEditions,
                 ],
             ]
         )->toArray();
@@ -69,12 +70,12 @@ class ApiClient
         ]);
     }
 
-    public function getEditions(int $limit = 10, int $offset = 0): array
+    public function getEditions(int $limit = 10, int $page = 1): array
     {
         return $this->client->request('GET', '/conferences/editions', [
             'query' => [
                 'limit' => $limit,
-                'offset' => $offset,
+                'page' => $page,
             ],
         ])->toArray();
     }
@@ -109,6 +110,16 @@ class ApiClient
                 'page' => $page,
             ],
         ]);
+    }
+
+    public function getTalks(int $limit = 10, int $page = 1): array
+    {
+        return $this->client->request('GET', '/talks', [
+            'query' => [
+                'limit' => $limit,
+                'page' => $page,
+            ],
+        ])->toArray();
     }
 
     public function getTalkBySlug(string $slug): array
@@ -146,12 +157,12 @@ class ApiClient
         return $this->client->request('GET', '/speakers/slug/'.$slug)->toArray();
     }
 
-    public function getSpeakers(int $limit = 10, int $offset = 0): array
+    public function getSpeakers(int $limit = 10, int $page = 0): array
     {
         return $this->client->request('GET', '/speakers', [
             'query' => [
                 'limit' => $limit,
-                'offset' => $offset,
+                'page' => $page,
             ],
         ])->toArray();
     }

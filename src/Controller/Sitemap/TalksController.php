@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class SpeakersController extends AbstractController
+class TalksController extends AbstractController
 {
-    #[Route('/sitemap/speakers', name: 'sitemap_speakers')]
+    #[Route('/sitemap/talks', name: 'sitemap_talks')]
     public function __invoke(ApiClient $apiClient): StreamedResponse
     {
         $response = new StreamedResponse(function () use ($apiClient) {
@@ -36,14 +36,14 @@ class SpeakersController extends AbstractController
     {
         $page = 1;
         do {
-            ['data' => $speakers, 'meta' => $meta] = $apiClient->getSpeakers(limit: 100, page: $page);
-            foreach ($speakers as $speaker) {
+            ['data' => $talks, 'meta' => $meta] = $apiClient->getTalks(limit: 100, page: $page);
+            foreach ($talks as $talk) {
                 yield '<url>' . PHP_EOL;
-                yield '<loc>' . htmlspecialchars($this->generateUrl('speaker_show', ['slug' => $speaker['slug']], UrlGeneratorInterface::ABSOLUTE_URL)) . '</loc>' . PHP_EOL;
+                yield '<loc>' . htmlspecialchars($this->generateUrl('talk_show', ['slug' => $talk['slug']], UrlGeneratorInterface::ABSOLUTE_URL)) . '</loc>' . PHP_EOL;
                 yield '<lastmod>' . (new \DateTime())->format('Y-m-d') . '</lastmod>' . PHP_EOL;
                 yield '</url>' . PHP_EOL;
             }
             $page++;
-        } while (null !== $meta['nextPage']);
+        } while (null !== $meta['nextPage'] && $page <= 30);
     }
 }
