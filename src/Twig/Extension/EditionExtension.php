@@ -22,6 +22,10 @@ class EditionExtension extends AbstractExtension
 
     public function formatEditionDate(array $edition): string
     {
+        if (empty($edition['startDate']) || empty($edition['endDate'])) {
+            return '';
+        }
+
         $startDate = new \DateTime($edition['startDate']);
         $endDate = new \DateTime($edition['endDate']);
 

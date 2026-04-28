@@ -2,7 +2,7 @@
 
 {% block metaTitle 'search.title'|trans %}
 
-{% set query = app.request.get('query') %}
+{% set query = app.request.query.get('query') %}
 
 {% block body %}
     <twig:Breadcrumb items="{{ breadcrumbItems }}" />
