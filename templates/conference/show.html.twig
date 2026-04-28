@@ -60,7 +60,7 @@
                                     title="{{ 'conference.website.title'|trans({ name: conference.name }) }}"
                                     class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
                             >
-                                <i class="fa-solid fa-globe fa-md"></i>
+                                {{ ux_icon('lucide:globe') }}
                             </a>
                         {% endif %}
                         {% if conference.twitter %}
@@ -71,7 +71,7 @@
                                     title="{{ 'conference.x.title'|trans({ name: conference.name }) }}"
                                     class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center hover:underline"
                             >
-                                <i class="fa-brands fa-x-twitter fa-md"></i>
+                                {{ ux_icon('simple-icons:x') }}
                             </a>
                         {% endif %}
                     </div>

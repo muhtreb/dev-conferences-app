@@ -66,7 +66,7 @@
                                     title="{{ 'speaker.github.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                                     class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
                             >
-                                <i class="fa-brands fa-github fa-md"></i>
+                                {{ ux_icon('simple-icons:github') }}
                             </a>
                         {% endif %}
                         {% if speaker.xUsername is defined and speaker.xUsername %}
@@ -77,7 +77,7 @@
                                     title="{{ 'speaker.x.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                                     class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
                             >
-                                <i class="fa-brands fa-x-twitter fa-md"></i>
+                                {{ ux_icon('simple-icons:x') }}
                             </a>
                         {% endif %}
                         {% if speaker.mastodonUsername is defined and speaker.mastodonUsername %}
@@ -88,7 +88,7 @@
                                     title="{{ 'speaker.mastodon.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                                     class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
                             >
-                                <i class="fa-brands fa-mastodon fa-md"></i>
+                                {{ ux_icon('simple-icons:mastodon') }}
                             </a>
                         {% endif %}
                         {% if speaker.blueskyUsername is defined and speaker.blueskyUsername %}
@@ -99,7 +99,7 @@
                                     title="{{ 'speaker.bluesky.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                                     class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
                             >
-                                <i class="fa-brands fa-bluesky fa-md"></i>
+                                {{ ux_icon('simple-icons:bluesky') }}
                             </a>
                         {% endif %}
                         {% if speaker.speakerDeckUsername is defined and speaker.speakerDeckUsername %}
@@ -110,7 +110,7 @@
                                     title="{{ 'speaker.speakerDeck.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                                     class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
                             >
-                                <i class="fa-brands fa-speaker-deck fa-md"></i>
+                                {{ ux_icon('simple-icons:speakerdeck') }}
                             </a>
                         {% endif %}
                         {% if speaker.website is defined and speaker.website %}
@@ -121,7 +121,7 @@
                                     title="{{ 'speaker.website.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
                                     class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center hover:underline"
                             >
-                                <i class="fa-solid fa-globe fa-md"></i>
+                                {{ ux_icon('lucide:globe') }}
                             </a>
                         {% endif %}
                     </div>

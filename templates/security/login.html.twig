@@ -17,7 +17,7 @@
                 href="{{ path('hwi_oauth_service_redirect', {'service': 'github' }) }}"
                 class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center mb-4"
             >
-                <i class="fab fa-github mr-2 fa-lg"></i>
+                {{ ux_icon('simple-icons:github', { class: 'w-5 h-5 mr-2' }) }}
                 {{ 'login.oauth.github_button'|trans }}
             </a>
         </div>

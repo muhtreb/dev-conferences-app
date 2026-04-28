@@ -1,6 +1,8 @@
 <template>
   <button @click="onClick" id="header_search_button" :aria-label="$t('header.search.title')" :aria-expanded="isSearchOpen ? 'true' : 'false'" aria-controls="#search-form">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block w-5 h-5">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+    </svg>
   </button>
 </template>
 
