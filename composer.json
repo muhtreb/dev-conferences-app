@@ -29,6 +29,7 @@
         "symfony/translation": "8.0.*",
         "symfony/twig-bundle": "8.0.*",
         "symfony/uid": "8.0.*",
+        "symfony/ux-icons": "^3.0",
         "symfony/ux-twig-component": "^2.12",
         "symfony/validator": "8.0.*",
         "symfony/webpack-encore-bundle": "^2.1",
