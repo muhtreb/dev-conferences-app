@@ -43,7 +43,10 @@ RUN rm -rf /application/vendor
 # Install the composer dependencies
 COPY . /application
 WORKDIR /application
-RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader --no-scripts
+RUN rm -rf var/cache var/log \
+    && composer install --no-dev --no-interaction --no-progress --optimize-autoloader --no-scripts \
+    && php bin/console cache:clear --no-warmup \
+    && php bin/console cache:warmup
 
 # Install npm dependencies and build assets
 RUN npm install && npm run build
