@@ -40,16 +40,28 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Remove vendor directory if it exists
 RUN rm -rf /application/vendor
 
+# Optional build arg for traceability and to bust the COPY layer cache when needed.
+# Pass with: docker build --build-arg GIT_SHA=$(git rev-parse HEAD)
+ARG GIT_SHA=unknown
+ENV BUILD_GIT_SHA=$GIT_SHA
+LABEL git-sha=$GIT_SHA
+
 # Install the composer dependencies
 COPY . /application
 WORKDIR /application
 RUN rm -rf var/cache var/log \
-    && composer install --no-dev --no-interaction --no-progress --optimize-autoloader --no-scripts \
-    && php bin/console cache:clear --no-warmup \
-    && php bin/console cache:warmup
+    && composer install --no-dev --no-interaction --no-progress --optimize-autoloader --no-scripts
 
 # Install npm dependencies and build assets
 RUN npm install && npm run build
+
+# Build Symfony prod cache last, against the exact templates and built assets
+# that will ship in this image. Doing it here (after every COPY/RUN that can
+# influence templates or services) avoids stale compiled Twig from earlier layers.
+RUN rm -rf var/cache/prod \
+    && php bin/console cache:clear --env=prod --no-warmup \
+    && php bin/console cache:warmup --env=prod \
+    && echo "$GIT_SHA" > public/build/.git-sha
 
 # Run database migrations
 RUN php bin/console --no-interaction doctrine:migrations:migrate || true
