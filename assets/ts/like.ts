@@ -14,13 +14,19 @@ export const getUserFavorites = async () => {
         likeData[type].push(id);
     })
 
-    const response = await fetch('/api/user/favorite', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(likeData)
-    })
-
-    return await response.json()
+    try {
+        const response = await fetch('/api/user/favorite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(likeData)
+        });
+        if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) {
+            return null;
+        }
+        return await response.json();
+    } catch (e) {
+        return null;
+    }
 }

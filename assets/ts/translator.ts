@@ -1,11 +1,15 @@
 import Translator from 'bazinga-translator';
 
 export const getTranslator = async () => {
-    // fetch translations from json url (window.jsonTranslationsUrl) get it from url and transform it to json
-    const res = await fetch((window as any).jsonTranslationsUrl)
-    const json = await res.json()
-
-    // set translations
-    Translator.fromJSON(json);
+    try {
+        const res = await fetch((window as any).jsonTranslationsUrl);
+        if (res.ok && res.headers.get('content-type')?.includes('application/json')) {
+            Translator.fromJSON(await res.json());
+        } else {
+            console.warn('Translations endpoint returned non-JSON response, falling back to keys');
+        }
+    } catch (e) {
+        console.warn('Failed to load translations, falling back to keys', e);
+    }
     return Translator;
 }
