@@ -15,14 +15,18 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('ROLE_USER')]
 class CreateController extends AbstractController
 {
-    public function __invoke(ApiClient $apiClient, Request $request): Response
+    public function __construct(private readonly ApiClient $apiClient)
+    {
+    }
+
+    public function __invoke(Request $request): Response
     {
         ['type' => $type, 'id' => $id] = json_decode($request->getContent(), true);
 
         /** @var User $user */
         $user = $this->getUser();
 
-        $apiClient->createUserFavorite($user->getId(), $type, $id);
+        $this->apiClient->createUserFavorite($user->getId(), $type, $id);
 
         return new JsonResponse([]);
     }

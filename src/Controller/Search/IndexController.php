@@ -11,15 +11,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class IndexController extends AbstractController
 {
+    public function __construct(private readonly ApiClient $apiClient, private readonly TranslatorInterface $translator)
+    {
+    }
+
     #[Route('/search', name: 'search')]
-    public function __invoke(ApiClient $apiClient, Request $request, TranslatorInterface $translator): Response
+    public function __invoke(Request $request): Response
     {
         $query = $request->query->get('query');
 
-        $conferencesResponse = $apiClient->getSearchConferencesResponse(query: $query, limit: 20);
-        $editionsResponse = $apiClient->getSearchEditionsResponse(query: $query, limit: 20);
-        $talksResponse = $apiClient->getSearchTalksResponse(query: $query, limit: 12);
-        $speakersResponse = $apiClient->getSearchSpeakersResponse(query: $query, limit: 20);
+        $conferencesResponse = $this->apiClient->getSearchConferencesResponse(query: $query, limit: 20);
+        $editionsResponse = $this->apiClient->getSearchEditionsResponse(query: $query, limit: 20);
+        $talksResponse = $this->apiClient->getSearchTalksResponse(query: $query, limit: 12);
+        $speakersResponse = $this->apiClient->getSearchSpeakersResponse(query: $query, limit: 20);
 
         ['data' => $conferences, 'meta' => $conferencesMeta] = $conferencesResponse->toArray();
         ['data' => $editions, 'meta' => $editionsMeta] = $editionsResponse->toArray();
@@ -37,7 +41,7 @@ class IndexController extends AbstractController
             'speakersMeta' => $speakersMeta,
             'breadcrumbItems' => [
                 [
-                    'name' => $translator->trans('breadcrumb.search'),
+                    'name' => $this->translator->trans('breadcrumb.search'),
                     'url' => null,
                 ],
             ],

@@ -9,10 +9,14 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class EditionsController extends AbstractController
 {
-    #[Route('/rss/editions', name: 'rss_editions')]
-    public function __invoke(ApiClient $apiClient): Response
+    public function __construct(private readonly ApiClient $apiClient)
     {
-        $editions = $apiClient->getLatestEditions(limit: 30, withTalks: true);
+    }
+
+    #[Route('/rss/editions', name: 'rss_editions')]
+    public function __invoke(): Response
+    {
+        $editions = $this->apiClient->getLatestEditions(limit: 30, withTalks: true);
 
         return $this->render('rss/editions.xml.twig', [
             'editions' => $editions,

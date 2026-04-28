@@ -10,9 +10,13 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/', name: 'home')]
 class IndexController extends AbstractController
 {
-    public function __invoke(ApiClient $apiClient): Response
+    public function __construct(private readonly ApiClient $apiClient)
     {
-        $topSpeakersResponse = $apiClient->getTopSpeakersResponse(limit: 12);
+    }
+
+    public function __invoke(): Response
+    {
+        $topSpeakersResponse = $this->apiClient->getTopSpeakersResponse(limit: 12);
 
         return $this->render('index.html.twig', [
             'topSpeakers' => $topSpeakersResponse->toArray(),

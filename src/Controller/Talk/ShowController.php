@@ -10,26 +10,30 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ShowController extends AbstractController
 {
+    public function __construct(private readonly ApiClient $client, private readonly TranslatorInterface $translator)
+    {
+    }
+
     #[Route(
         path: '/talk/{slug}',
         name: 'talk_show'
     )]
-    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator): Response
+    public function __invoke(string $slug): Response
     {
         try {
-            $talk = $client->getTalkBySlug($slug);
+            $talk = $this->client->getTalkBySlug($slug);
         } catch (\Exception) {
             throw $this->createNotFoundException('Talk '.$slug.' not found');
         }
 
-        $edition = $client->getEditionBySlug($talk['edition']['slug']);
+        $edition = $this->client->getEditionBySlug($talk['edition']['slug']);
 
         return $this->render('talk/show.html.twig', [
             'talk' => $talk,
             'edition' => $edition,
             'breadcrumbItems' => [
                 [
-                    'name' => $translator->trans('breadcrumb.conferences'),
+                    'name' => $this->translator->trans('breadcrumb.conferences'),
                     'url' => $this->generateUrl('conference_list'),
                 ],
                 [

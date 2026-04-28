@@ -4,20 +4,24 @@ namespace App\Controller\Edition;
 
 use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\HttpFoundation\Response;
 
 class ShowController extends AbstractController
 {
+    public function __construct(private readonly ApiClient $client, private readonly TranslatorInterface $translator)
+    {
+    }
+
     #[Route(
         path: '/edition/{slug}',
         name: 'edition_show'
     )]
-    public function __invoke(ApiClient $client, string $slug, TranslatorInterface $translator): Response
+    public function __invoke(string $slug): Response
     {
         try {
-            $edition = $client->getEditionBySlug($slug);
+            $edition = $this->client->getEditionBySlug($slug);
         } catch (\Exception) {
             throw $this->createNotFoundException('Edition '.$slug.' not found');
         }
@@ -26,7 +30,7 @@ class ShowController extends AbstractController
             'edition' => $edition,
             'breadcrumbItems' => [
                 [
-                    'name' => $translator->trans('breadcrumb.conferences'),
+                    'name' => $this->translator->trans('breadcrumb.conferences'),
                     'url' => $this->generateUrl('conference_list'),
                 ],
                 [

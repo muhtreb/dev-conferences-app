@@ -8,9 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PartialController extends AbstractController
 {
-    public function __invoke(ApiClient $apiClient): Response
+    public function __construct(private readonly ApiClient $apiClient)
     {
-        ['data' => $editions] = $apiClient->getLatestEditionsResponse(limit: 8)->toArray();
+    }
+
+    public function __invoke(): Response
+    {
+        ['data' => $editions] = $this->apiClient->getLatestEditionsResponse(limit: 8)->toArray();
 
         return $this->render('latest_editions/_partial.html.twig', [
             'editions' => $editions,

@@ -14,11 +14,10 @@ class IndexController extends AbstractController
     public function __invoke(
         Request $request,
         #[Autowire('%kernel.project_dir%/pages/about/')]
-        string $markdownFolder
-    ): Response
-    {
+        string $markdownFolder,
+    ): Response {
         $locale = $request->getLocale();
-        $file = $markdownFolder . 'about.' . $locale . '.MD';
+        $file = $markdownFolder.'about.'.$locale.'.MD';
         $markdown = file_get_contents($file);
 
         return $this->render('about/index.html.twig', [

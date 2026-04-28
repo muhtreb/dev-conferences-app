@@ -5,23 +5,27 @@ namespace App\Controller\Talk;
 use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\HttpFoundation\Response;
 
 class ListController extends AbstractController
 {
+    public function __construct(private readonly ApiClient $client, private readonly TranslatorInterface $translator)
+    {
+    }
+
     #[Route(
         path: '/talks',
         name: 'talk_list',
     )]
-    public function __invoke(ApiClient $client, Request $request, TranslatorInterface $translator): Response
+    public function __invoke(Request $request): Response
     {
         [
             'data' => $talks,
             'meta' => $talksMeta,
-        ] = $client->getSearchTalksResponse(
-            query: $request->get('query'),
+        ] = $this->client->getSearchTalksResponse(
+            query: $request->query->get('query'),
             limit: 28,
             page: $request->query->getInt('page', 1)
         )->toArray();
@@ -31,7 +35,7 @@ class ListController extends AbstractController
             'meta' => $talksMeta,
             'breadcrumbItems' => [
                 [
-                    'name' => $translator->trans('breadcrumb.talks'),
+                    'name' => $this->translator->trans('breadcrumb.talks'),
                     'url' => null,
                 ],
             ],

@@ -24,8 +24,12 @@ tests:
 
 .PHONY: phpstan
 phpstan:
-	$(DOCKER_EXEC_PHP_FPM) php vendor/bin/phpstan analyse src
+	$(DOCKER_EXEC_PHP_FPM) php -d memory_limit=-1 vendor/bin/phpstan analyse src
 
 .PHONY: phpcsfixer
 phpcsfixer:
 	$(DOCKER_EXEC) -e PHP_CS_FIXER_IGNORE_ENV=1 php-fpm php vendor/bin/php-cs-fixer fix src
+
+.PHONY: rector
+rector:
+	$(DOCKER_EXEC) -e RECTOR=1 php-fpm php vendor/bin/rector process src

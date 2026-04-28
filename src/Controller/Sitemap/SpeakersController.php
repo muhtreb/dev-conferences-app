@@ -10,22 +10,23 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SpeakersController extends AbstractController
 {
-    #[Route('/sitemap/speakers', name: 'sitemap_speakers')]
-    public function __invoke(ApiClient $apiClient): StreamedResponse
+    public function __construct(private readonly ApiClient $apiClient)
     {
-        $response = new StreamedResponse(function () use ($apiClient) {
-            $handle = fopen('php://output', 'w');
-            fwrite($handle, '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL);
-            fwrite($handle, '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL);
+    }
 
-            foreach ($this->generateUrls($apiClient) as $url) {
+    #[Route('/sitemap/speakers', name: 'sitemap_speakers')]
+    public function __invoke(): StreamedResponse
+    {
+        $response = new StreamedResponse(function (): void {
+            $handle = fopen('php://output', 'w');
+            fwrite($handle, '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL);
+            fwrite($handle, '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL);
+            foreach ($this->generateUrls($this->apiClient) as $url) {
                 fwrite($handle, $url);
             }
-
             fwrite($handle, '</urlset>');
             fclose($handle);
         });
-
         $response->headers->set('Content-Type', 'application/xml');
         $response->headers->set('Cache-Control', 'max-age=86400, public');
 
@@ -38,12 +39,12 @@ class SpeakersController extends AbstractController
         do {
             ['data' => $speakers, 'meta' => $meta] = $apiClient->getSpeakers(limit: 100, page: $page);
             foreach ($speakers as $speaker) {
-                yield '<url>' . PHP_EOL;
-                yield '<loc>' . htmlspecialchars($this->generateUrl('speaker_show', ['slug' => $speaker['slug']], UrlGeneratorInterface::ABSOLUTE_URL)) . '</loc>' . PHP_EOL;
-                yield '<lastmod>' . (new \DateTime())->format('Y-m-d') . '</lastmod>' . PHP_EOL;
-                yield '</url>' . PHP_EOL;
+                yield '<url>'.PHP_EOL;
+                yield '<loc>'.htmlspecialchars($this->generateUrl('speaker_show', ['slug' => $speaker['slug']], UrlGeneratorInterface::ABSOLUTE_URL)).'</loc>'.PHP_EOL;
+                yield '<lastmod>'.new \DateTime()->format('Y-m-d').'</lastmod>'.PHP_EOL;
+                yield '</url>'.PHP_EOL;
             }
-            $page++;
+            ++$page;
         } while (null !== $meta['nextPage']);
     }
 }

@@ -1,5 +1,5 @@
 # Base image
-FROM php:8.4-fpm-alpine
+FROM php:8.5-fpm-alpine
 
 # Install necessary packages for both PHP and Nginx
 RUN apk update \
@@ -21,8 +21,8 @@ RUN apk update \
     && rm -rf /var/cache/apk/*
 
 # Configure PHP
-COPY ./docker/prod/php-fpm/docker-www.conf /etc/php/8.4/fpm/conf.d/docker-www.conf
-COPY ./docker/prod/php-fpm/php-ini-overrides.ini /etc/php/8.4/fpm/conf.d/99-overrides.ini
+COPY ./docker/prod/php-fpm/docker-www.conf /etc/php/8.5/fpm/conf.d/docker-www.conf
+COPY ./docker/prod/php-fpm/php-ini-overrides.ini /etc/php/8.5/fpm/conf.d/99-overrides.ini
 
 # Install PHP extensions
 RUN docker-php-ext-install -j$(nproc) intl \

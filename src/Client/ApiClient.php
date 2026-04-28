@@ -179,7 +179,7 @@ class ApiClient
             $url,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $this->apiAdminToken,
+                    'Authorization' => 'Bearer '.$this->apiAdminToken,
                 ],
             ]
         );
@@ -229,7 +229,7 @@ class ApiClient
     {
         return $this->client->request('POST', '/admin/user/'.$userId.'/favorite/data', [
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->apiAdminToken,
+                'Authorization' => 'Bearer '.$this->apiAdminToken,
             ],
             'json' => $data,
         ])->toArray();
@@ -247,7 +247,7 @@ class ApiClient
 
         $this->client->request('POST', '/admin/user/'.$userId.'/favorite/'.$endpoint.'/'.$id.'/'.$action, [
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->apiAdminToken,
+                'Authorization' => 'Bearer '.$this->apiAdminToken,
             ],
         ]);
     }

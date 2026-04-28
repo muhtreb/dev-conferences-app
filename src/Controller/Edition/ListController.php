@@ -5,23 +5,27 @@ namespace App\Controller\Edition;
 use App\Client\ApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\HttpFoundation\Response;
 
 class ListController extends AbstractController
 {
+    public function __construct(private readonly ApiClient $client, private readonly TranslatorInterface $translator)
+    {
+    }
+
     #[Route(
         path: '/editions',
         name: 'edition_list',
     )]
-    public function __invoke(ApiClient $client, Request $request, TranslatorInterface $translator): Response
+    public function __invoke(Request $request): Response
     {
         [
             'data' => $editions,
             'meta' => $meta,
-        ] = $client->getSearchEditionsResponse(
-            query: $request->get('query'),
+        ] = $this->client->getSearchEditionsResponse(
+            query: $request->query->get('query'),
             limit: 30,
             page: $request->query->getInt('page', 1)
         )->toArray();
@@ -31,7 +35,7 @@ class ListController extends AbstractController
             'meta' => $meta,
             'breadcrumbItems' => [
                 [
-                    'name' => $translator->trans('breadcrumb.editions'),
+                    'name' => $this->translator->trans('breadcrumb.editions'),
                     'url' => null,
                 ],
             ],

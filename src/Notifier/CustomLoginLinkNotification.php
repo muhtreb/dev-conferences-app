@@ -9,6 +9,7 @@ use Symfony\Component\Security\Http\LoginLink\LoginLinkNotification;
 
 class CustomLoginLinkNotification extends LoginLinkNotification
 {
+    #[\Override]
     public function asEmailMessage(EmailRecipientInterface $recipient, ?string $transport = null): ?EmailMessage
     {
         $emailMessage = parent::asEmailMessage($recipient, $transport);

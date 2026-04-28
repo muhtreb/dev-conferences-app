@@ -15,13 +15,17 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('ROLE_USER')]
 class IndexController extends AbstractController
 {
-    public function __invoke(ApiClient $apiClient, Request $request): Response
+    public function __construct(private readonly ApiClient $apiClient)
+    {
+    }
+
+    public function __invoke(Request $request): Response
     {
         $data = json_decode($request->getContent(), true);
 
         /** @var User $user */
         $user = $this->getUser();
 
-        return new JsonResponse($apiClient->getUserFavoriteData($user->getId(), $data));
+        return new JsonResponse($this->apiClient->getUserFavoriteData($user->getId(), $data));
     }
 }

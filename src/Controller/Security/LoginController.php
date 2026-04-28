@@ -17,39 +17,39 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class LoginController extends AbstractController
 {
+    public function __construct(private readonly UserRepository $userRepository, private readonly LoginLinkHandlerInterface $loginLinkHandler, private readonly NotifierInterface $notifier, private readonly TranslatorInterface $translator)
+    {
+    }
+
     #[Route(path: '/login', name: 'security_login')]
     public function __invoke(
-        UserRepository $userRepository,
         Request $request,
-        LoginLinkHandlerInterface $loginLinkHandler,
-        NotifierInterface $notifier,
-        TranslatorInterface $translator,
     ): Response {
         $form = $this->createForm(LoginLinkFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $email = $form->getData()['email'];
-            $user = $userRepository->findOneBy(['email' => $email]);
+            $user = $this->userRepository->findOneBy(['email' => $email]);
 
             if (null === $user) {
-                $user = (new User())
+                $user = new User()
                     ->setEmail($email)
                     ->setRoles(['ROLE_USER']);
 
-                $userRepository->save($user);
+                $this->userRepository->save($user);
             }
 
-            $loginLinkDetails = $loginLinkHandler->createLoginLink($user);
+            $loginLinkDetails = $this->loginLinkHandler->createLoginLink($user);
 
             $notification = new CustomLoginLinkNotification(
                 $loginLinkDetails,
-                $translator->trans('login_link_email.subject')
+                $this->translator->trans('login_link_email.subject')
             );
 
             $recipient = new Recipient($user->getEmail());
 
-            $notifier->send($notification, $recipient);
+            $this->notifier->send($notification, $recipient);
 
             $request->getSession()->set('login_link_email', $email);
 
