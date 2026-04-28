@@ -1,21 +1,21 @@
-<div class="w-full flex flex-col justify-between p-4 bg-gray-700 rounded-md cursor-pointer relative hover:bg-gray-600 transition-colors duration-200 ease-in-out">
+<div class="w-full flex flex-col justify-between p-6 bg-surface ring-1 ring-edge rounded-xl shadow-card hover:shadow-card-hover hover:ring-edge-strong cursor-pointer relative transition-all duration-200 ease-out">
     {% if app.user %}
-        <div class="absolute left-4 top-4 z-20">
+        <div class="absolute right-3 top-3 z-20">
             <twig:Like type="conference" id="{{ conference.id }}" name="{{ conference.name }}" :focusable="false" />
         </div>
     {% endif %}
-    <div class="flex items-center justify-center mb-4 ">
+    <div class="flex items-center justify-center mb-4">
         {% if conference.thumbnailImageUrl %}
-            <div class="relative w-24 h-24 bg-gray-800 border-2 overflow-hidden">
-                <img src="{{ conference.thumbnailImageUrl }}" alt="" />
+            <div class="relative w-24 h-24 bg-surface-subtle rounded-lg ring-1 ring-edge overflow-hidden">
+                <img class="w-full h-full object-cover" src="{{ conference.thumbnailImageUrl }}" alt="" />
             </div>
         {% else %}
-        <div class="flex items-center justify-center w-24 h-24 bg-gray-800 border-2 overflow-hidden">
-            {{ ux_icon('lucide:globe-2', { class: 'w-8 h-8' }) }}
-        </div>
+            <div class="flex items-center justify-center w-24 h-24 bg-accent-soft text-accent rounded-lg">
+                {{ ux_icon('lucide:globe-2', { class: 'w-10 h-10' }) }}
+            </div>
         {% endif %}
     </div>
-    <h2 class="font-bold text-center text-xl">
-        <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">{{ conference.name }}</a>
+    <h2 class="font-display font-semibold text-center text-lg text-ink tracking-tight">
+        <a href="{{ url }}" class="before:inset-0 before:absolute before:content-[''] hover:text-accent transition-colors">{{ conference.name }}</a>
     </h2>
 </div>

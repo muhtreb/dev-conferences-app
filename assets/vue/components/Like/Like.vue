@@ -40,7 +40,8 @@ const title = computed(() => {
 <template>
   <button
       type="button"
-      class="py-2 px-3 bg-gray-800 bg-opacity-70 rounded hover:bg-opacity-100 transition duration-200 ease-in-out"
+      class="flex items-center justify-center w-9 h-9 rounded-full bg-surface/90 backdrop-blur ring-1 ring-edge text-ink-muted hover:text-accent hover:ring-accent shadow-sm transition-all duration-200 ease-out"
+      :class="{ 'text-accent': isFavorite() }"
       @click="toggleFavorite"
       :title="title"
       :tabindex="!focusable ? -1 : null"

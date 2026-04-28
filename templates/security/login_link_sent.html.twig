@@ -3,11 +3,13 @@
 {% block title 'login_link_sent.title'|trans %}
 
 {% block body %}
-    <h1 class="text-3xl font-bold text-center mb-4">
-        {{ 'login_link_sent.title'|trans }}
-    </h1>
-
-    <p class="text-center">
-        {{ 'login_link_sent.text'|trans({ email }) }}
-    </p>
+    <div class="max-w-md mx-auto mt-16 text-center">
+        <h1 class="font-display font-bold text-3xl text-ink tracking-tight mb-3">
+            {{ 'login_link_sent.title'|trans }}
+        </h1>
+        <div class="w-12 h-1 bg-accent rounded-full mx-auto mb-8"></div>
+        <p class="text-ink-muted leading-relaxed">
+            {{ 'login_link_sent.text'|trans({ email }) }}
+        </p>
+    </div>
 {% endblock %}

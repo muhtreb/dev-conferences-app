@@ -1,12 +1,15 @@
 {% extends 'layouts/base.html.twig' %}
 
 {% block body %}
-    <section class="mt-16 mb-24 flex flex-col justify-center items-center">
-        <div class="max-w-4xl">
-            <h1 class="text-4xl font-bold text-center mb-8">
+    <section class="mt-16 md:mt-24 mb-24 flex flex-col justify-center items-center">
+        <div class="max-w-3xl text-center">
+            <span class="inline-block mb-6 px-3 py-1 text-xs font-semibold tracking-wide uppercase text-accent bg-accent-soft rounded-full">
+                devconf.net
+            </span>
+            <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink leading-tight mb-6 tracking-tight">
                 {{ 'home.banner.title'|trans }}
             </h1>
-            <p class="presentation__content text-xl text-center">
+            <p class="presentation__content text-lg md:text-xl text-ink-muted leading-relaxed">
                 {{ 'home.banner.content'|trans }}
             </p>
         </div>
@@ -17,7 +20,8 @@
     </section>
 
     <section class="mb-16">
-        <h2 class="font-bold text-3xl mb-8 text-center">{{ 'home.most_popular_speakers.title'|trans }}</h2>
+        <h2 class="font-display font-bold text-2xl md:text-3xl mb-2 text-center text-ink tracking-tight">{{ 'home.most_popular_speakers.title'|trans }}</h2>
+        <div class="w-12 h-1 bg-accent rounded-full mx-auto mb-10"></div>
         <ul class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
             {% for speaker in topSpeakers %}
                 <li class="flex">
@@ -25,7 +29,7 @@
                 </li>
             {% endfor %}
         </ul>
-        <div class="mt-4 flex items-center justify-center w-full">
+        <div class="mt-10 flex items-center justify-center w-full">
             <twig:Button tag="a" href="{{ path('speaker_list') }}">
                 {{ 'home.most_popular_speakers.button'|trans }}
             </twig:Button>

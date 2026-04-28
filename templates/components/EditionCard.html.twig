@@ -1,24 +1,24 @@
-<div class="w-full flex flex-col p-4 bg-gray-700 text-white rounded-md cursor-pointer relative hover:bg-gray-600 transition-colors duration-200 ease-in-out">
+<div class="w-full flex flex-col p-6 bg-surface ring-1 ring-edge rounded-xl shadow-card hover:shadow-card-hover hover:ring-edge-strong cursor-pointer relative transition-all duration-200 ease-out">
     {% if showThumbnail %}
         {% if app.user %}
-            <div class="absolute left-4 top-4 z-20">
+            <div class="absolute right-3 top-3 z-20">
                 <twig:Like type="conferenceEdition" id="{{ edition.id }}" name="{{ edition.name }}" :focusable="false" />
             </div>
         {% endif %}
         <div class="flex items-center justify-center">
-            <div class="relative w-24 h-24 mb-4 bg-gray-800 border-2 overflow-hidden">
-                <img class="mb-4" src="{{ edition.thumbnailImageUrl }}" alt="" />
+            <div class="relative w-24 h-24 mb-4 bg-surface-subtle rounded-lg ring-1 ring-edge overflow-hidden">
+                <img class="w-full h-full object-cover" src="{{ edition.thumbnailImageUrl }}" alt="" />
             </div>
         </div>
     {% endif %}
-    <h2 class="font-bold text-center text-xl">
-        <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">{{ edition.name }}</a>
+    <h2 class="font-display font-semibold text-center text-lg text-ink tracking-tight">
+        <a href="{{ url }}" class="before:inset-0 before:absolute before:content-[''] hover:text-accent transition-colors">{{ edition.name }}</a>
     </h2>
-    <div class="text-sm text-center text-gray-200 italic mt-2">
+    <div class="text-sm text-center text-ink-soft mt-2">
         {{ edition|editionDate }}
     </div>
     {% if edition.countTalks > 0 %}
-        <div class="text-sm text-center text-gray-200 font-semibold mt-2">
+        <div class="inline-flex items-center justify-center self-center mt-3 px-2.5 py-0.5 text-xs font-medium text-accent bg-accent-soft rounded-full">
             {{ 'edition.count_talks'|trans({ count: edition.countTalks }) }}
         </div>
     {% endif %}

@@ -7,5 +7,7 @@
     name="{{ name }}"
     :focusable="{{ focusable ? 'true' : 'false' }}"
 >
-    {{ ux_icon('lucide:heart') }}
+    <span class="flex items-center justify-center w-9 h-9 rounded-full bg-surface/90 ring-1 ring-edge text-ink-muted shadow-sm">
+        {{ ux_icon('lucide:heart', { class: 'w-4 h-4' }) }}
+    </span>
 </Like>

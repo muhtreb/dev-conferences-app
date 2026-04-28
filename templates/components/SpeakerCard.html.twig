@@ -1,26 +1,26 @@
-<div class="w-full flex flex-col p-4 bg-gray-700 rounded-md cursor-pointer relative hover:bg-gray-600 transition-colors duration-200 ease-in-out">
+<div class="w-full flex flex-col p-5 bg-surface ring-1 ring-edge rounded-xl shadow-card hover:shadow-card-hover hover:ring-edge-strong cursor-pointer relative transition-all duration-200 ease-out">
     {% if app.user %}
-        <div class="absolute left-4 top-4 z-20">
+        <div class="absolute right-3 top-3 z-20">
             <twig:Like type="speaker" id="{{ speaker.id }}" name="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" :focusable="false" />
         </div>
     {% endif %}
     <div class="flex flex-col items-center justify-center relative">
-        <div class="relative w-20 h-20 shrink-0 mb-2">
+        <div class="relative w-20 h-20 shrink-0 mb-3">
             {% if speaker.avatarUrl %}
                 <img
                         src="{{ speaker.avatarUrl }}"
                         alt=""
-                        class="rounded-full border-2 bg-gray-800"
+                        class="w-full h-full rounded-full ring-2 ring-edge object-cover bg-surface-subtle"
                 />
             {% else %}
-                <div class="h-full w-full rounded-full border-2 bg-gray-800 flex items-center justify-center">
+                <div class="h-full w-full rounded-full bg-accent-soft text-accent flex items-center justify-center">
                     {{ ux_icon('lucide:user', { class: 'w-8 h-8' }) }}
                 </div>
             {% endif %}
         </div>
         <div>
-            <h2 class="font-bold">
-                <a href="{{ url }}" class="before:inset-0 before:absolute before:content-['']">
+            <h2 class="font-display font-semibold text-center text-ink tracking-tight">
+                <a href="{{ url }}" class="before:inset-0 before:absolute before:content-[''] hover:text-accent transition-colors">
                     {{ speaker.firstName }} {{ speaker.lastName }}
                 </a>
             </h2>

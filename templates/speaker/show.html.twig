@@ -21,10 +21,10 @@
 
 {% block body %}
     <div class="flex flex-col">
-        <div class="flex flex-col mb-8 bg-gray-700 rounded-lg p-4 md:flex-row items-center md:items-start">
-            <div class="relative w-48 h-48 border-2 overflow-hidden mr-4 shrink-0 mb-4 md:mb-0">
+        <div class="flex flex-col mb-10 bg-surface ring-1 ring-edge rounded-2xl shadow-card p-6 md:p-8 md:flex-row items-center md:items-start gap-6">
+            <div class="relative w-40 h-40 md:w-48 md:h-48 rounded-full ring-2 ring-edge bg-surface-subtle overflow-hidden shrink-0">
                 {% if app.user %}
-                    <div class="absolute top-3 left-3">
+                    <div class="absolute top-2 right-2 z-10">
                         <twig:Like type="speaker" id="{{ speaker.id }}" name="{{ speaker.firstName ~ ' ' ~ speaker.lastName }}" />
                     </div>
                 {% endif %}
@@ -34,6 +34,10 @@
                         alt="{{ speaker.firstName }} {{ speaker.lastName }}"
                         class="object-cover w-full h-full"
                     />
+                {% else %}
+                    <div class="flex items-center justify-center w-full h-full text-accent bg-accent-soft">
+                        {{ ux_icon('lucide:user', { class: 'w-20 h-20' }) }}
+                    </div>
                 {% endif %}
             </div>
             <div class="flex flex-col items-start w-full">
@@ -41,12 +45,10 @@
                     <twig:Breadcrumb items="{{ breadcrumbItems }}" />
                 </div>
 
-                <div class="flex flex-row items-center justify-center  mb-4">
-                    <h1 class="font-bold text-2xl">{{ speaker.firstName }} {{ speaker.lastName }}</h1>
-                </div>
+                <h1 class="font-display font-bold text-3xl md:text-4xl text-ink tracking-tight mb-4">{{ speaker.firstName }} {{ speaker.lastName }}</h1>
 
                 {% if speaker.description %}
-                    <p>{{ speaker.description }}</p>
+                    <p class="text-ink-muted leading-relaxed">{{ speaker.description }}</p>
                 {% endif %}
 
                 {% if
@@ -57,16 +59,16 @@
                     (speaker.blueskyUsername is defined and speaker.blueskyUsername) or
                     (speaker.speakerDeckUsername is defined and speaker.speakerDeckUsername)
                 %}
-                    <div class="mt-4 flex items-center">
+                    <div class="mt-6 flex items-center gap-2 flex-wrap">
                         {% if speaker.githubUsername is defined and speaker.githubUsername %}
                             <a
                                     href="https://github.com/{{ speaker.githubUsername }}"
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.github.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-subtle ring-1 ring-edge text-ink-muted hover:text-accent hover:bg-accent-soft hover:ring-accent transition-colors"
                             >
-                                {{ ux_icon('simple-icons:github') }}
+                                {{ ux_icon('simple-icons:github', { class: 'w-4 h-4' }) }}
                             </a>
                         {% endif %}
                         {% if speaker.xUsername is defined and speaker.xUsername %}
@@ -75,9 +77,9 @@
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.x.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-subtle ring-1 ring-edge text-ink-muted hover:text-accent hover:bg-accent-soft hover:ring-accent transition-colors"
                             >
-                                {{ ux_icon('simple-icons:x') }}
+                                {{ ux_icon('simple-icons:x', { class: 'w-4 h-4' }) }}
                             </a>
                         {% endif %}
                         {% if speaker.mastodonUsername is defined and speaker.mastodonUsername %}
@@ -86,9 +88,9 @@
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.mastodon.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-subtle ring-1 ring-edge text-ink-muted hover:text-accent hover:bg-accent-soft hover:ring-accent transition-colors"
                             >
-                                {{ ux_icon('simple-icons:mastodon') }}
+                                {{ ux_icon('simple-icons:mastodon', { class: 'w-4 h-4' }) }}
                             </a>
                         {% endif %}
                         {% if speaker.blueskyUsername is defined and speaker.blueskyUsername %}
@@ -97,9 +99,9 @@
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.bluesky.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-subtle ring-1 ring-edge text-ink-muted hover:text-accent hover:bg-accent-soft hover:ring-accent transition-colors"
                             >
-                                {{ ux_icon('simple-icons:bluesky') }}
+                                {{ ux_icon('simple-icons:bluesky', { class: 'w-4 h-4' }) }}
                             </a>
                         {% endif %}
                         {% if speaker.speakerDeckUsername is defined and speaker.speakerDeckUsername %}
@@ -108,9 +110,9 @@
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.speakerDeck.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center mr-2 hover:underline"
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-subtle ring-1 ring-edge text-ink-muted hover:text-accent hover:bg-accent-soft hover:ring-accent transition-colors"
                             >
-                                {{ ux_icon('simple-icons:speakerdeck') }}
+                                {{ ux_icon('simple-icons:speakerdeck', { class: 'w-4 h-4' }) }}
                             </a>
                         {% endif %}
                         {% if speaker.website is defined and speaker.website %}
@@ -119,9 +121,9 @@
                                     target="_blank"
                                     rel="noreferrer"
                                     title="{{ 'speaker.website.title'|trans({ name: speaker.firstName ~ ' ' ~ speaker.lastName }) }}"
-                                    class="flex flex-row items-center justify-center text-md p-2 bg-gray-800 rounded text-center hover:underline"
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-subtle ring-1 ring-edge text-ink-muted hover:text-accent hover:bg-accent-soft hover:ring-accent transition-colors"
                             >
-                                {{ ux_icon('lucide:globe') }}
+                                {{ ux_icon('lucide:globe', { class: 'w-4 h-4' }) }}
                             </a>
                         {% endif %}
                     </div>

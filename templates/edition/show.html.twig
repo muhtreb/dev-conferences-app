@@ -22,10 +22,10 @@
 {% endblock %}
 {% block body %}
     <div class="flex flex-col">
-        <div class="flex flex-col mb-8 bg-gray-700 rounded-lg p-4 md:flex-row items-center md:items-start">
-            <div class="relative w-48 h-48 border-2 overflow-hidden mr-4 shrink-0 mb-4 md:mb-0">
+        <div class="flex flex-col mb-10 bg-surface ring-1 ring-edge rounded-2xl shadow-card p-6 md:p-8 md:flex-row items-center md:items-start gap-6">
+            <div class="relative w-40 h-40 md:w-48 md:h-48 rounded-2xl ring-1 ring-edge bg-surface-subtle overflow-hidden shrink-0">
                 {% if app.user %}
-                    <div class="absolute top-3 left-3">
+                    <div class="absolute top-3 right-3 z-10">
                         <twig:Like type="conferenceEdition" id="{{ edition.id }}" name="{{ edition.name }}" />
                     </div>
                 {% endif %}
@@ -42,29 +42,25 @@
                     <twig:Breadcrumb items="{{ breadcrumbItems }}" />
                 </div>
 
-                <div class="flex flex-col md:flex-row items-start md:items-end justify-end mb-4">
-                    <h1 class="font-bold text-2xl">{{ edition.name }}</h1>
-
-                    <span class="md:ml-2 text-md italic">
-                        {{ edition|editionDate }}
-                    </span>
+                <div class="mb-4">
+                    <h1 class="font-display font-bold text-3xl md:text-4xl text-ink tracking-tight">{{ edition.name }}</h1>
+                    <p class="mt-1 text-sm text-ink-soft">{{ edition|editionDate }}</p>
                 </div>
 
-                <p class="mb-4">
+                <p class="mb-6 text-ink-muted leading-relaxed">
                     {{ edition.description|default('edition.no_description'|trans({ count: edition.talks|length })) }}
                 </p>
 
                 {% if edition.playlists|length > 0 %}
-                    <div class="flex flex-col items-center">
-                        <a
-                            href="https://www.youtube.com/playlist?list={{ edition.playlists.0.id  }}"
-                            target="_blank"
-                            class="flex flex-row items-center text-md p-2 bg-gray-800 rounded text-center hover:underline"
-                            title="{{ 'edition.show_on_youtube'|trans }}"
-                        >
-                            {{ ux_icon('simple-icons:youtube') }}
-                        </a>
-                    </div>
+                    <a
+                        href="https://www.youtube.com/playlist?list={{ edition.playlists.0.id  }}"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full bg-surface-subtle ring-1 ring-edge text-ink-muted hover:text-accent hover:bg-accent-soft hover:ring-accent transition-colors"
+                        title="{{ 'edition.show_on_youtube'|trans }}"
+                    >
+                        {{ ux_icon('simple-icons:youtube', { class: 'w-4 h-4' }) }}
+                        <span>{{ 'edition.show_on_youtube'|trans }}</span>
+                    </a>
                 {% endif %}
             </div>
         </div>

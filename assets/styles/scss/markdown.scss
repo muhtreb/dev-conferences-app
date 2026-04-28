@@ -1,20 +1,20 @@
 .markdown {
-  @apply bg-gray-800 p-4 text-white;
+  @apply bg-surface ring-1 ring-edge rounded-2xl shadow-card p-6 md:p-8 text-ink-muted leading-relaxed;
 
   h1 {
-    @apply text-4xl mb-8;
+    @apply font-display font-bold text-3xl md:text-4xl mb-6 text-ink tracking-tight;
   }
 
   h2 {
-    @apply text-3xl mb-4;
+    @apply font-display font-bold text-2xl md:text-3xl mb-4 mt-8 text-ink tracking-tight;
   }
 
   h3 {
-    @apply text-2xl mb-2;
+    @apply font-display font-semibold text-xl md:text-2xl mb-3 mt-6 text-ink tracking-tight;
   }
 
   h4 {
-    @apply text-xl mb-2;
+    @apply font-display font-semibold text-lg mb-2 mt-4 text-ink;
   }
 
   p {
@@ -25,6 +25,31 @@
   }
 
   a {
-    @apply text-gray-300 font-bold hover:underline;
+    @apply text-accent font-medium hover:text-accent-hover hover:underline transition-colors;
+  }
+
+  ul, ol {
+    @apply mb-4 pl-6;
+  }
+
+  ul { @apply list-disc; }
+  ol { @apply list-decimal; }
+
+  li { @apply mb-1; }
+
+  code {
+    @apply bg-surface-subtle text-ink px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  pre {
+    @apply bg-surface-subtle ring-1 ring-edge rounded-lg p-4 overflow-x-auto mb-4;
+
+    code {
+      @apply bg-transparent p-0;
+    }
+  }
+
+  blockquote {
+    @apply border-l-4 border-accent pl-4 italic my-4 text-ink-muted;
   }
 }

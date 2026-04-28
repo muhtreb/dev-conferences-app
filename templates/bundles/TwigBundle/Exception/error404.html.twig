@@ -3,12 +3,13 @@
 {% block metaTitle 'error.404.title'|trans %}
 
 {% block body %}
-    <section class="mb-16">
-        <h1 class="text-center text-3xl mb-8">{{ 'error.404.title'|trans }}</h1>
-        <p class="text-center">{{ 'error.404.message'|trans }}</p>
+    <section class="text-center mt-12 mb-16">
+        <p class="font-display text-7xl md:text-8xl font-bold text-accent tracking-tight mb-4">404</p>
+        <h1 class="font-display font-bold text-2xl md:text-3xl text-ink tracking-tight mb-4">{{ 'error.404.title'|trans }}</h1>
+        <p class="text-ink-muted">{{ 'error.404.message'|trans }}</p>
     </section>
 
-    <section>
+    <section class="mt-16">
         {{ render(controller('App\\Controller\\LatestEditions\\PartialController')) }}
     </section>
 {% endblock %}
