@@ -58,10 +58,13 @@ RUN npm install && npm run build
 # Build Symfony prod cache last, against the exact templates and built assets
 # that will ship in this image. Doing it here (after every COPY/RUN that can
 # influence templates or services) avoids stale compiled Twig from earlier layers.
+# Then hand var/ over to www-data so PHP-FPM can write runtime caches
+# (the bazinga JS translation bundle, profiler stub, etc.) at request time.
 RUN rm -rf var/cache/prod \
     && php bin/console cache:clear --env=prod --no-warmup \
     && php bin/console cache:warmup --env=prod \
-    && echo "$GIT_SHA" > public/build/.git-sha
+    && echo "$GIT_SHA" > public/build/.git-sha \
+    && chown -R www-data:www-data var/cache var/log
 
 # Run database migrations
 RUN php bin/console --no-interaction doctrine:migrations:migrate || true
