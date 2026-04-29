@@ -64,6 +64,7 @@ RUN rm -rf var/cache/prod \
     && php bin/console cache:clear --env=prod --no-warmup \
     && php bin/console cache:warmup --env=prod \
     && echo "$GIT_SHA" > public/build/.git-sha \
+    && mkdir -p var/log \
     && chown -R www-data:www-data var/cache var/log
 
 # Run database migrations
